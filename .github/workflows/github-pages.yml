@@ -32,13 +32,18 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
+      - name: Prepare static export
+        run: node scripts/prepare-static.js
+
       - name: Build static site
-        run: npm run build:static
+        run: npx cross-env STATIC_EXPORT=true NEXT_PUBLIC_STATIC_EXPORT=true NEXT_PUBLIC_USE_PHP_API=true next build
         env:
-          STATIC_EXPORT: true
-          NEXT_PUBLIC_STATIC_EXPORT: true
-          NEXT_PUBLIC_USE_PHP_API: true
           SKIP_ENV_VALIDATION: true
+          DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy"
+
+      - name: Restore API
+        run: node scripts/restore-api.js
+        if: always()
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
