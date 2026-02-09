@@ -162,13 +162,9 @@ export default function RSSArticles({ feedType = "bankier", limit = 10, showImag
     async function loadArticles() {
       setLoading(true);
       try {
-        // Use Next.js API on port 3000, PHP API on static export
-        const { getRssApiUrl } = await import("@/lib/api");
-        const apiUrl = getRssApiUrl(feedType, limit);
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        setArticles(data.items || []);
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss(feedType, limit);
+        setArticles((data as any).items || []);
         setError(null);
       } catch {
         setError("Nie udało się załadować artykułów");
@@ -256,4 +252,3 @@ export default function RSSArticles({ feedType = "bankier", limit = 10, showImag
     </div>
   );
 }
-

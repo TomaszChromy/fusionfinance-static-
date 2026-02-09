@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { getRssApiUrl } from "@/lib/api";
+import { fetchRss } from "@/lib/api";
 import { getRssArticleLink } from "@/lib/slug-utils";
 
 interface NewsItem {
@@ -59,11 +59,8 @@ export default function MarketNews({
   useEffect(() => {
     async function fetchNews() {
       try {
-        const apiUrl = getRssApiUrl("all", maxItems + 2);
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        const items = (data.items?.slice(0, maxItems) || []).map((item: NewsItem) => ({
+        const data = await fetchRss("all", maxItems + 2);
+        const items = ((data as any).items?.slice(0, maxItems) || []).map((item: NewsItem) => ({
           ...item,
           source: item.source || "default",
           link: getRssArticleLink(item.title, item.link),

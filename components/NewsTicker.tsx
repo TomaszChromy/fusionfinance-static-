@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { getRssApiUrl } from "@/lib/api";
+import { fetchRss } from "@/lib/api";
 
 interface NewsItem {
   title: string;
@@ -46,11 +46,8 @@ export default function NewsTicker({
   useEffect(() => {
     async function fetchNews() {
       try {
-        const apiUrl = getRssApiUrl("all", maxItems);
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        setNews(data.items?.slice(0, maxItems) || []);
+        const data = await fetchRss("all", maxItems);
+        setNews((data as any).items?.slice(0, maxItems) || []);
       } catch {
         setNews([]);
       }
@@ -116,4 +113,3 @@ export default function NewsTicker({
     </div>
   );
 }
-

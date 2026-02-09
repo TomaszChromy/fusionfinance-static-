@@ -1,0 +1,51 @@
+name: Deploy to nazwa.pl via FTP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      
+      - name: Prepare static export
+        run: node scripts/prepare-static.js
+      
+      - name: Build static site
+        run: npm run build:static
+        env:
+          STATIC_EXPORT: true
+          NEXT_PUBLIC_STATIC_EXPORT: true
+          NEXT_PUBLIC_USE_PHP_API: true
+          SKIP_ENV_VALIDATION: true
+          DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy"
+      
+      - name: Restore API
+        run: node scripts/restore-api.js
+        if: always()
+      
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ./
+          dangerous-clean-slate: false
+

@@ -61,19 +61,11 @@ export function isNextDevServer(): boolean {
   return shouldUseNextApi();
 }
 
-/**
- * Get the correct API URL based on environment
- * @param endpoint - API endpoint (e.g., "rss", "article")
- * @param params - Query parameters
- */
-export function getApiUrl(endpoint: string, params?: Record<string, string | number>): string {
-  // Use Next.js API on Vercel and localhost
-  const useNextApi = shouldUseNextApi();
+type ApiBackend = "next" | "php";
 
-  // Build base URL
-  const baseUrl = useNextApi ? `/api/${endpoint}` : `/api/${endpoint}.php`;
-  
-  // Add query parameters
+function buildApiUrl(endpoint: string, params?: Record<string, string | number>, backend: ApiBackend = shouldUseNextApi() ? "next" : "php"): string {
+  const baseUrl = backend === "next" ? `/api/${endpoint}` : `/api/${endpoint}.php`;
+
   if (params && Object.keys(params).length > 0) {
     const searchParams = new URLSearchParams();
     for (const [key, value] of Object.entries(params)) {
@@ -81,8 +73,17 @@ export function getApiUrl(endpoint: string, params?: Record<string, string | num
     }
     return `${baseUrl}?${searchParams.toString()}`;
   }
-  
+
   return baseUrl;
+}
+
+/**
+ * Get the correct API URL based on environment
+ * @param endpoint - API endpoint (e.g., "rss", "article")
+ * @param params - Query parameters
+ */
+export function getApiUrl(endpoint: string, params?: Record<string, string | number>): string {
+  return buildApiUrl(endpoint, params);
 }
 
 /**
@@ -96,14 +97,31 @@ export async function fetchApi<T>(
   params?: Record<string, string | number>,
   options?: RequestInit
 ): Promise<T> {
-  const url = getApiUrl(endpoint, params);
-  const response = await fetch(url, options);
-  
-  if (!response.ok) {
-    throw new Error(`API error: ${response.status} ${response.statusText}`);
+  const primaryBackend: ApiBackend = shouldUseNextApi() ? "next" : "php";
+  const fallbackBackend: ApiBackend = primaryBackend === "next" ? "php" : "next";
+
+  const tryFetch = async (backend: ApiBackend) => {
+    const url = buildApiUrl(endpoint, params, backend);
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`API error (${backend}): ${response.status} ${response.statusText}`);
+    }
+    return response.json() as Promise<T>;
+  };
+
+  try {
+    return await tryFetch(primaryBackend);
+  } catch (primaryError) {
+    // Jeśli Next API zawiedzie (np. na hostingu statycznym), spróbuj PHP fallback
+    if (primaryBackend === "next") {
+      try {
+        return await tryFetch(fallbackBackend);
+      } catch {
+        throw primaryError;
+      }
+    }
+    throw primaryError;
   }
-  
-  return response.json();
 }
 
 /**
@@ -111,6 +129,13 @@ export async function fetchApi<T>(
  */
 export function getRssApiUrl(feed: string, limit: number = 10): string {
   return getApiUrl("rss", { feed, limit });
+}
+
+/**
+ * Fetch RSS with automatic fallback (Next API -> PHP)
+ */
+export async function fetchRss(feed: string, limit: number = 10) {
+  return fetchApi<{ items: unknown[] }>("rss", { feed, limit });
 }
 
 /**

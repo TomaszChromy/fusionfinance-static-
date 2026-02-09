@@ -66,19 +66,14 @@ export default function SearchBar({ onClose, isOpen = true }: SearchBarProps) {
     const timer = setTimeout(async () => {
       setLoading(true);
       try {
-        const { getRssApiUrl } = await import("@/lib/api");
-        const apiUrl = getRssApiUrl("all", 50);
-
-        const response = await fetch(apiUrl);
-        if (response.ok) {
-          const data = await response.json();
-          const filtered = (data.items || []).filter((item: SearchResult) =>
-            item.title.toLowerCase().includes(query.toLowerCase()) ||
-            item.description?.toLowerCase().includes(query.toLowerCase())
-          ).slice(0, 8);
-          setResults(filtered);
-          setShowResults(true);
-        }
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss("all", 50);
+        const filtered = ((data as any).items || []).filter((item: SearchResult) =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.description?.toLowerCase().includes(query.toLowerCase())
+        ).slice(0, 8);
+        setResults(filtered);
+        setShowResults(true);
       } catch (error) {
         console.error("Search error:", error);
       }

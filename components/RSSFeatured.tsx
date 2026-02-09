@@ -163,14 +163,9 @@ export default function RSSFeatured({
   useEffect(() => {
     async function loadArticles() {
       try {
-        // Use Next.js API on port 3000, PHP API on static export
-        const { getRssApiUrl } = await import("@/lib/api");
-        const apiUrl = getRssApiUrl(feedType, limit);
-        const response = await fetch(apiUrl);
-        if (response.ok) {
-          const data = await response.json();
-          setArticles(data.items || []);
-        }
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss(feedType, limit);
+        setArticles((data as any).items || []);
       } catch (e) {
         console.error("Failed to load articles", e);
       }

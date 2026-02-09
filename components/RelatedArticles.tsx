@@ -95,13 +95,9 @@ export default function RelatedArticles({
   useEffect(() => {
     async function fetchArticles() {
       try {
-        // Use Next.js API on port 3000, PHP API on static export
-        const { getRssApiUrl } = await import("@/lib/api");
-        const apiUrl = getRssApiUrl(feedType, 50);
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        setArticles(data.items || []);
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss(feedType, 50);
+        setArticles((data as any).items || []);
       } catch {
         setArticles([]);
       }
@@ -168,4 +164,3 @@ export default function RelatedArticles({
     </section>
   );
 }
-

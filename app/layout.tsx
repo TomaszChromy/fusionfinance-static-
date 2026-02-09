@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import TopBanner from "@/components/TopBanner";
 import CurrencyTicker from "@/components/CurrencyTicker";
 import CookieConsent from "@/components/CookieConsent";
@@ -287,7 +286,7 @@ export default function RootLayout({
             {children}
             <CookieConsent />
             <ScrollToTop />
-            {env.staticExport === "true" ? null : <SpeedInsights />}
+            {/* Vercel Speed Insights wyłączone na hostingu statycznym */}
           </ToastProvider>
         </Providers>
       </body>

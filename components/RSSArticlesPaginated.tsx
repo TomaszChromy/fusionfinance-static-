@@ -183,13 +183,9 @@ export default function RSSArticlesPaginated({
     async function loadArticles() {
       setLoading(true);
       try {
-        // Use Next.js API on port 3000, PHP API on static export
-        const { getRssApiUrl } = await import("@/lib/api");
-        const apiUrl = getRssApiUrl(feedType, totalArticles);
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        setAllArticles(data.items || []);
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss(feedType, totalArticles);
+        setAllArticles((data as any).items || []);
         setError(null);
       } catch {
         setError("Nie udało się załadować artykułów");

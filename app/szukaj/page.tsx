@@ -87,24 +87,18 @@ function SearchContent() {
       setLoading(true);
       try {
         const feedParam = category === "all" ? "all" : category;
-        const { getRssApiUrl } = await import("@/lib/api");
-        const apiUrl = getRssApiUrl(feedParam, 100);
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss(feedParam, 100);
+        let items = (data as any).items || [];
 
-        const response = await fetch(apiUrl);
-        if (response.ok) {
-          const data = await response.json();
-          let items = data.items || [];
-
-          // Filter by query if provided
-          if (query) {
-            items = items.filter((item: SearchResult) =>
-              item.title.toLowerCase().includes(query.toLowerCase()) ||
-              item.description?.toLowerCase().includes(query.toLowerCase())
-            );
-          }
-
-          setResults(items);
+        if (query) {
+          items = items.filter((item: SearchResult) =>
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.description?.toLowerCase().includes(query.toLowerCase())
+          );
         }
+
+        setResults(items);
       } catch (error) {
         console.error("Search error:", error);
       }

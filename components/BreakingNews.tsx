@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { getRssApiUrl } from "@/lib/api";
 import { getRssArticleLink } from "@/lib/slug-utils";
 
 interface NewsItem {
@@ -29,12 +28,9 @@ export default function BreakingNews() {
   useEffect(() => {
     async function fetchBreakingNews() {
       try {
-        const apiUrl = getRssApiUrl("polska", 18);
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch");
-
-        const data = await response.json();
-        const items: NewsItem[] = data.items?.map((item: { title: string; link: string; image?: string }) => ({
+        const { fetchRss } = await import("@/lib/api");
+        const data = await fetchRss("polska", 18);
+        const items: NewsItem[] = (data as any).items?.map((item: { title: string; link: string; image?: string }) => ({
           title: item.title,
           link: getRssArticleLink(item.title, item.link),
           originalUrl: item.link,

@@ -50,6 +50,12 @@ $feeds = [
         'https://www.rp.pl/rss/ekonomia',
         'https://biznes.interia.pl/feed',
     ],
+    // Podstawowe źródło Bankier (zgodne z frontem)
+    'bankier' => [
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.bankier.pl/rss/gielda.xml',
+        'https://www.bankier.pl/rss/waluty.xml',
+    ],
     // Giełda - GPW, akcje, spółki, notowania
     'gielda' => [
         'https://www.gpw.pl/rss_aktualnosci',
@@ -78,6 +84,12 @@ $feeds = [
         'https://forsal.pl/rss/waluty.xml',
         'https://mybank.pl/news/wiadomosci-rss.xml',
     ],
+    // Podstawowe źródło Bankier (zgodne z frontem)
+    'bankier' => [
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.bankier.pl/rss/gielda.xml',
+        'https://www.bankier.pl/rss/waluty.xml',
+    ],
     // Analizy - prognozy, rekomendacje, raporty
     'analizy' => [
         'https://www.parkiet.com/rss/parkiet.xml',
@@ -93,6 +105,70 @@ $feeds = [
         'https://finanse.wp.pl/rss.xml',
         'https://www.bankier.pl/rss/finanse.xml',
         'https://biznes.interia.pl/feed',
+    ],
+    // Gospodarka / makro
+    'gospodarka' => [
+        'https://www.rp.pl/rss/ekonomia',
+        'https://forsal.pl/rss.xml',
+        'https://www.pb.pl/rss/wszystko',
+        'https://businessinsider.com.pl/feed',
+        'https://www.obserwatorfinansowy.pl/feed/',
+        'https://biznes.interia.pl/feed',
+    ],
+    // Surowce / commodities
+    'surowce' => [
+        'https://www.pb.pl/rss/surowce',
+        'https://www.money.pl/rss/gielda.xml',
+        'https://stooq.pl/rss/surowce.xml',
+        'https://www.wnp.pl/rss/serwis.xml',
+    ],
+    // Polska / lokalne rynki
+    'polska' => [
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.money.pl/rss/rss.xml',
+        'https://www.pb.pl/rss/wszystko',
+        'https://www.rp.pl/rss/ekonomia',
+        'https://biznes.interia.pl/feed',
+        'https://biznesalert.pl/feed/',
+    ],
+    // Świat / global
+    'swiat' => [
+        'https://www.pb.pl/rss/swiat',
+        'https://forsal.pl/rss.xml',
+        'https://businessinsider.com.pl/feed',
+        'https://www.rp.pl/rss/swiat',
+    ],
+    // Gospodarka / makro
+    'gospodarka' => [
+        'https://www.rp.pl/rss/ekonomia',
+        'https://forsal.pl/rss.xml',
+        'https://www.pb.pl/rss/wszystko',
+        'https://businessinsider.com.pl/feed',
+        'https://www.obserwatorfinansowy.pl/feed/',
+        'https://biznes.interia.pl/feed',
+    ],
+    // Surowce / commodities
+    'surowce' => [
+        'https://www.pb.pl/rss/surowce',
+        'https://www.money.pl/rss/gielda.xml',
+        'https://stooq.pl/rss/surowce.xml',
+        'https://www.wnp.pl/rss/serwis.xml',
+    ],
+    // Polska / lokalne rynki
+    'polska' => [
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.money.pl/rss/rss.xml',
+        'https://www.pb.pl/rss/wszystko',
+        'https://www.rp.pl/rss/ekonomia',
+        'https://biznes.interia.pl/feed',
+        'https://biznesalert.pl/feed/',
+    ],
+    // Świat / global
+    'swiat' => [
+        'https://www.pb.pl/rss/swiat',
+        'https://forsal.pl/rss.xml',
+        'https://businessinsider.com.pl/feed',
+        'https://www.rp.pl/rss/swiat',
     ],
     // All - wszystkie główne źródła (zoptymalizowane dla szybkości)
     'all' => [
@@ -148,6 +224,46 @@ $categoryFilters = [
                       'visa', 'mastercard', 'kredyt', 'pożyczk', 'leasing'],
         'exclude' => []
     ],
+    'bankier' => [
+        'include' => ['bankier', 'gpw', 'giełd', 'indeks', 'kurs', 'spółk'],
+        'exclude' => []
+    ],
+    'gospodarka' => [
+        'include' => ['gospodark', 'pkb', 'inflacj', 'bezroboci', 'stopy procentowe', 'nbp', 'fed', 'ecb', 'handel'],
+        'exclude' => []
+    ],
+    'surowce' => [
+        'include' => ['surowc', 'ropa', 'gaz', 'brent', 'wti', 'metal', 'commodit'],
+        'exclude' => []
+    ],
+    'polska' => [
+        'include' => ['polsk', 'warszaw', 'gpw', 'nbp', 'rpp', 'złot', 'pln'],
+        'exclude' => []
+    ],
+    'swiat' => [
+        'include' => ['usa', 'chin', 'europ', 'global', 'world', 'g20', 'oecd', 'boe', 'boj'],
+        'exclude' => []
+    ],
+    'bankier' => [
+        'include' => ['bankier', 'gpw', 'giełd', 'indeks', 'kurs', 'spółk'],
+        'exclude' => []
+    ],
+    'gospodarka' => [
+        'include' => ['gospodark', 'pkb', 'inflacj', 'bezroboci', 'stopy procentowe', 'nbp', 'fed', 'ecb', 'handel'],
+        'exclude' => []
+    ],
+    'surowce' => [
+        'include' => ['surowc', 'ropa', 'gaz', 'brent', 'wti', 'metal', 'commodit'],
+        'exclude' => []
+    ],
+    'polska' => [
+        'include' => ['polsk', 'warszaw', 'gpw', 'nbp', 'rpp', 'złot', 'pln'],
+        'exclude' => []
+    ],
+    'swiat' => [
+        'include' => ['usa', 'chin', 'europ', 'global', 'world', 'g20', 'oecd', 'boe', 'boj'],
+        'exclude' => []
+    ],
 ];
 
 // Parametry
@@ -157,9 +273,8 @@ $limit = min($limit, 100); // Max 100 artykułów
 
 // Sprawdź czy feed istnieje
 if (!isset($feeds[$feedType])) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Unknown feed type', 'available' => array_keys($feeds)]);
-    exit;
+    // fallback do 'all' zamiast błędu, żeby front zawsze dostał dane
+    $feedType = 'all';
 }
 
 // Funkcja równoległego pobierania wielu RSS (curl_multi) - znacznie szybsze!
@@ -437,4 +552,3 @@ echo json_encode([
     'feed' => $feedType,
     'timestamp' => date('c')
 ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-

@@ -24,22 +24,23 @@ export default function SummaryBar() {
   useEffect(() => {
     async function load() {
       try {
-        const [rssRes, stocksRes, forexRes, cryptoRes] = await Promise.all([
-          fetch("/api/rss"),
-          fetch("/api/stocks"),
-          fetch("/api/forex"),
-          fetch("/api/crypto"),
+        const [{ fetchRss, getApiUrl }] = await Promise.all([import("@/lib/api")]);
+
+        const [rss, stocksRes, forexRes, cryptoRes] = await Promise.all([
+          fetchRss("all", 20), // fallbackuje do PHP, jeśli Next API nie działa
+          fetch(getApiUrl("stocks")),
+          fetch(getApiUrl("forex")),
+          fetch(getApiUrl("crypto")),
         ]);
 
-        const [rss, stocks, forex, crypto] = await Promise.all([
-          rssRes.json(),
+        const [stocks, forex, crypto] = await Promise.all([
           stocksRes.json(),
           forexRes.json(),
           cryptoRes.json(),
         ]);
 
         setSummary({
-          articles: rss.items?.length ?? 0,
+          articles: (rss as any).items?.length ?? 0,
           stocks: stocks.items?.length ?? 0,
           forex: forex.items?.length ?? 0,
           crypto: crypto.items?.length ?? 0,
