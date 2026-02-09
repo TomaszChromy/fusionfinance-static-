@@ -55,6 +55,10 @@ Wymaga ustawionego `DATABASE_URL`.
 - `npm run lint` – lintowanie
 - `npm run typecheck` – kontrola typów
 
+### Deployment
+- **Vercel (SSR)**: patrz `VERCEL.md` – build `prisma generate && next build`, `STATIC_EXPORT=false`.
+- **nazwa.pl (statyczny eksport)**: `npm run build:static`, artefakty w `out/` (instrukcja w `DEPLOY.md`).
+
 ## Roadmap (skrót)
 - 2025: stabilizacja danych, audyt SEO/Performance, automatyzacja QA, monitoring.
 - 2026: pełna PWA (offline, push, sync), tryb low-data, usprawnienia dostępności AA.
