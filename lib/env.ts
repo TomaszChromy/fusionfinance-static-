@@ -4,6 +4,13 @@ const getAuthSecret = (): string => {
   const value = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
   if (value) return value;
 
+  // Skip validation for static export builds
+  const isStaticExport = process.env.STATIC_EXPORT === "true" || process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+  if (isStaticExport) {
+    console.warn("[env] AUTH_SECRET not set (static export mode). Auth features will be disabled.");
+    return `static-export-dummy-${Date.now()}`;
+  }
+
   if (process.env.NODE_ENV === "production") {
     throw new Error("Missing required env variable: AUTH_SECRET. Set it in production for Auth.js.");
   }
@@ -19,6 +26,14 @@ const getAuthSecret = (): string => {
 const getDatabaseUrl = (): string | undefined => {
   const value = process.env.DATABASE_URL;
   if (value) return value;
+
+  // Skip validation for static export builds
+  const isStaticExport = process.env.STATIC_EXPORT === "true" || process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+  if (isStaticExport) {
+    console.warn("[env] DATABASE_URL not set (static export mode). Database features will be disabled.");
+    return undefined;
+  }
+
   if (process.env.NODE_ENV === "production") {
     throw new Error("Missing required env variable: DATABASE_URL. Set it in production.");
   }
