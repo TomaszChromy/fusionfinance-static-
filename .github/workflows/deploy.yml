@@ -1,8 +1,9 @@
-name: Deploy to Production
+name: Deploy to Production (FTP - DISABLED)
 
 on:
-  push:
-    branches: [main]
+  # Wyłączony - używamy GitHub Pages
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 env:
