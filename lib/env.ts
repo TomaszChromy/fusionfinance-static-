@@ -1,17 +1,20 @@
 let cachedDevSecret: string | null = null;
 
+const isStaticExport = process.env.STATIC_EXPORT === "true" || process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+const isBuildPhase = process.env.NEXT_PHASE === "phase-production-build";
+const isProd = process.env.NODE_ENV === "production";
+
 const getAuthSecret = (): string => {
   const value = process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET;
   if (value) return value;
 
-  // Skip validation for static export builds
-  const isStaticExport = process.env.STATIC_EXPORT === "true" || process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
-  if (isStaticExport) {
-    console.warn("[env] AUTH_SECRET not set (static export mode). Auth features will be disabled.");
+  // During static export or production build we only need a placeholder to let the build finish.
+  if (isStaticExport || isBuildPhase) {
+    console.warn("[env] AUTH_SECRET not set (static export/build). Auth features will be disabled.");
     return `static-export-dummy-${Date.now()}`;
   }
 
-  if (process.env.NODE_ENV === "production") {
+  if (isProd) {
     throw new Error("Missing required env variable: AUTH_SECRET. Set it in production for Auth.js.");
   }
 
@@ -27,14 +30,13 @@ const getDatabaseUrl = (): string | undefined => {
   const value = process.env.DATABASE_URL;
   if (value) return value;
 
-  // Skip validation for static export builds
-  const isStaticExport = process.env.STATIC_EXPORT === "true" || process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
-  if (isStaticExport) {
-    console.warn("[env] DATABASE_URL not set (static export mode). Database features will be disabled.");
+  // Allow missing DB URL during static export or build-time so marketing-only builds don't fail.
+  if (isStaticExport || isBuildPhase) {
+    console.warn("[env] DATABASE_URL not set (static export/build). Database features will be disabled.");
     return undefined;
   }
 
-  if (process.env.NODE_ENV === "production") {
+  if (isProd) {
     throw new Error("Missing required env variable: DATABASE_URL. Set it in production.");
   }
   console.warn("[env] DATABASE_URL not set. Some features (auth/db-backed content) will be disabled.");
