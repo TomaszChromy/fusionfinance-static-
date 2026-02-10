@@ -81,7 +81,10 @@ export default function AnalizyPage() {
           </div>
 
           {/* Right column - Sidebar */}
-          <aside className="lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-100px)] lg:overflow-y-auto scrollbar-thin scrollbar-thumb-[#c9a962]/20 scrollbar-track-transparent space-y-6">
+          <aside
+            className="lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-100px)] lg:overflow-y-auto scrollbar-thin scrollbar-thumb-[#c9a962]/20 scrollbar-track-transparent space-y-6 lg:border-l lg:border-white/5 lg:pl-6 lg:ml-2"
+            style={{ boxShadow: "-12px 0 36px rgba(0,0,0,0.16)" }}
+          >
             {/* Nagłówek sidebara */}
             <div className="flex items-center gap-3">
               <div className="w-1 h-7 bg-gradient-to-b from-[#a78bfa] to-[#8b5cf6] rounded-full" />

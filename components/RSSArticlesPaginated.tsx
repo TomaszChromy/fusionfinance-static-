@@ -231,7 +231,7 @@ export default function RSSArticlesPaginated({
   return (
     <div ref={containerRef}>
       {/* Info o paginacji */}
-      <div className="flex justify-between items-center mb-[21px] pb-[13px] border-b border-[#c9a962]/20">
+      <div className="flex justify-between items-center mb-[26px] pb-[16px] border-b border-[#c9a962]/20">
         <span className="text-[12px] text-[#c9a962] uppercase tracking-[0.1em] font-medium">
           Strona {currentPage} z {totalPages}
         </span>
@@ -248,7 +248,7 @@ export default function RSSArticlesPaginated({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-5"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-8"
         >
           {currentArticles.map((article, index) => {
             const imageUrl = getImageForArticle(index + (currentPage - 1) * articlesPerPage, article.title, article.image);
