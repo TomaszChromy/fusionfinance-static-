@@ -17,7 +17,7 @@ export default function KeyboardShortcuts() {
   const shortcuts: Shortcut[] = useMemo(() => ([
     { key: "?", description: "Pokaż skróty klawiszowe", action: () => setShowHelp(true) },
     { key: "h", description: "Strona główna", action: () => router.push("/") },
-    { key: "r", description: "Rynki", action: () => router.push("/rynki") },
+    { key: "r", description: "Polska", action: () => router.push("/polska") },
     { key: "g", description: "Giełda", action: () => router.push("/gielda") },
     { key: "c", description: "Crypto", action: () => router.push("/crypto") },
     { key: "w", description: "Waluty", action: () => router.push("/waluty") },

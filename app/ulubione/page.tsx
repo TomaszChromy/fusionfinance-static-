@@ -29,7 +29,7 @@ export default function UlubionePage() {
       <Navbar />
 
       <main className="flex-1 py-8">
-        <div className="mx-auto max-w-[1000px] px-4 lg:px-6">
+        <div className="phi-shell">
           <PageHero
             title="Ulubione artykuły"
             subtitle={isLoaded ? `${favorites.length} zapisanych artykułów` : "Ładowanie..."}
@@ -65,14 +65,14 @@ export default function UlubionePage() {
           ) : favorites.length === 0 ? (
             <NoFavorites onExplore={() => router.push("/")} />
           ) : (
-            <div className="space-y-4">
+            <div className="phi-stack" style={{ gap: "var(--space-8)" }}>
               {favorites.map((article, index) => (
                 <motion.article
                   key={article.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[#c9a962]/20 transition-all group"
+                  className="phi-section p-5 hover:border-[#c9a962]/20 transition-all group"
                 >
                   <div className="flex gap-4">
                     {article.image && (
@@ -111,19 +111,21 @@ export default function UlubionePage() {
           )}
 
           {/* Portfolio Performance */}
-          <div className="mt-12">
+          <div className="phi-section" style={{ marginTop: "var(--space-21)" }}>
             <PerformanceChart title="Wydajność ulubionych aktywów" />
           </div>
 
           {/* Sidebar widgets */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <PortfolioWidget />
-            <AlertsPanel />
-          </div>
-
-          {/* Price Alert Form */}
-          <div className="mt-8 max-w-md">
-            <PriceAlertForm />
+          <div className="phi-grid md:grid-cols-2" style={{ marginTop: "var(--space-13)", gap: "var(--space-21)" }}>
+            <div className="phi-section">
+              <PortfolioWidget />
+            </div>
+            <div className="phi-section">
+              <AlertsPanel />
+            </div>
+            <div className="phi-section md:col-span-2">
+              <PriceAlertForm />
+            </div>
           </div>
         </div>
       </main>

@@ -8,6 +8,7 @@ import Pagination from "./Pagination";
 import { ListSkeleton } from "./Skeleton";
 import { ErrorState } from "./EmptyState";
 import TagList from "./TagList";
+import { getApiUrl } from "@/lib/api";
 
 type ArticleItem = {
   id: string;
@@ -33,7 +34,7 @@ export default function ArticlesPaginated({
   category,
   tag,
   search,
-  articlesPerPage = 9,
+  articlesPerPage = 64,
 }: ArticlesPaginatedProps) {
   const [items, setItems] = useState<ArticleItem[]>([]);
   const [total, setTotal] = useState(0);
@@ -55,7 +56,8 @@ export default function ArticlesPaginated({
         if (tag) params.set("tag", tag);
         if (search) params.set("search", search);
 
-        const res = await fetch(`/api/articles?${params.toString()}`, { cache: "no-store" });
+        const apiUrl = getApiUrl("articles", Object.fromEntries(params));
+        const res = await fetch(apiUrl, { cache: "no-store" });
         if (!res.ok) throw new Error("Błąd pobierania artykułów");
         const data = await res.json();
         if (!mounted) return;
@@ -64,9 +66,49 @@ export default function ArticlesPaginated({
         setError(null);
       } catch (err) {
         if (!mounted) return;
-        setError(err instanceof Error ? err.message : "Nie udało się załadować artykułów");
-        setItems([]);
-        setTotal(0);
+        try {
+          // Fallback na RSS dla statycznego hostingu bez API articles
+          const { fetchRss } = await import("@/lib/api");
+
+          // Mapowanie kategorii na feedy RSS
+          const categoryToFeed: Record<string, string> = {
+            'gielda': 'gielda',
+            'crypto': 'crypto',
+            'krypto': 'crypto',
+            'waluty': 'waluty',
+            'rynki': 'rynki',
+            'analizy': 'analizy',
+            'fintech': 'fintech',
+            'polska': 'polska',
+            'swiat': 'swiat',
+            'finanse': 'rynki',
+            'biznes': 'rynki',
+          };
+
+          const feedType = category ? (categoryToFeed[category] || 'all') : 'all';
+          const rss = await fetchRss(feedType, articlesPerPage * 2);
+          const items = (rss as any)?.items || [];
+          setItems(
+            items.map((item: any, idx: number) => ({
+              id: item.link || `${idx}`,
+              slug: "",
+              title: item.title,
+              summary: item.description,
+              coverImage: item.image,
+              category: item.category || "RSS",
+              tags: [],
+              source: item.source || "RSS",
+              publishedAt: item.date || new Date().toISOString(),
+              author: "",
+            }))
+          );
+          setTotal(items.length);
+          setError(null);
+        } catch (fallbackErr) {
+          setError(err instanceof Error ? err.message : "Nie udało się załadować artykułów");
+          setItems([]);
+          setTotal(0);
+        }
       } finally {
         if (mounted) setLoading(false);
       }
@@ -83,7 +125,7 @@ export default function ArticlesPaginated({
 
   return (
     <div ref={containerRef}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="phi-grid grid-cols-1 lg:grid-cols-2">
         <AnimatePresence>
           {items.map((article, index) => (
             <motion.article
@@ -92,7 +134,7 @@ export default function ArticlesPaginated({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ delay: index * 0.03 }}
-              className="group bg-[#0c0d10] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300 flex flex-col"
+              className="group phi-section overflow-hidden hover:border-white/10 transition-all duration-300 flex flex-col text-center"
             >
               {article.coverImage && (
                 <div className="relative h-40 overflow-hidden">
@@ -116,7 +158,7 @@ export default function ArticlesPaginated({
                 </div>
               )}
 
-              <div className="p-5 flex flex-col gap-3 flex-1">
+              <div className="flex flex-col gap-3 flex-1" style={{ padding: "var(--space-13)" }}>
                 <Link href={`/artykuly/${article.slug}`}>
                   <h3 className="text-lg font-serif font-semibold text-white leading-tight group-hover:text-[#c9a962] transition-colors">
                     {article.title}
@@ -124,7 +166,7 @@ export default function ArticlesPaginated({
                 </Link>
                 <p className="text-sm text-[#a1a1aa] leading-relaxed line-clamp-3">{article.summary}</p>
                 <TagList tags={article.tags} />
-                <div className="flex items-center justify-between text-[11px] text-[#71717a] pt-2 border-t border-white/5">
+                <div className="flex items-center justify-center gap-4 text-[11px] text-[#71717a] pt-2 border-t border-white/5">
                   <span>{article.source || "FusionFinance"}</span>
                   {article.author && <span>Autor: {article.author}</span>}
                 </div>

@@ -26,10 +26,10 @@ export default function PageHero({
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-8 lg:mb-10"
+      style={{ marginBottom: "var(--space-34)" }}
     >
-      <div className="flex items-center justify-between gap-3 mb-3">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between mb-3" style={{ gap: "var(--space-8)", marginBottom: "var(--space-13)" }}>
+        <div className="flex items-center" style={{ gap: "var(--space-5)" }}>
           <div className="w-[55px] h-[3px] rounded-full" style={{ background: `linear-gradient(90deg, ${accentFrom}, ${accentTo})` }} />
           {eyebrow && (
             <span className="text-[11px] uppercase tracking-[0.12em] text-[#c9a962]">{eyebrow}</span>
@@ -41,10 +41,10 @@ export default function PageHero({
           </span>
         )}
       </div>
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div className="space-y-2">
-          <h1 className="font-serif text-3xl lg:text-4xl font-medium text-[#f4f4f5]">{title}</h1>
-          {subtitle && <p className="text-sm text-[#a1a1aa] max-w-3xl leading-relaxed">{subtitle}</p>}
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between" style={{ gap: "var(--space-13)" }}>
+        <div className="space-y-2" style={{ gap: "var(--space-5)" }}>
+          <h1 className="font-serif text-3xl lg:text-4xl font-medium text-[#f4f4f5]" style={{ lineHeight: "1.25" }}>{title}</h1>
+          {subtitle && <p className="text-sm text-[#a1a1aa] max-w-3xl leading-relaxed" style={{ maxWidth: "44ch" }}>{subtitle}</p>}
         </div>
         {rightSlot}
       </div>

@@ -13,7 +13,7 @@ interface NewsItem {
 }
 
 const fallbackNews: NewsItem[] = [
-  { title: "Ładowanie najnowszych wiadomości finansowych...", link: "/rynki" },
+  { title: "Ładowanie najnowszych wiadomości finansowych...", link: "/polska" },
 ];
 
 export default function BreakingNews() {
@@ -42,7 +42,7 @@ export default function BreakingNews() {
         }
       } catch {
         setNews([
-          { title: "GPW: Notowania na żywo - śledź rynki finansowe", link: "/rynki" },
+          { title: "GPW: Notowania na żywo - śledź rynki finansowe", link: "/polska" },
           { title: "Kursy walut NBP - aktualne notowania", link: "/waluty" },
           { title: "Kryptowaluty - Bitcoin, Ethereum i więcej", link: "/crypto" },
         ]);

@@ -140,7 +140,7 @@ export default function MarketNews({
 
       <div className="p-3 border-t border-white/5 bg-[#0a0b0e]">
         <Link
-          href="/rynki"
+          href="/polska"
           className="flex items-center justify-center gap-2 w-full py-2.5 px-4
                      border border-[#c9a962]/30 hover:border-[#c9a962]
                      text-[#c9a962] hover:text-[#e4d4a5] hover:bg-[#c9a962]/5

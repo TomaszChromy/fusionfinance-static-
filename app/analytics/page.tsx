@@ -55,7 +55,7 @@ export default function AnalyticsPage() {
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
 
-      <div className="mx-auto max-w-[1400px] px-4 lg:px-6 py-12 lg:py-16">
+      <div className="phi-shell" style={{ paddingTop: "var(--space-55)", paddingBottom: "var(--space-55)" }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,8 @@ export default function AnalyticsPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+              className="phi-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+              style={{ gap: "var(--space-21)", marginBottom: "var(--space-34)" }}
             >
               {/* Total Views */}
               <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[#c9a962]/30 transition-colors">
@@ -180,7 +181,8 @@ export default function AnalyticsPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 mb-12 hover:border-[#c9a962]/30 transition-colors"
+              className="phi-section"
+              style={{ marginBottom: "var(--space-34)" }}
             >
               <h3 className="text-sm font-semibold text-[#f4f4f5] uppercase tracking-wider mb-4 flex items-center gap-2">
                 <span>⏱️</span> Średni czas spędzony

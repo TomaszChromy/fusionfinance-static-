@@ -34,235 +34,190 @@ if ($useCache && isset($_GET['feed']) && $_GET['feed'] === 'all') {
     }
 }
 
-// Definicja feedów RSS - rozszerzone źródła polskie
-// Źródła: GPW oficjalne, Bankier.pl, Money.pl, Parkiet.com, Puls Biznesu,
-//         Business Insider PL, Stooq, WNP.pl, Forsal.pl, Rzeczpospolita, Interia Biznes
+// Definicja feedów RSS – zgodne z wersją Next.js
+// Zawiera polskie i (dla swiat) globalne źródła
 $feeds = [
-    // Rynki finansowe ogólnie - szeroki przekrój
+    // Rynki finansowe / makro PL
     'rynki' => [
         'https://www.bankier.pl/rss/wiadomosci.xml',
         'https://www.money.pl/rss/rss.xml',
-        'https://businessinsider.com.pl/feed',
-        'https://www.pb.pl/rss/wszystko',
-        'https://biznesalert.pl/feed/',
-        'https://www.wnp.pl/rss/serwis.xml',
-        'https://forsal.pl/rss.xml',
-        'https://www.rp.pl/rss/ekonomia',
-        'https://biznes.interia.pl/feed',
+        'https://businessinsider.com.pl/.feed',
+        'https://independenttrader.pl/feed',
+        'https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/',
+        'https://www.obserwatorfinansowy.pl/feed/',
+        'https://www.portalsamorzadowy.pl/rss/gospodarka.xml',
+        'https://www.parkiet.com/rss_main',
+        'https://forsal.pl/.feed',
+        'https://www.wnp.pl/rss/rynki_rss.xml',
+        'https://www.rp.pl/rss_main',
+        'https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml',
+        'https://mybank.pl/news/wiadomosci-rss.xml',
+        'https://mybank.pl/news/wiadomosci-rynek-kapitalowy-rss.xml',
+        'https://www.fxmag.pl/rss',
+        'https://www.bankier.pl/rss/komentarze.xml',
+        'https://www.bankier.pl/rss/rynki.xml',
+        'https://feeds.feedburner.com/wGospodarce',
+        'https://300gospodarka.pl/feed',
     ],
-    // Podstawowe źródło Bankier (zgodne z frontem)
-    'bankier' => [
-        'https://www.bankier.pl/rss/wiadomosci.xml',
-        'https://www.bankier.pl/rss/gielda.xml',
-        'https://www.bankier.pl/rss/waluty.xml',
-    ],
-    // Giełda - GPW, akcje, spółki, notowania
+    // Giełda i akcje
     'gielda' => [
         'https://www.gpw.pl/rss_aktualnosci',
         'https://www.gpw.pl/rss_komunikaty',
+        'https://www.gpw.pl/rss_komunikaty_indeksowe',
+        'https://www.gpw.pl/rss_komunikaty_prasowe',
+        'https://www.gpw.pl/rss-kalendarium-zdarzen',
         'https://www.bankier.pl/rss/gielda.xml',
-        'https://www.parkiet.com/rss/parkiet.xml',
-        'https://stooq.pl/rss/',
-        'https://www.money.pl/rss/gielda.xml',
-        'https://www.pb.pl/rss/gielda',
-        'https://businessinsider.com.pl/gielda/feed',
+        'https://www.bankier.pl/rss/espi.xml',
         'https://mybank.pl/news/wiadomosci-gielda-rss.xml',
+        'https://www.parkiet.com/rss_main',
+        'https://businessinsider.com.pl/gielda/.feed',
+        'https://www.stockwatch.pl/rss/',
+        'https://independenttrader.pl/feed',
+        'https://www.fxmag.pl/rss',
     ],
-    // Kryptowaluty - Bitcoin, Ethereum, blockchain
+    // Kryptowaluty
     'crypto' => [
         'https://mybank.pl/news/wiadomosci-kryptowaluty-rss.xml',
         'https://www.bankier.pl/rss/wiadomosci.xml',
-        'https://businessinsider.com.pl/feed',
+        'https://businessinsider.com.pl/.feed',
         'https://www.money.pl/rss/rss.xml',
-        'https://forsal.pl/feed',
-        'https://biznes.interia.pl/feed',
+        'https://forsal.pl/.feed',
+        'https://pl.beincrypto.com/feed/',
+        'https://bitcoin.pl/feed/',
+        'https://bithub.pl/feed/',
+        'https://cointelegraph.com/rss',
+        'https://decrypt.co/feed',
     ],
-    // Waluty - Forex, kursy walut, NBP
+    // Waluty / Forex
     'waluty' => [
         'https://www.bankier.pl/rss/waluty.xml',
-        'https://www.money.pl/rss/waluty.xml',
-        'https://forsal.pl/rss/waluty.xml',
-        'https://mybank.pl/news/wiadomosci-rss.xml',
+        'https://mybank.pl/news/wiadomosci-waluty-rss.xml',
+        'https://www.money.pl/rss/rss.xml',
+        'https://forsal.pl/.feed',
+        'https://www.fxmag.pl/rss',
     ],
-    // Podstawowe źródło Bankier (zgodne z frontem)
-    'bankier' => [
+    // Analizy
+    'analizy' => [
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.parkiet.com/rss_main',
+        'https://businessinsider.com.pl/.feed',
+        'https://independenttrader.pl/feed',
+        'https://www.obserwatorfinansowy.pl/feed/',
+        'https://www.sii.org.pl/rss.xml',
+    ],
+    // Miks do strony głównej
+    'all' => [
+        'https://www.gpw.pl/rss_aktualnosci',
+        'https://www.gpw.pl/rss_komunikaty',
+        'https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml',
         'https://www.bankier.pl/rss/wiadomosci.xml',
         'https://www.bankier.pl/rss/gielda.xml',
         'https://www.bankier.pl/rss/waluty.xml',
-    ],
-    // Analizy - prognozy, rekomendacje, raporty
-    'analizy' => [
-        'https://www.parkiet.com/rss/parkiet.xml',
-        'https://www.pb.pl/rss/wszystko',
-        'https://biznesalert.pl/feed/',
-        'https://forsal.pl/rss.xml',
-        'https://www.rp.pl/rss/ekonomia',
-        'https://businessinsider.com.pl/feed',
-    ],
-    // Fintech - banki, innowacje finansowe
-    'fintech' => [
-        'https://www.cashless.pl/rss',
-        'https://finanse.wp.pl/rss.xml',
-        'https://www.bankier.pl/rss/finanse.xml',
-        'https://biznes.interia.pl/feed',
-    ],
-    // Gospodarka / makro
-    'gospodarka' => [
-        'https://www.rp.pl/rss/ekonomia',
-        'https://forsal.pl/rss.xml',
-        'https://www.pb.pl/rss/wszystko',
-        'https://businessinsider.com.pl/feed',
-        'https://www.obserwatorfinansowy.pl/feed/',
-        'https://biznes.interia.pl/feed',
-    ],
-    // Surowce / commodities
-    'surowce' => [
-        'https://www.pb.pl/rss/surowce',
-        'https://www.money.pl/rss/gielda.xml',
-        'https://stooq.pl/rss/surowce.xml',
-        'https://www.wnp.pl/rss/serwis.xml',
-    ],
-    // Polska / lokalne rynki
-    'polska' => [
-        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://mybank.pl/news/wiadomosci-rss.xml',
+        'https://mybank.pl/news/wiadomosci-gielda-rss.xml',
+        'https://mybank.pl/news/wiadomosci-kryptowaluty-rss.xml',
         'https://www.money.pl/rss/rss.xml',
-        'https://www.pb.pl/rss/wszystko',
-        'https://www.rp.pl/rss/ekonomia',
-        'https://biznes.interia.pl/feed',
-        'https://biznesalert.pl/feed/',
-    ],
-    // Świat / global
-    'swiat' => [
-        'https://www.pb.pl/rss/swiat',
-        'https://forsal.pl/rss.xml',
-        'https://businessinsider.com.pl/feed',
-        'https://www.rp.pl/rss/swiat',
-    ],
-    // Gospodarka / makro
-    'gospodarka' => [
-        'https://www.rp.pl/rss/ekonomia',
-        'https://forsal.pl/rss.xml',
-        'https://www.pb.pl/rss/wszystko',
-        'https://businessinsider.com.pl/feed',
+        'https://businessinsider.com.pl/.feed',
+        'https://www.parkiet.com/rss_main',
+        'https://forsal.pl/.feed',
+        'https://independenttrader.pl/feed',
+        'https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/',
         'https://www.obserwatorfinansowy.pl/feed/',
-        'https://biznes.interia.pl/feed',
     ],
-    // Surowce / commodities
-    'surowce' => [
-        'https://www.pb.pl/rss/surowce',
-        'https://www.money.pl/rss/gielda.xml',
-        'https://stooq.pl/rss/surowce.xml',
-        'https://www.wnp.pl/rss/serwis.xml',
-    ],
-    // Polska / lokalne rynki
-    'polska' => [
-        'https://www.bankier.pl/rss/wiadomosci.xml',
-        'https://www.money.pl/rss/rss.xml',
-        'https://www.pb.pl/rss/wszystko',
-        'https://www.rp.pl/rss/ekonomia',
-        'https://biznes.interia.pl/feed',
-        'https://biznesalert.pl/feed/',
-    ],
-    // Świat / global
-    'swiat' => [
-        'https://www.pb.pl/rss/swiat',
-        'https://forsal.pl/rss.xml',
-        'https://businessinsider.com.pl/feed',
-        'https://www.rp.pl/rss/swiat',
-    ],
-    // All - wszystkie główne źródła (zoptymalizowane dla szybkości)
-    'all' => [
+    // Featured / breaking news
+    'bankier' => [
         'https://www.gpw.pl/rss_aktualnosci',
+        'https://www.gpw.pl/rss_komunikaty',
+        'https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml',
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.bankier.pl/rss/gielda.xml',
+    ],
+    // Gospodarka / makro
+    'gospodarka' => [
+        'https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml',
+        'https://wiadomosci.gazeta.pl/pub/rss/wiadomosci.xml',
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://www.money.pl/rss/rss.xml',
+        'https://forsal.pl/.feed',
+        'https://mybank.pl/news/wiadomosci-banki-rss.xml',
+    ],
+    // Surowce / towary
+    'surowce' => [
+        'https://mybank.pl/news/wiadomosci-towary-rss.xml',
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://forsal.pl/.feed',
+    ],
+    // Polska
+    'polska' => [
         'https://www.bankier.pl/rss/wiadomosci.xml',
         'https://www.bankier.pl/rss/gielda.xml',
         'https://www.money.pl/rss/rss.xml',
-        'https://www.parkiet.com/rss/parkiet.xml',
-        'https://businessinsider.com.pl/feed',
-        'https://stooq.pl/rss/',
-        'https://forsal.pl/rss.xml',
-        'https://mybank.pl/news/wiadomosci-rss.xml',
+        'https://www.parkiet.com/rss_main',
+        'https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml',
+        'https://www.rp.pl/rss_main',
+        'https://wiadomosci.gazeta.pl/pub/rss/wiadomosci.xml',
+        'https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/',
+        'https://www.obserwatorfinansowy.pl/feed/',
+        'https://feeds.feedburner.com/wGospodarce',
+        'https://300gospodarka.pl/feed',
+        'https://biznes.wprost.pl/rss',
+        'https://tvn24.pl/najnowsze.xml',
+    ],
+    // Świat (globalne serwisy – tłumaczenie realizuje front)
+    'swiat' => [
+        'https://feeds.bbci.co.uk/news/world/rss.xml',
+        'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
+        'https://www.ft.com/world?format=rss',
+        'https://www.cnbc.com/id/100727362/device/rss/rss.html',
+        'https://www.aljazeera.com/xml/rss/all.xml',
+        'https://www.theguardian.com/world/rss',
+        'https://www.economist.com/the-world-this-week/rss.xml',
+        'https://feeds.a.dj.com/rss/RSSWorldNews.xml',
+        'https://feeds.skynews.com/feeds/rss/world.xml',
     ],
 ];
 
-// Filtry słów kluczowych dla każdej kategorii
+// Filtry słów kluczowych (spójne z app/api/rss/route.ts)
 $categoryFilters = [
     'rynki' => [
-        'include' => ['rynek', 'giełd', 'indeks', 'wig', 'nasdaq', 'dow jones', 's&p', 'dax', 'ftse',
-                      'obligacj', 'bond', 'stopy procentowe', 'nbp', 'fed', 'ecb', 'inflacj', 'pkb',
-                      'gospodark', 'ekonom', 'finans', 'inwestycj', 'kapitał', 'notowani'],
-        'exclude' => []
+        'include' => ['rynek', 'indeks', 'gpw', 's&p', 'nasdaq', 'dow', 'ftse', 'dax', 'nikkei', 'obligacj', 'surowc', 'commodit', 'futures', 'etf', 'fundusz', 'gospodark', 'pkb', 'inflacj', 'stopy procentowe', 'nbp', 'fed', 'ecb'],
+        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut', 'blockchain', 'nft', 'token'],
     ],
     'gielda' => [
-        'include' => ['gpw', 'wig', 'wig20', 'mwig', 'swig', 'akcj', 'spółk', 'notowani', 'giełd',
-                      'indeks', 'dywidend', 'ipo', 'emisj', 'walne', 'raport', 'kurs akcji',
-                      'wzrost', 'spadek', 'sesj', 'parkiet', 'newconnect', 'debiut', 'inwestor',
-                      'portfel', 'zleceni', 'obrót', 'kapitalizacj'],
-        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut', 'btc', 'eth']
+        'include' => ['gpw', 'wig', 'wig20', 'mwig', 'swig', 'akcj', 'spółk', 'dywidend', 'emisj', 'ipo', 'debiut', 'notowania', 'sesj', 'parkiet', 'makler', 'cdp', 'knf', 'espi', 'ebi', 'giełd', 'indeks', 'kurs akcji'],
+        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut', 'forex', 'eur/', 'usd/'],
     ],
     'crypto' => [
-        'include' => ['bitcoin', 'btc', 'ethereum', 'eth', 'kryptowalut', 'crypto', 'blockchain',
-                      'token', 'nft', 'defi', 'altcoin', 'binance', 'mining', 'halving',
-                      'stablecoin', 'solana', 'cardano', 'xrp', 'ripple', 'dogecoin', 'doge',
-                      'coinbase', 'ledger', 'wallet', 'krypto', 'cyfrowa waluta', 'web3'],
-        'exclude' => []
+        'include' => ['bitcoin', 'btc', 'ethereum', 'eth', 'kryptowalut', 'crypto', 'blockchain', 'token', 'nft', 'defi', 'altcoin', 'binance', 'coinbase', 'mining', 'halving', 'stablecoin', 'usdt', 'solana', 'cardano', 'xrp', 'ripple', 'dogecoin', 'shiba', 'web3'],
+        'exclude' => [],
     ],
     'waluty' => [
-        'include' => ['eur/pln', 'usd/pln', 'gbp/pln', 'chf/pln', 'walut', 'forex', 'kurs walut',
-                      'złot', 'dolar', 'euro', 'frank', 'jen', 'funt', 'nbp', 'kantor', 'pln',
-                      'wymian', 'dewiz', 'spread', 'fx', 'para walut'],
-        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut', 'btc', 'eth', 'krypto']
+        'include' => ['eur/', 'usd/', 'gbp/', 'chf/', 'jpy/', 'walut', 'forex', 'kurs', 'złot', 'dolar', 'euro', 'frank', 'jen', 'funt', 'nbp', 'kantor', 'wymian', 'pln', 'eur', 'usd', 'gbp', 'chf'],
+        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut', 'akcj', 'gpw'],
     ],
     'analizy' => [
-        'include' => ['analiz', 'prognoz', 'rekomendacj', 'raport', 'perspektyw', 'outlook',
-                      'wycen', 'wskaźnik', 'trend', 'komentarz', 'strategia', 'ekspert',
-                      'przewidywani', 'scenariusz', 'ocena', 'rating', 'research'],
-        'exclude' => []
+        'include' => ['analiz', 'prognoz', 'rekomendacj', 'raport', 'perspektyw', 'outlook', 'target', 'wycen', 'wskaźnik', 'rsi', 'macd', 'fibonacci', 'trend', 'wsparci', 'opór', 'sygnał', 'techniczn', 'fundament', 'komentarz'],
+        'exclude' => [],
     ],
-    'fintech' => [
-        'include' => ['fintech', 'bank', 'płatnoś', 'przelew', 'konto', 'aplikacj', 'mobiln',
-                      'cyfrowy', 'startup', 'innowacj', 'blik', 'revolut', 'neobank', 'paypal',
-                      'visa', 'mastercard', 'kredyt', 'pożyczk', 'leasing'],
-        'exclude' => []
+    'gospodarka' => [
+        'include' => ['gospodark', 'pkb', 'inflacj', 'bezroboci', 'stopy procentowe', 'nbp', 'fed', 'ecb', 'bank centralny', 'polityka monetarna', 'budżet', 'deficyt', 'dług', 'eksport', 'import', 'handel', 'przemysł', 'produkcj'],
+        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut'],
+    ],
+    'surowce' => [
+        'include' => ['surowc', 'ropa', 'złoto', 'srebro', 'miedź', 'gaz', 'węgiel', 'commodit', 'towar', 'metal', 'energia', 'brent', 'wti', 'opec'],
+        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut'],
+    ],
+    'polska' => [
+        'include' => ['polsk', 'warszaw', 'gpw', 'nbp', 'rpp', 'wig', 'złot', 'pln', 'kraj', 'sejm', 'rząd', 'minister', 'budżet'],
+        'exclude' => ['bitcoin', 'ethereum', 'kryptowalut'],
+    ],
+    'swiat' => [
+        'include' => ['usa', 'chin', 'europ', 'g20', 'oecd', 'fed', 'ecb', 'boe', 'boj', 'brent', 'geopol', 'world', 'global', 'europe', 'asia', 'america'],
+        'exclude' => [],
     ],
     'bankier' => [
         'include' => ['bankier', 'gpw', 'giełd', 'indeks', 'kurs', 'spółk'],
-        'exclude' => []
-    ],
-    'gospodarka' => [
-        'include' => ['gospodark', 'pkb', 'inflacj', 'bezroboci', 'stopy procentowe', 'nbp', 'fed', 'ecb', 'handel'],
-        'exclude' => []
-    ],
-    'surowce' => [
-        'include' => ['surowc', 'ropa', 'gaz', 'brent', 'wti', 'metal', 'commodit'],
-        'exclude' => []
-    ],
-    'polska' => [
-        'include' => ['polsk', 'warszaw', 'gpw', 'nbp', 'rpp', 'złot', 'pln'],
-        'exclude' => []
-    ],
-    'swiat' => [
-        'include' => ['usa', 'chin', 'europ', 'global', 'world', 'g20', 'oecd', 'boe', 'boj'],
-        'exclude' => []
-    ],
-    'bankier' => [
-        'include' => ['bankier', 'gpw', 'giełd', 'indeks', 'kurs', 'spółk'],
-        'exclude' => []
-    ],
-    'gospodarka' => [
-        'include' => ['gospodark', 'pkb', 'inflacj', 'bezroboci', 'stopy procentowe', 'nbp', 'fed', 'ecb', 'handel'],
-        'exclude' => []
-    ],
-    'surowce' => [
-        'include' => ['surowc', 'ropa', 'gaz', 'brent', 'wti', 'metal', 'commodit'],
-        'exclude' => []
-    ],
-    'polska' => [
-        'include' => ['polsk', 'warszaw', 'gpw', 'nbp', 'rpp', 'złot', 'pln'],
-        'exclude' => []
-    ],
-    'swiat' => [
-        'include' => ['usa', 'chin', 'europ', 'global', 'world', 'g20', 'oecd', 'boe', 'boj'],
-        'exclude' => []
+        'exclude' => [],
     ],
 ];
 

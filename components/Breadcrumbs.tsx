@@ -9,11 +9,14 @@ interface BreadcrumbItem {
 }
 
 const pathLabels: Record<string, string> = {
-  rynki: "Rynki Finansowe",
+  polska: "Polska",
+  swiat: "Świat",
   gielda: "Giełda",
   crypto: "Kryptowaluty",
+  krypto: "Kryptowaluty",
   waluty: "Waluty",
   analizy: "Analizy",
+  notowania: "Notowania Giełdowe",
   "kursy-walut": "Kursy Walut NBP",
   szukaj: "Wyszukiwarka",
   ulubione: "Ulubione",

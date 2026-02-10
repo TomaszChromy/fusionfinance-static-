@@ -14,7 +14,7 @@ export default function WalutyPage() {
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
 
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-8 py-[34px]">
+      <div className="phi-shell">
         <Breadcrumbs />
         <PageHero
           title="Waluty"
@@ -26,10 +26,10 @@ export default function WalutyPage() {
           rightSlot={<CategoryBadge category="waluty" />}
         />
 
-        <div className="space-y-8 lg:space-y-10">
+        <div className="phi-stack" style={{ gap: "var(--space-21)" }}>
           <NBPCurrencyTable />
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="phi-grid lg:grid-cols-2" style={{ gap: "var(--space-21)" }}>
             <CurrencyStrength />
             <PriceComparison />
           </div>

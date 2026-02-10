@@ -47,6 +47,29 @@ for (const file of filesToCopy) {
   }
 }
 
+// Kopiuj pliki PHP z public/api do out/api
+console.log('📋 Kopiuję pliki PHP API...');
+
+const publicApiDir = path.join(publicDir, 'api');
+const outApiDir = path.join(outDir, 'api');
+
+if (fs.existsSync(publicApiDir)) {
+  // Utwórz folder out/api jeśli nie istnieje
+  if (!fs.existsSync(outApiDir)) {
+    fs.mkdirSync(outApiDir, { recursive: true });
+  }
+
+  // Kopiuj wszystkie pliki PHP
+  const phpFiles = fs.readdirSync(publicApiDir).filter(f => f.endsWith('.php'));
+
+  for (const file of phpFiles) {
+    const src = path.join(publicApiDir, file);
+    const dest = path.join(outApiDir, file);
+    fs.copyFileSync(src, dest);
+    console.log(`✅ ${file} skopiowany do out/api/`);
+  }
+}
+
 // Usuń niepotrzebne pliki z out
 console.log('🧹 Czyszczę niepotrzebne pliki...');
 let deletedCount = 0;

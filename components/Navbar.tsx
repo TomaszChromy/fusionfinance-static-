@@ -8,11 +8,14 @@ import NotificationCenter from "./NotificationCenter";
 import UserMenu from "./UserMenu";
 
 const navLinks = [
-  { name: "Polska", href: "/rynki/" },
+  // Obecne zakładki
+  { name: "Polska", href: "/polska/" },
   { name: "Świat", href: "/swiat/" },
-  { name: "Notowania giełdowe", href: "/gielda/" },
+  { name: "Notowania giełdowe", href: "/notowania/" },
   { name: "Kursy walut", href: "/kursy-walut/" },
-  { name: "Kursy krypto", href: "/crypto/" },
+  { name: "Kursy krypto", href: "/krypto/" },
+  // Zakładki z upstream (bez Rynki/Crypto)
+  { name: "Giełda", href: "/gielda/" },
 ];
 
 export default function Navbar() {

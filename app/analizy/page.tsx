@@ -18,7 +18,7 @@ export default function AnalizyPage() {
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
 
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-8 py-[34px]">
+      <div className="phi-shell">
         <Breadcrumbs />
         <PageHero
           title="Analizy"
@@ -29,8 +29,8 @@ export default function AnalizyPage() {
         />
 
         {/* Premium Analyses Section */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
+        <div className="phi-section" style={{ marginBottom: "var(--space-21)" }}>
+          <div className="flex items-center gap-3" style={{ marginBottom: "var(--space-13)" }}>
             <div className="w-1 h-7 bg-gradient-to-b from-[#c9a962] to-[#e5c76e] rounded-full" />
             <div>
               <h2 className="text-lg font-serif font-medium text-[#f4f4f5]">Ekskluzywne analizy</h2>
@@ -41,8 +41,8 @@ export default function AnalizyPage() {
         </div>
 
         {/* Editorial articles */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
+        <div className="phi-section" style={{ marginBottom: "var(--space-21)" }}>
+          <div className="flex items-center gap-3" style={{ marginBottom: "var(--space-13)" }}>
             <div className="w-1 h-7 bg-gradient-to-b from-[#a78bfa] to-[#8b5cf6] rounded-full" />
             <div>
               <h2 className="text-lg font-serif font-medium text-[#f4f4f5]">Artykuły redakcyjne</h2>
@@ -53,11 +53,11 @@ export default function AnalizyPage() {
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.618fr_1fr] gap-8 lg:gap-12">
+        <div className="phi-grid grid-cols-1 lg:grid-cols-[1.618fr_1fr]" style={{ gap: "var(--space-21)" }}>
           {/* Left column - Articles */}
           <div>
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#a78bfa]/20">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#a78bfa]/20" style={{ marginBottom: "var(--space-13)", paddingBottom: "var(--space-8)" }}>
+              <div className="flex items-center gap-3" style={{ gap: "var(--space-8)" }}>
                 <div className="w-1 h-7 bg-gradient-to-b from-[#a78bfa] to-[#8b5cf6] rounded-full" />
                 <div>
                   <h2 className="text-lg font-serif font-medium text-[#f4f4f5]">Analizy rynkowe</h2>
@@ -75,8 +75,8 @@ export default function AnalizyPage() {
             </div>
 
             {/* Lista artykułów */}
-            <div className="bg-[#0c0d10] border border-white/5 rounded-2xl p-5 lg:p-8">
-              <ArticlesPaginated category="analizy" articlesPerPage={12} />
+            <div className="phi-section">
+              <ArticlesPaginated category="analizy" articlesPerPage={64} />
             </div>
           </div>
 

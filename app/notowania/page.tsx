@@ -10,7 +10,7 @@ export default function NotowaniaPage() {
   return (
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
-      <div className="mx-auto max-w-[1200px] px-4 lg:px-6 py-10">
+      <div className="phi-shell">
         <Breadcrumbs />
         <PageHero
           title="Notowania"
@@ -18,8 +18,8 @@ export default function NotowaniaPage() {
           eyebrow="Rynki"
           badge="Agregator PL"
         />
-        <div className="bg-[#0c0d10] border border-white/5 rounded-2xl p-6 lg:p-8">
-          <ArticlesPaginated category="gielda" articlesPerPage={12} />
+        <div className="phi-section">
+          <ArticlesPaginated category="gielda" articlesPerPage={64} />
         </div>
       </div>
       <Footer />

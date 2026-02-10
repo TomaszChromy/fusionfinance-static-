@@ -43,14 +43,13 @@ export function shouldUseNextApi(): boolean {
     return true;
   }
 
-  // Custom domains on Vercel - check for NEXT_PUBLIC env or assume Vercel if not static
-  // If the hostname is a production domain (fusionfinance.pl), use Next.js API
-  if (hostname.endsWith(".app") || hostname.includes("fusionfinance")) {
-    return true;
+  // Static hosting with PHP (nazwa.pl) - use PHP API
+  // fusionfinance.pl is hosted on nazwa.pl with PHP backend
+  if (hostname === "fusionfinance.pl" || hostname === "www.fusionfinance.pl") {
+    return false; // Use PHP API
   }
 
   // Default: use Next.js API (safer for Vercel deployments)
-  // Only static PHP hosting should return false
   return true;
 }
 
@@ -61,11 +60,19 @@ export function isNextDevServer(): boolean {
   return shouldUseNextApi();
 }
 
-type ApiBackend = "next" | "php";
+/**
+ * Get the correct API URL based on environment
+ * @param endpoint - API endpoint (e.g., "rss", "article")
+ * @param params - Query parameters
+ */
+export function getApiUrl(endpoint: string, params?: Record<string, string | number>): string {
+  // Use Next.js API on Vercel and localhost
+  const useNextApi = shouldUseNextApi();
 
-function buildApiUrl(endpoint: string, params?: Record<string, string | number>, backend: ApiBackend = shouldUseNextApi() ? "next" : "php"): string {
-  const baseUrl = backend === "next" ? `/api/${endpoint}` : `/api/${endpoint}.php`;
-
+  // Build base URL
+  const baseUrl = useNextApi ? `/api/${endpoint}` : `/api/${endpoint}.php`;
+  
+  // Add query parameters
   if (params && Object.keys(params).length > 0) {
     const searchParams = new URLSearchParams();
     for (const [key, value] of Object.entries(params)) {
@@ -73,17 +80,8 @@ function buildApiUrl(endpoint: string, params?: Record<string, string | number>,
     }
     return `${baseUrl}?${searchParams.toString()}`;
   }
-
+  
   return baseUrl;
-}
-
-/**
- * Get the correct API URL based on environment
- * @param endpoint - API endpoint (e.g., "rss", "article")
- * @param params - Query parameters
- */
-export function getApiUrl(endpoint: string, params?: Record<string, string | number>): string {
-  return buildApiUrl(endpoint, params);
 }
 
 /**
@@ -97,31 +95,14 @@ export async function fetchApi<T>(
   params?: Record<string, string | number>,
   options?: RequestInit
 ): Promise<T> {
-  const primaryBackend: ApiBackend = shouldUseNextApi() ? "next" : "php";
-  const fallbackBackend: ApiBackend = primaryBackend === "next" ? "php" : "next";
-
-  const tryFetch = async (backend: ApiBackend) => {
-    const url = buildApiUrl(endpoint, params, backend);
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(`API error (${backend}): ${response.status} ${response.statusText}`);
-    }
-    return response.json() as Promise<T>;
-  };
-
-  try {
-    return await tryFetch(primaryBackend);
-  } catch (primaryError) {
-    // Jeśli Next API zawiedzie (np. na hostingu statycznym), spróbuj PHP fallback
-    if (primaryBackend === "next") {
-      try {
-        return await tryFetch(fallbackBackend);
-      } catch {
-        throw primaryError;
-      }
-    }
-    throw primaryError;
+  const url = getApiUrl(endpoint, params);
+  const response = await fetch(url, options);
+  
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status} ${response.statusText}`);
   }
+  
+  return response.json();
 }
 
 /**
@@ -132,15 +113,42 @@ export function getRssApiUrl(feed: string, limit: number = 10): string {
 }
 
 /**
- * Fetch RSS with automatic fallback (Next API -> PHP)
- */
-export async function fetchRss(feed: string, limit: number = 10) {
-  return fetchApi<{ items: unknown[] }>("rss", { feed, limit });
-}
-
-/**
  * Article API helper
  */
 export function getArticleApiUrl(url: string): string {
   return getApiUrl("article", { url });
+}
+
+/**
+ * Fetch RSS (helper wrapping fetchApi)
+ */
+export async function fetchRss(feed: string, limit: number = 10) {
+  const params = { feed, limit };
+
+  // Build both URLs: prefer Next API, fallback to PHP (for static hosting)
+  const search = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => search.set(key, String(value)));
+
+  const primaryUrl = getApiUrl("rss", params);
+  const fallbackUrl = primaryUrl.endsWith(".php") ? `/api/rss?${search.toString()}` : `/api/rss.php?${search.toString()}`;
+  const urls = [primaryUrl, fallbackUrl];
+
+  let lastError: unknown;
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) {
+        lastError = new Error(`API error: ${response.status} ${response.statusText}`);
+        continue;
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError instanceof Error ? lastError : new Error("Failed to fetch RSS");
 }

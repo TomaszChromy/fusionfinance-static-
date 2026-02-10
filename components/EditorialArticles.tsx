@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { getApiUrl } from "@/lib/api";
 
 interface ArticleCard {
   id: string;
@@ -32,13 +33,34 @@ export default function EditorialArticles({ limit = 6, className = "", category 
       try {
         const params = new URLSearchParams({ limit: String(limit) });
         if (category) params.set("category", category);
-        const res = await fetch(`/api/articles?${params.toString()}`, { cache: "no-store" });
+        const apiUrl = getApiUrl("articles", Object.fromEntries(params));
+        const res = await fetch(apiUrl, { cache: "no-store" });
         const data = await res.json();
         if (isMounted && Array.isArray(data.items)) {
           setArticles(data.items);
         }
       } catch (error) {
-        console.error("Editorial articles fetch error:", error);
+        try {
+          const { fetchRss } = await import("@/lib/api");
+          const rss = await fetchRss(category || "all", limit);
+          const items = (rss as any)?.items || [];
+          if (isMounted) {
+            setArticles(
+              items.map((item: any, idx: number) => ({
+                id: item.link || `${idx}`,
+                slug: "",
+                title: item.title,
+                summary: item.description,
+                coverImage: item.image,
+                category: item.category || category || "RSS",
+                publishedAt: item.date || new Date().toISOString(),
+                source: item.source || "RSS",
+              }))
+            );
+          }
+        } catch (fallbackErr) {
+          console.error("Editorial articles fetch error:", fallbackErr);
+        }
       } finally {
         if (isMounted) setLoading(false);
       }

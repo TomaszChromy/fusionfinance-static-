@@ -13,7 +13,8 @@ export default function ApiDocPage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="mx-auto max-w-[1400px] px-4 lg:px-6 py-12 lg:py-16"
+        className="phi-shell"
+        style={{ paddingTop: "var(--space-55)", paddingBottom: "var(--space-55)" }}
       >
         {/* Breadcrumb */}
         <motion.div
@@ -48,7 +49,7 @@ export default function ApiDocPage() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="phi-grid grid-cols-1 lg:grid-cols-3" style={{ gap: "var(--space-21)", marginBottom: "var(--space-34)" }}>
           {/* Kolumna 1: Overview */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,7 +151,7 @@ export default function ApiDocPage() {
               📡 Dostępne Endpoints
             </h2>
 
-            <div className="space-y-8">
+        <div className="phi-stack" style={{ gap: "var(--space-21)" }}>
               {/* Endpoint: Quotes */}
               <div className="pb-8 border-b border-white/10 last:border-0">
                 <div className="flex items-start gap-4 mb-4">

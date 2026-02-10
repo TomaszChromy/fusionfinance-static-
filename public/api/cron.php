@@ -11,7 +11,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 // Security key - zmień na własny!
-$CRON_SECRET_KEY = 'ff_cron_2024_secret';
+$CRON_SECRET_KEY = 'ff_cron_2025_T8s9h4Kz';
 
 // Sprawdź klucz bezpieczeństwa (opcjonalne dla wywołań wget)
 if (isset($_GET['key']) && $_GET['key'] !== $CRON_SECRET_KEY) {
@@ -224,4 +224,3 @@ echo json_encode([
     'duration' => $duration . 'ms',
     'sources' => count($RSS_FEEDS),
 ]);
-

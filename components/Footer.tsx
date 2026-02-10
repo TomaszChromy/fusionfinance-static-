@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import VisitCounter from "./VisitCounter";
+import { socialCircleClass, socialGlowClass, socialLabelClass } from "./socialStyles";
 
 export default function Footer() {
   return (
@@ -32,10 +33,12 @@ export default function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-[0.15em] text-[#c9a962] font-medium mb-3">Rynki</h4>
           <div className="space-y-2">
-            <Link href="/gielda/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">GPW</Link>
-            <Link href="/crypto/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Kryptowaluty</Link>
+            <Link href="/polska/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Polska</Link>
+            <Link href="/swiat/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Świat</Link>
+            <Link href="/gielda/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Giełda</Link>
+            <Link href="/notowania/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Notowania giełdowe</Link>
             <Link href="/kursy-walut/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Kursy walut</Link>
-            <Link href="/rynki/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Przegląd rynków</Link>
+            <Link href="/krypto/" className="block text-xs text-[#71717a] hover:text-[#f4f4f5] transition-colors">Kursy krypto</Link>
           </div>
         </div>
         {/* Narzędzia */}
@@ -62,15 +65,21 @@ export default function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-[0.15em] text-[#c9a962] font-medium mb-3">Obserwuj nas</h4>
           <div className="flex gap-3">
-            <a href="#" className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#c9a962]/20 flex items-center justify-center text-[#71717a] hover:text-[#c9a962] transition-colors" title="Twitter">
-              𝕏
-            </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#c9a962]/20 flex items-center justify-center text-[#71717a] hover:text-[#c9a962] transition-colors" title="LinkedIn">
-              in
-            </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#c9a962]/20 flex items-center justify-center text-[#71717a] hover:text-[#c9a962] transition-colors" title="Facebook">
-              f
-            </a>
+            {[
+              { label: "X", title: "Twitter / X", href: "#" },
+              { label: "in", title: "LinkedIn", href: "#" },
+              { label: "f", title: "Facebook", href: "#" },
+            ].map((item) => (
+              <a
+                key={item.title}
+                href={item.href}
+                title={item.title}
+                className={socialCircleClass}
+              >
+                <span className={socialLabelClass}>{item.label}</span>
+                <span className={socialGlowClass} />
+              </a>
+            ))}
           </div>
           <p className="mt-3 text-[10px] text-[#52525b]">Bądź na bieżąco</p>
         </div>

@@ -20,7 +20,7 @@ export default function AnalyticsPage() {
     return (
       <main className="min-h-screen bg-[#08090c]">
         <Navbar />
-        <div className="mx-auto max-w-[1400px] px-4 lg:px-6 py-12 lg:py-16">
+        <div className="phi-shell" style={{ paddingTop: "var(--space-55)", paddingBottom: "var(--space-55)" }}>
           <div className="h-96 bg-gradient-to-r from-[#c9a962]/20 to-transparent rounded-xl animate-pulse" />
         </div>
         <Footer />
@@ -38,7 +38,8 @@ export default function AnalyticsPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-[1400px] px-4 lg:px-6 py-12 lg:py-16"
+        className="phi-shell"
+        style={{ paddingTop: "var(--space-55)", paddingBottom: "var(--space-55)" }}
       >
         {/* Header */}
         <motion.div
@@ -68,7 +69,8 @@ export default function AnalyticsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="mt-16 p-6 lg:p-8 rounded-xl border border-white/10 bg-gradient-to-r from-[#c9a962]/10 to-transparent"
+          className="phi-section"
+          style={{ marginTop: "var(--space-55)", background: "linear-gradient(90deg, rgba(201,169,98,0.1), transparent)" }}
         >
           <h3 className="text-lg font-serif font-medium text-[#f4f4f5] mb-3">
             💡 Co to jest Analytics?

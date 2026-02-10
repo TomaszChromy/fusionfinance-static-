@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Strony główne - najwyższy priorytet
   const mainPages: PageEntry[] = [
     { path: "", priority: 1.0, changeFrequency: "hourly" as const },
-    { path: "/rynki", priority: 0.95, changeFrequency: "hourly" as const },
+    { path: "/polska", priority: 0.95, changeFrequency: "hourly" as const },
     { path: "/gielda", priority: 0.95, changeFrequency: "hourly" as const },
     { path: "/crypto", priority: 0.95, changeFrequency: "hourly" as const },
     { path: "/waluty", priority: 0.95, changeFrequency: "hourly" as const },

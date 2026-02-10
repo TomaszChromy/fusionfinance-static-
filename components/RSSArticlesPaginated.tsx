@@ -170,7 +170,7 @@ function createArticleUrl(article: RSSItem, index: number): string {
 export default function RSSArticlesPaginated({
   feedType = "bankier",
   totalArticles = 64,
-  articlesPerPage = 8,
+  articlesPerPage = 64,
   showImage = true
 }: RSSArticlesPaginatedProps) {
   const [allArticles, setAllArticles] = useState<RSSItem[]>([]);

@@ -15,7 +15,7 @@ export default function CryptoPage() {
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
 
-      <div className="mx-auto max-w-[1400px] px-5 lg:px-8 py-[34px]">
+      <div className="phi-shell">
         <Breadcrumbs />
         <PageHero
           title="Kryptowaluty"
@@ -27,8 +27,8 @@ export default function CryptoPage() {
           rightSlot={<CategoryBadge category="crypto" />}
         />
 
-        <div className="space-y-8 lg:space-y-10">
-          <div className="bg-[#0c0d10] border border-white/5 rounded-2xl p-5 lg:p-7">
+        <div className="phi-stack" style={{ gap: "var(--space-21)" }}>
+          <div className="phi-section">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1 h-7 bg-gradient-to-b from-[#f7931a] to-[#f59e0b] rounded-full" />
               <div>
@@ -36,10 +36,10 @@ export default function CryptoPage() {
                 <p className="text-xs text-[#71717a]">BTC, ETH, SOL, ADA, BNB, XRP</p>
               </div>
             </div>
-            <CryptoGrid limit={8} variant="grid" />
+            <CryptoGrid limit={30} variant="grid" />
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="phi-grid lg:grid-cols-3" style={{ gap: "var(--space-21)" }}>
             <MarketMoodIndicator value={72} />
             <Glossary variant="compact" />
             <PriceComparison />

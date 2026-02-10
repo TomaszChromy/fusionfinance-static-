@@ -9,6 +9,11 @@ RewriteBase /
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Legacy redirects (stare adresy → nowe ścieżki)
+RewriteRule ^rynki/?$ /polska/ [L,R=301]
+RewriteRule ^gielda/?$ /notowania/ [L,R=301]
+RewriteRule ^crypto/?$ /krypto/ [L,R=301]
+
 # Remove www (bez www)
 # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 # RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
@@ -101,4 +106,3 @@ ErrorDocument 500 /500.html
     php_value max_execution_time 30
     php_value memory_limit 64M
 </IfModule>
-

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import TagList from "./TagList";
+import { getApiUrl } from "@/lib/api";
 
 interface Story {
   id: string;
@@ -27,13 +28,36 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
     let mounted = true;
     const load = async () => {
       try {
-        const res = await fetch(`/api/articles?limit=${limit}`, { cache: "no-store" });
+        const apiUrl = getApiUrl("articles", { limit });
+        const res = await fetch(apiUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error(`API articles error: ${res.status}`);
         const data = await res.json();
         if (mounted && Array.isArray(data.items)) {
           setStories(data.items);
         }
       } catch (error) {
-        console.error("TopStories fetch error:", error);
+        // Fallback na RSS (all) gdy API articles nie działa na statycznym hostingu
+        try {
+          const { fetchRss } = await import("@/lib/api");
+          const rss = await fetchRss("all", limit);
+          const items = (rss as any)?.items || [];
+          if (mounted) {
+            setStories(
+              items.map((item: any) => ({
+                id: item.link || item.title,
+                slug: "",
+                title: item.title,
+                summary: item.description,
+                coverImage: item.image,
+                category: item.category || "RSS",
+                publishedAt: item.date || new Date().toISOString(),
+                source: item.source || "RSS",
+              }))
+            );
+          }
+        } catch (fallbackErr) {
+          console.error("TopStories RSS fallback error:", fallbackErr);
+        }
       } finally {
         if (mounted) setLoading(false);
       }

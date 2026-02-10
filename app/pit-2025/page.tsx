@@ -10,7 +10,7 @@ export default function Pit2025Page() {
   return (
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
-      <div className="mx-auto max-w-[1200px] px-4 lg:px-6 py-10">
+      <div className="phi-shell">
         <Breadcrumbs />
         <PageHero
           title="PIT 2025"
@@ -18,8 +18,8 @@ export default function Pit2025Page() {
           eyebrow="Twoje finanse"
           badge="Sezon podatkowy"
         />
-        <div className="bg-[#0c0d10] border border-white/5 rounded-2xl p-6 lg:p-8">
-          <ArticlesPaginated category="finanse" articlesPerPage={12} />
+        <div className="phi-section">
+          <ArticlesPaginated category="finanse" articlesPerPage={64} />
         </div>
       </div>
       <Footer />

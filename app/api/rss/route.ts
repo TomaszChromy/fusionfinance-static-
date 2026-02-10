@@ -18,8 +18,10 @@ const FALLBACK_ITEMS: RSSItem[] = [
   {
     title: "GPW rośnie mimo słabszego sentymentu w Europie",
     link: "https://fusionfinance.pl/fallback/gpw-rosnie",
-    description: "Indeks WIG20 notuje umiarkowane wzrosty dzięki dobrej postawie spółek energetycznych i banków.",
-    content: "Indeks WIG20 notuje umiarkowane wzrosty dzięki dobrej postawie spółek energetycznych i banków. Inwestorzy oczekują na dane inflacyjne z Polski oraz decyzję EBC w sprawie stóp procentowych.",
+    description:
+      "Indeks WIG20 notuje umiarkowane wzrosty dzięki dobrej postawie spółek energetycznych i banków.",
+    content:
+      "Indeks WIG20 notuje umiarkowane wzrosty dzięki dobrej postawie spółek energetycznych i banków. Inwestorzy oczekują na dane inflacyjne z Polski oraz decyzję EBC w sprawie stóp procentowych.",
     date: new Date().toISOString(),
     image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1200&q=90",
     category: "gielda",
@@ -27,8 +29,10 @@ const FALLBACK_ITEMS: RSSItem[] = [
   {
     title: "Złoty stabilny. Inwestorzy czekają na dane o inflacji",
     link: "https://fusionfinance.pl/fallback/zloty-stabilny",
-    description: "Kurs EUR/PLN utrzymuje się w okolicach 4,30, a USD/PLN w rejonie 3,95. Rynek czeka na nowe projekcje NBP.",
-    content: "Kurs EUR/PLN utrzymuje się w okolicach 4,30, a USD/PLN w rejonie 3,95. Rynek czeka na nowe projekcje NBP i komentarze decydentów dotyczące ścieżki stóp procentowych.",
+    description:
+      "Kurs EUR/PLN utrzymuje się w okolicach 4,30, a USD/PLN w rejonie 3,95. Rynek czeka na nowe projekcje NBP.",
+    content:
+      "Kurs EUR/PLN utrzymuje się w okolicach 4,30, a USD/PLN w rejonie 3,95. Rynek czeka na nowe projekcje NBP i komentarze decydentów dotyczące ścieżki stóp procentowych.",
     date: new Date(Date.now() - 60 * 60 * 1000).toISOString(),
     image: "https://images.unsplash.com/photo-1604594849809-dfedbc827105?w=1200&q=90",
     category: "waluty",
@@ -36,8 +40,10 @@ const FALLBACK_ITEMS: RSSItem[] = [
   {
     title: "Bitcoin powyżej 42 tys. USD. Rosną oczekiwania na ETF spot",
     link: "https://fusionfinance.pl/fallback/bitcoin-etf",
-    description: "Ceny bitcoina utrzymują się powyżej 42 tys. USD, a inwestorzy liczą na rychłą akceptację ETF-ów spot w USA.",
-    content: "Ceny bitcoina utrzymują się powyżej 42 tys. USD, a inwestorzy liczą na rychłą akceptację ETF-ów spot w USA. Analitycy wskazują na rosnące zainteresowanie instytucji aktywami cyfrowymi.",
+    description:
+      "Ceny bitcoina utrzymują się powyżej 42 tys. USD, a inwestorzy liczą na rychłą akceptację ETF-ów spot w USA.",
+    content:
+      "Ceny bitcoina utrzymują się powyżej 42 tys. USD, a inwestorzy liczą na rychłą akceptację ETF-ów spot w USA. Analitycy wskazują na rosnące zainteresowanie instytucji aktywami cyfrowymi.",
     date: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
     image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=1200&q=90",
     category: "crypto",
@@ -45,8 +51,10 @@ const FALLBACK_ITEMS: RSSItem[] = [
   {
     title: "Ropa Brent stabilizuje się w okolicach 82 USD za baryłkę",
     link: "https://fusionfinance.pl/fallback/ropa-brent",
-    description: "Rynek ropy czeka na dane o zapasach w USA oraz sygnały z OPEC+ dotyczące polityki wydobycia.",
-    content: "Rynek ropy czeka na dane o zapasach w USA oraz sygnały z OPEC+ dotyczące polityki wydobycia. Analitycy wskazują, że popyt pozostaje solidny, a zmienność może wzrosnąć wraz z danymi makro.",
+    description:
+      "Rynek ropy czeka na dane o zapasach w USA oraz sygnały z OPEC+ dotyczące polityki wydobycia.",
+    content:
+      "Rynek ropy czeka na dane o zapasach w USA oraz sygnały z OPEC+ dotyczące polityki wydobycia. Analitycy wskazują, że popyt pozostaje solidny, a zmienność może wzrosnąć wraz z danymi makro.",
     date: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
     image: "https://images.unsplash.com/photo-1508387024700-9fe5c0b25c95?w=1200&q=90",
     category: "surowce",
@@ -54,8 +62,10 @@ const FALLBACK_ITEMS: RSSItem[] = [
   {
     title: "Stopy procentowe w Polsce bez zmian, RPP zachowuje ostrożność",
     link: "https://fusionfinance.pl/fallback/rpp-stopy",
-    description: "Rada Polityki Pieniężnej pozostawiła stopy procentowe bez zmian, wskazując na niepewność otoczenia makroekonomicznego.",
-    content: "Rada Polityki Pieniężnej pozostawiła stopy procentowe bez zmian, wskazując na niepewność otoczenia makroekonomicznego. Rynki finansowe śledzą kolejne publikacje inflacyjne i komentarze członków Rady.",
+    description:
+      "Rada Polityki Pieniężnej pozostawiła stopy procentowe bez zmian, wskazując na niepewność otoczenia makroekonomicznego.",
+    content:
+      "Rada Polityki Pieniężnej pozostawiła stopy procentowe bez zmian, wskazując na niepewność otoczenia makroekonomicznego. Rynki finansowe śledzą kolejne publikacje inflacyjne i komentarze członków Rady.",
     date: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
     image: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=90",
     category: "gospodarka",
@@ -81,27 +91,24 @@ const RSS_FEEDS: Record<string, string[]> = {
   rynki: [
     "https://www.bankier.pl/rss/wiadomosci.xml",
     "https://www.money.pl/rss/rss.xml",
-    "https://businessinsider.com.pl/feed",
+    "https://businessinsider.com.pl/.feed",
     "https://independenttrader.pl/feed",
-    "https://www.egospodarka.pl/rss/",
+    "https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/",
     "https://www.obserwatorfinansowy.pl/feed/",
-    "https://www.portalsamorzadowy.pl/rss/wszystkie-artykuly/",
-    "https://www.pb.pl/rss/wszystkie.xml",
-    "https://www.parkiet.com/rss.xml",
-    "https://forsal.pl/feed",
-    "https://www.wnp.pl/rss/serwis_ekonomiczny.xml",
-    "https://www.rp.pl/rss/ekonomia",
+    "https://www.portalsamorzadowy.pl/rss/gospodarka.xml",
+    "https://www.parkiet.com/rss_main",
+    "https://forsal.pl/.feed",
+    "https://www.wnp.pl/rss/rynki_rss.xml",
+    "https://www.rp.pl/rss_main",
     // PAP - oficjalna agencja prasowa
     "https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml",
-    // Gazeta.pl - gospodarka
-    "http://rss.gazeta.pl/pub/rss/gospodarka.xml",
     // MyBank - rynek kapitałowy
     "https://mybank.pl/news/wiadomosci-rss.xml",
     "https://mybank.pl/news/wiadomosci-rynek-kapitalowy-rss.xml",
     "https://www.fxmag.pl/rss",
     "https://www.bankier.pl/rss/komentarze.xml",
     "https://www.bankier.pl/rss/rynki.xml",
-    "https://wgospodarce.pl/rss",
+    "https://feeds.feedburner.com/wGospodarce",
     "https://300gospodarka.pl/feed",
   ],
   // Giełda i akcje - GPW oficjalnie + portale
@@ -118,22 +125,19 @@ const RSS_FEEDS: Record<string, string[]> = {
     // MyBank
     "https://mybank.pl/news/wiadomosci-gielda-rss.xml",
     // Inne portale
-    "https://stooq.pl/rss/",
-    "https://www.parkiet.com/rss.xml",
-    "https://www.pb.pl/rss/gielda.xml",
-    "https://businessinsider.com.pl/gielda/feed",
+    "https://www.parkiet.com/rss_main",
+    "https://businessinsider.com.pl/gielda/.feed",
     "https://www.stockwatch.pl/rss/",
     "https://independenttrader.pl/feed",
-    "https://www.fxmag.pl/gielda/rss",
-    "https://stooq.pl/rss/powiadomienia.xml",
+    "https://www.fxmag.pl/rss",
   ],
   // Kryptowaluty - polskie źródła
   crypto: [
     "https://mybank.pl/news/wiadomosci-kryptowaluty-rss.xml",
     "https://www.bankier.pl/rss/wiadomosci.xml",
-    "https://businessinsider.com.pl/feed",
+    "https://businessinsider.com.pl/.feed",
     "https://www.money.pl/rss/rss.xml",
-    "https://forsal.pl/feed",
+    "https://forsal.pl/.feed",
     "https://pl.beincrypto.com/feed/",
     "https://bitcoin.pl/feed/",
     "https://bithub.pl/feed/",
@@ -145,21 +149,18 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://www.bankier.pl/rss/waluty.xml",
     "https://mybank.pl/news/wiadomosci-waluty-rss.xml",
     "https://www.money.pl/rss/rss.xml",
-    "https://forsal.pl/feed",
-    "https://www.pb.pl/rss/wszystkie.xml",
-    "https://www.cinkciarz.pl/rss/analizy-i-komentarze",
-    "https://www.fxmag.pl/waluty/rss",
+    "https://forsal.pl/.feed",
+    "https://www.fxmag.pl/rss",
   ],
   // Analizy - SII, Bankier, portale
   analizy: [
     "https://www.bankier.pl/rss/wiadomosci.xml",
-    "https://www.parkiet.com/rss.xml",
-    "https://www.pb.pl/rss/wszystkie.xml",
-    "https://businessinsider.com.pl/feed",
+    "https://www.parkiet.com/rss_main",
+    "https://businessinsider.com.pl/.feed",
     "https://independenttrader.pl/feed",
     "https://www.obserwatorfinansowy.pl/feed/",
     // SII - analizy inwestycyjne
-    "https://www.sii.org.pl/feed/",
+    "https://www.sii.org.pl/rss.xml",
   ],
   // Dla strony głównej - mix wszystkich polskich źródeł
   all: [
@@ -178,12 +179,11 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://mybank.pl/news/wiadomosci-kryptowaluty-rss.xml",
     // Inne portale
     "https://www.money.pl/rss/rss.xml",
-    "https://businessinsider.com.pl/feed",
-    "https://www.parkiet.com/rss.xml",
-    "https://www.pb.pl/rss/wszystkie.xml",
-    "https://forsal.pl/feed",
+    "https://businessinsider.com.pl/.feed",
+    "https://www.parkiet.com/rss_main",
+    "https://forsal.pl/.feed",
     "https://independenttrader.pl/feed",
-    "https://www.egospodarka.pl/rss/",
+    "https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/",
     "https://www.obserwatorfinansowy.pl/feed/",
   ],
   // Dla featured section / breaking news
@@ -198,33 +198,30 @@ const RSS_FEEDS: Record<string, string[]> = {
   // Gospodarka / Makro
   gospodarka: [
     "https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml",
-    "http://rss.gazeta.pl/pub/rss/gospodarka.xml",
+    "https://wiadomosci.gazeta.pl/pub/rss/wiadomosci.xml",
     "https://www.bankier.pl/rss/wiadomosci.xml",
     "https://www.money.pl/rss/rss.xml",
-    "https://forsal.pl/feed",
-    "https://www.pb.pl/rss/wszystkie.xml",
+    "https://forsal.pl/.feed",
     "https://mybank.pl/news/wiadomosci-banki-rss.xml",
   ],
   // Surowce / Towary
   surowce: [
     "https://mybank.pl/news/wiadomosci-towary-rss.xml",
     "https://www.bankier.pl/rss/wiadomosci.xml",
-    "https://forsal.pl/feed",
+    "https://forsal.pl/.feed",
   ],
   // Polska - newsy krajowe / gospodarka / rynki
   polska: [
     "https://www.bankier.pl/rss/wiadomosci.xml",
     "https://www.bankier.pl/rss/gielda.xml",
     "https://www.money.pl/rss/rss.xml",
-    "https://www.pb.pl/rss/wszystkie.xml",
-    "https://www.parkiet.com/rss.xml",
+    "https://www.parkiet.com/rss_main",
     "https://pap-mediaroom.pl/kategoria/biznes-i-finanse/rss.xml",
-    "https://www.rp.pl/rss/ekonomia",
-    "http://rss.gazeta.pl/pub/rss/gospodarka.xml",
-    "https://www.egospodarka.pl/rss/",
+    "https://www.rp.pl/rss_main",
+    "https://wiadomosci.gazeta.pl/pub/rss/wiadomosci.xml",
+    "https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/",
     "https://www.obserwatorfinansowy.pl/feed/",
-    "https://stooq.pl/rss/news_pl.xml",
-    "https://wgospodarce.pl/rss",
+    "https://feeds.feedburner.com/wGospodarce",
     "https://300gospodarka.pl/feed",
     "https://biznes.wprost.pl/rss",
     "https://tvn24.pl/najnowsze.xml",
@@ -236,9 +233,9 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://www.ft.com/world?format=rss",
     "https://www.cnbc.com/id/100727362/device/rss/rss.html",
     "https://www.aljazeera.com/xml/rss/all.xml",
-    "https://www.reutersagency.com/feed/?best-topics=business-finance&post_type=best",
+    "https://www.theguardian.com/world/rss",
     "https://www.economist.com/the-world-this-week/rss.xml",
-    "https://www.wsj.com/xml/rss/3_7085.xml",
+    "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
     "https://feeds.skynews.com/feeds/rss/world.xml",
   ],
 };
@@ -246,40 +243,219 @@ const RSS_FEEDS: Record<string, string[]> = {
 // Słowa kluczowe do filtrowania artykułów według kategorii
 const CATEGORY_KEYWORDS: Record<string, { include: string[]; exclude: string[] }> = {
   rynki: {
-    include: ["rynek", "indeks", "gpw", "s&p", "nasdaq", "dow", "ftse", "dax", "nikkei", "obligacj", "surowc", "commodit", "futures", "etf", "fundusz", "gospodark", "pkb", "inflacj", "stopy procentowe", "nbp", "fed", "ecb"],
-    exclude: ["bitcoin", "ethereum", "kryptowalut", "blockchain", "nft", "token"]
+    include: [
+      "rynek",
+      "indeks",
+      "gpw",
+      "s&p",
+      "nasdaq",
+      "dow",
+      "ftse",
+      "dax",
+      "nikkei",
+      "obligacj",
+      "surowc",
+      "commodit",
+      "futures",
+      "etf",
+      "fundusz",
+      "gospodark",
+      "pkb",
+      "inflacj",
+      "stopy procentowe",
+      "nbp",
+      "fed",
+      "ecb",
+    ],
+    exclude: ["bitcoin", "ethereum", "kryptowalut", "blockchain", "nft", "token"],
   },
   gielda: {
-    include: ["gpw", "wig", "wig20", "mwig", "swig", "akcj", "spółk", "dywidend", "emisj", "ipo", "debiut", "notowania", "sesj", "parkiet", "makler", "cdp", "knf", "espi", "ebi", "giełd", "indeks", "kurs akcji"],
-    exclude: ["bitcoin", "ethereum", "kryptowalut", "forex", "eur/", "usd/"]
+    include: [
+      "gpw",
+      "wig",
+      "wig20",
+      "mwig",
+      "swig",
+      "akcj",
+      "spółk",
+      "dywidend",
+      "emisj",
+      "ipo",
+      "debiut",
+      "notowania",
+      "sesj",
+      "parkiet",
+      "makler",
+      "cdp",
+      "knf",
+      "espi",
+      "ebi",
+      "giełd",
+      "indeks",
+      "kurs akcji",
+    ],
+    exclude: ["bitcoin", "ethereum", "kryptowalut", "forex", "eur/", "usd/"],
   },
   crypto: {
-    include: ["bitcoin", "btc", "ethereum", "eth", "kryptowalut", "crypto", "blockchain", "token", "nft", "defi", "altcoin", "binance", "coinbase", "mining", "halving", "stablecoin", "usdt", "solana", "cardano", "xrp", "ripple", "dogecoin", "shiba", "web3"],
-    exclude: []
+    include: [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "kryptowalut",
+      "crypto",
+      "blockchain",
+      "token",
+      "nft",
+      "defi",
+      "altcoin",
+      "binance",
+      "coinbase",
+      "mining",
+      "halving",
+      "stablecoin",
+      "usdt",
+      "solana",
+      "cardano",
+      "xrp",
+      "ripple",
+      "dogecoin",
+      "shiba",
+      "web3",
+    ],
+    exclude: [],
   },
   waluty: {
-    include: ["eur/", "usd/", "gbp/", "chf/", "jpy/", "walut", "forex", "kurs", "złot", "dolar", "euro", "frank", "jen", "funt", "nbp", "kantor", "wymian", "pln", "eur", "usd", "gbp", "chf"],
-    exclude: ["bitcoin", "ethereum", "kryptowalut", "akcj", "gpw"]
+    include: [
+      "eur/",
+      "usd/",
+      "gbp/",
+      "chf/",
+      "jpy/",
+      "walut",
+      "forex",
+      "kurs",
+      "złot",
+      "dolar",
+      "euro",
+      "frank",
+      "jen",
+      "funt",
+      "nbp",
+      "kantor",
+      "wymian",
+      "pln",
+      "eur",
+      "usd",
+      "gbp",
+      "chf",
+    ],
+    exclude: ["bitcoin", "ethereum", "kryptowalut", "akcj", "gpw"],
   },
   analizy: {
-    include: ["analiz", "prognoz", "rekomendacj", "raport", "perspektyw", "outlook", "target", "wycen", "wskaźnik", "rsi", "macd", "fibonacci", "trend", "wsparci", "opór", "sygnał", "techniczn", "fundament", "komentarz"],
-    exclude: []
+    include: [
+      "analiz",
+      "prognoz",
+      "rekomendacj",
+      "raport",
+      "perspektyw",
+      "outlook",
+      "target",
+      "wycen",
+      "wskaźnik",
+      "rsi",
+      "macd",
+      "fibonacci",
+      "trend",
+      "wsparci",
+      "opór",
+      "sygnał",
+      "techniczn",
+      "fundament",
+      "komentarz",
+    ],
+    exclude: [],
   },
   gospodarka: {
-    include: ["gospodark", "pkb", "inflacj", "bezroboci", "stopy procentowe", "nbp", "fed", "ecb", "bank centralny", "polityka monetarna", "budżet", "deficyt", "dług", "eksport", "import", "handel", "przemysł", "produkcj"],
-    exclude: ["bitcoin", "ethereum", "kryptowalut"]
+    include: [
+      "gospodark",
+      "pkb",
+      "inflacj",
+      "bezroboci",
+      "stopy procentowe",
+      "nbp",
+      "fed",
+      "ecb",
+      "bank centralny",
+      "polityka monetarna",
+      "budżet",
+      "deficyt",
+      "dług",
+      "eksport",
+      "import",
+      "handel",
+      "przemysł",
+      "produkcj",
+    ],
+    exclude: ["bitcoin", "ethereum", "kryptowalut"],
   },
   surowce: {
-    include: ["surowc", "ropa", "złoto", "srebro", "miedź", "gaz", "węgiel", "commodit", "towar", "metal", "energia", "brent", "wti", "opec"],
-    exclude: ["bitcoin", "ethereum", "kryptowalut"]
+    include: [
+      "surowc",
+      "ropa",
+      "złoto",
+      "srebro",
+      "miedź",
+      "gaz",
+      "węgiel",
+      "commodit",
+      "towar",
+      "metal",
+      "energia",
+      "brent",
+      "wti",
+      "opec",
+    ],
+    exclude: ["bitcoin", "ethereum", "kryptowalut"],
   },
   polska: {
-    include: ["polsk", "warszaw", "gpw", "nbp", "rpp", "wig", "złot", "pln", "kraj", "sejm", "rząd", "minister", "budżet"],
-    exclude: ["bitcoin", "ethereum", "kryptowalut"]
+    include: [
+      "polsk",
+      "warszaw",
+      "gpw",
+      "nbp",
+      "rpp",
+      "wig",
+      "złot",
+      "pln",
+      "kraj",
+      "sejm",
+      "rząd",
+      "minister",
+      "budżet",
+    ],
+    exclude: ["bitcoin", "ethereum", "kryptowalut"],
   },
   swiat: {
-    include: ["usa", "chin", "europ", "g20", "oecd", "fed", "ecb", "boe", "boj", "brent", "geopol", "world", "global", "europe", "asia", "america"],
-    exclude: []
+    include: [
+      "usa",
+      "chin",
+      "europ",
+      "g20",
+      "oecd",
+      "fed",
+      "ecb",
+      "boe",
+      "boj",
+      "brent",
+      "geopol",
+      "world",
+      "global",
+      "europe",
+      "asia",
+      "america",
+    ],
+    exclude: [],
   },
 };
 
@@ -401,7 +577,7 @@ async function fetchRSSFeed(url: string): Promise<RSSItem[]> {
           fetch(url, {
             headers: { "User-Agent": "Mozilla/5.0 FusionFinance RSS Reader" },
             cache: "no-store",
-          }).catch(err => {
+          }).catch((err) => {
             // fetch may throw in sandboxed/non-network env – convert to error
             throw err;
           }),
@@ -428,75 +604,78 @@ async function fetchRSSFeed(url: string): Promise<RSSItem[]> {
 }
 
 function parseFeed(text: string): RSSItem[] {
-    const items: RSSItem[] = [];
+  const items: RSSItem[] = [];
 
-    const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
-    let match;
+  const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
+  let match;
 
-    while ((match = itemRegex.exec(text)) !== null) {
-      const itemContent = match[1];
+  while ((match = itemRegex.exec(text)) !== null) {
+    const itemContent = match[1];
 
-      const title = itemContent.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s)?.[1]?.trim() || "";
-      const link = itemContent.match(/<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/link>/s)?.[1]?.trim() || "";
-      const description = itemContent.match(/<description>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/description>/s)?.[1]?.trim() || "";
-      const pubDate = itemContent.match(/<pubDate>(.*?)<\/pubDate>/s)?.[1]?.trim() || "";
+    const title = itemContent.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s)?.[1]?.trim() || "";
+    const link = itemContent.match(/<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/link>/s)?.[1]?.trim() || "";
+    const description =
+      itemContent.match(/<description>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/description>/s)?.[1]?.trim() || "";
+    const pubDate = itemContent.match(/<pubDate>(.*?)<\/pubDate>/s)?.[1]?.trim() || "";
 
-      // Try to extract full content from content:encoded tag
-      const contentEncoded = itemContent.match(/<content:encoded>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/content:encoded>/)?.[1]?.trim() || "";
+    // Try to extract full content from content:encoded tag
+    const contentEncoded =
+      itemContent.match(/<content:encoded>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/content:encoded>/)?.[1]?.trim() ||
+      "";
 
-      // Use content:encoded if available, otherwise use description
-      const fullContent = contentEncoded || description;
+    // Use content:encoded if available, otherwise use description
+    const fullContent = contentEncoded || description;
 
-      // Try to extract image
-      let image: string | undefined;
-      const enclosure = itemContent.match(/<enclosure[^>]+url=["']([^"']+)["']/i);
-      const mediaContent = itemContent.match(/<media:content[^>]+url=["']([^"']+)["']/i);
-      const mediaThumbnail = itemContent.match(/<media:thumbnail[^>]+url=["']([^"']+)["']/i);
+    // Try to extract image
+    let image: string | undefined;
+    const enclosure = itemContent.match(/<enclosure[^>]+url=["']([^"']+)["']/i);
+    const mediaContent = itemContent.match(/<media:content[^>]+url=["']([^"']+)["']/i);
+    const mediaThumbnail = itemContent.match(/<media:thumbnail[^>]+url=["']([^"']+)["']/i);
 
-      if (enclosure) image = enclosure[1];
-      else if (mediaContent) image = mediaContent[1];
-      else if (mediaThumbnail) image = mediaThumbnail[1];
-      else image = extractImageFromContent(fullContent);
+    if (enclosure) image = enclosure[1];
+    else if (mediaContent) image = mediaContent[1];
+    else if (mediaThumbnail) image = mediaThumbnail[1];
+    else image = extractImageFromContent(fullContent);
 
-      if (title && link) {
-        // Clean HTML but preserve paragraph structure for content
-        const cleanContent = fullContent
-          .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
-          .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
-          .replace(/<br\s*\/?>/gi, "\n")
-          .replace(/<\/p>/gi, "\n\n")
-          .replace(/<\/div>/gi, "\n")
-          .replace(/<\/h[1-6]>/gi, "\n\n")
-          .replace(/<li>/gi, "• ")
-          .replace(/<\/li>/gi, "\n")
-          .replace(/<[^>]*>/g, "")
-          .replace(/&nbsp;/g, " ")
-          .replace(/&amp;/g, "&")
-          .replace(/&lt;/g, "<")
-          .replace(/&gt;/g, ">")
-          .replace(/&quot;/g, '"')
-          .replace(/&#39;/g, "'")
-          .replace(/&[^;]+;/g, " ")
-          .replace(/\n{3,}/g, "\n\n")
-          .trim();
+    if (title && link) {
+      // Clean HTML but preserve paragraph structure for content
+      const cleanContent = fullContent
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+        .replace(/<br\s*\/?>/gi, "\n")
+        .replace(/<\/p>/gi, "\n\n")
+        .replace(/<\/div>/gi, "\n")
+        .replace(/<\/h[1-6]>/gi, "\n\n")
+        .replace(/<li>/gi, "• ")
+        .replace(/<\/li>/gi, "\n")
+        .replace(/<[^>]*>/g, "")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&[^;]+;/g, " ")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
 
-        // Czyść opis z boilerplate
-        const cleanDescription = cleanBoilerplate(
-          description.replace(/<[^>]*>/g, "").replace(/&[^;]+;/g, " ").trim()
-        ).substring(0, 300);
+      // Czyść opis z boilerplate
+      const cleanDescription = cleanBoilerplate(
+        description.replace(/<[^>]*>/g, "").replace(/&[^;]+;/g, " ").trim()
+      ).substring(0, 300);
 
-        items.push({
-          title: title.replace(/<[^>]*>/g, "").replace(/&[^;]+;/g, " ").trim(),
-          link,
-          description: cleanDescription,
-          content: cleanBoilerplate(cleanContent),
-          date: pubDate,
-          image,
-        });
-      }
+      items.push({
+        title: title.replace(/<[^>]*>/g, "").replace(/&[^;]+;/g, " ").trim(),
+        link,
+        description: cleanDescription,
+        content: cleanBoilerplate(cleanContent),
+        date: pubDate,
+        image,
+      });
     }
+  }
 
-    return items;
+  return items;
 }
 
 // Filtrowanie artykułów według słów kluczowych
@@ -504,15 +683,16 @@ function filterByCategory(items: RSSItem[], category: string): RSSItem[] {
   const keywords = CATEGORY_KEYWORDS[category];
   if (!keywords) return items;
 
-  return items.filter(item => {
+  return items.filter((item) => {
     const text = (item.title + " " + item.description).toLowerCase();
 
     // Sprawdź czy zawiera słowa kluczowe (include)
-    const hasInclude = keywords.include.length === 0 ||
-      keywords.include.some(kw => text.includes(kw.toLowerCase()));
+    const hasInclude =
+      keywords.include.length === 0 ||
+      keywords.include.some((kw) => text.includes(kw.toLowerCase()));
 
     // Sprawdź czy NIE zawiera słów wykluczających (exclude)
-    const hasExclude = keywords.exclude.some(kw => text.includes(kw.toLowerCase()));
+    const hasExclude = keywords.exclude.some((kw) => text.includes(kw.toLowerCase()));
 
     return hasInclude && !hasExclude;
   });
@@ -532,10 +712,8 @@ const normalizeLink = (link: string): string => {
 // Usuwanie duplikatów na podstawie linku lub tytułu
 function removeDuplicates(items: RSSItem[]): RSSItem[] {
   const seen = new Set<string>();
-  return items.filter(item => {
-    const key =
-      (item.link ? normalizeLink(item.link) : "") ||
-      item.title.toLowerCase().substring(0, 80);
+  return items.filter((item) => {
+    const key = (item.link ? normalizeLink(item.link) : "") || item.title.toLowerCase().substring(0, 80);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -590,8 +768,7 @@ export async function GET(request: NextRequest) {
       .slice(0, limit);
 
     const finalItems = sortedItems.length > 0 ? sortedItems : getFallbackItems(limit);
-    const translatedItems =
-      feedType === "swiat" ? await translateArticlesToPolish(finalItems) : finalItems;
+    const translatedItems = feedType === "swiat" ? await translateArticlesToPolish(finalItems) : finalItems;
 
     rssCache.set(cacheKey, { timestamp: now, items: translatedItems });
 

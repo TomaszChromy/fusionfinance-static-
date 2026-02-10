@@ -51,7 +51,7 @@ export default function Wig20Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
-      <div className="mx-auto max-w-[1000px] px-4 lg:px-6 py-8">
+      <div className="phi-shell">
         <Breadcrumbs />
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 mt-4">
           <h1 className="text-3xl lg:text-4xl font-serif font-medium text-[#f4f4f5] mb-2">
@@ -61,7 +61,7 @@ export default function Wig20Page() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="bg-[#0c0d10] border border-[#c9a962]/20 rounded-2xl p-6 mb-8">
+          className="phi-section" style={{ marginBottom: "var(--space-13)" }}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <span className="text-4xl">📈</span>
@@ -79,11 +79,11 @@ export default function Wig20Page() {
           <p className="text-[10px] text-[#52525b] mt-2 text-center">Dane demonstracyjne. Rzeczywiste notowania dostępne na GPW.</p>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="phi-stack" style={{ gap: "var(--space-21)" }}>
           <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="bg-[#0c0d10] border border-white/5 rounded-xl p-6">
+            className="phi-section">
             <h2 className="text-xl font-medium text-[#f4f4f5] mb-4">🏢 Największe spółki w WIG20</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="phi-grid grid-cols-2 md:grid-cols-3" style={{ gap: "var(--space-8)" }}>
               {WIG20_COMPANIES.map((company) => (
                 <div key={company.name} className="bg-white/[0.02] rounded-lg p-3">
                   <p className="text-sm font-medium text-[#f4f4f5]">{company.name}</p>
@@ -95,9 +95,9 @@ export default function Wig20Page() {
           </motion.section>
 
           <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-            className="bg-[#0c0d10] border border-white/5 rounded-xl p-6">
+            className="phi-section">
             <h2 className="text-xl font-medium text-[#f4f4f5] mb-4">📊 Charakterystyka WIG20</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="phi-grid grid-cols-2 md:grid-cols-4" style={{ gap: "var(--space-13)" }}>
               <div className="bg-white/[0.02] rounded-lg p-3 text-center">
                 <p className="text-xs text-[#71717a]">Typ indeksu</p>
                 <p className="text-sm font-bold text-[#f4f4f5]">Cenowy</p>
@@ -118,7 +118,7 @@ export default function Wig20Page() {
           </motion.section>
 
           <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-            className="bg-[#0c0d10] border border-white/5 rounded-xl p-6">
+            className="phi-section">
             <h2 className="text-xl font-medium text-[#f4f4f5] mb-4">❓ Najczęściej zadawane pytania</h2>
             <div className="space-y-3">
               {FAQ_ITEMS.map((item, i) => (
@@ -149,4 +149,3 @@ export default function Wig20Page() {
     </main>
   );
 }
-

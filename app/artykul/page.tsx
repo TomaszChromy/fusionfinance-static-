@@ -173,10 +173,10 @@ function ArticleContent() {
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
   return (
-    <article className="max-w-[800px]">
+    <article className="max-w-[900px] mx-auto text-center">
       <motion.div initial={{ opacity: 0, y: 21 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         {/* Back Button + Breadcrumb */}
-        <div className="flex items-center gap-4 mb-[21px]">
+        <div className="flex items-center justify-center gap-4 mb-[21px]">
           <BackButton variant="minimal" showLabel={false} />
           <nav className="text-[11px] text-[#71717a] tracking-[0.1em] uppercase">
             <Link href="/" className="hover:text-[#c9a962]">Strona główna</Link>
@@ -194,13 +194,13 @@ function ArticleContent() {
         </div>
 
         {/* Meta + Copy Link + Font Size */}
-        <div className="flex flex-wrap items-center gap-4 text-[12px] text-[#71717a] mb-[34px]">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-[12px] text-[#71717a] mb-[34px]">
           <time>{formatPolishDate(dateStr)}</time>
           <span>•</span>
           <span>{readingTime} min czytania</span>
           <span>•</span>
           <span>{wordCount} słów</span>
-          <div className="ml-auto flex items-center gap-3">
+          <div className="flex items-center gap-3">
             <FontSizeButtons />
             <CopyButton
               text={typeof window !== 'undefined' ? window.location.href : ''}
@@ -226,7 +226,7 @@ function ArticleContent() {
 
         {/* Lead / Description */}
         {description && (
-          <p className="text-[18px] text-[#e4e4e7] leading-relaxed mb-[34px] font-medium border-l-4 border-[#c9a962] pl-[21px]">
+          <p className="text-[18px] text-[#e4e4e7] leading-relaxed mb-[34px] font-medium px-[21px]">
             {description}
           </p>
         )}
@@ -237,7 +237,7 @@ function ArticleContent() {
         )}
 
         {/* Content with Text Selection Popover */}
-        <div ref={contentRef} className="prose prose-invert max-w-none relative">
+        <div ref={contentRef} className="prose prose-invert max-w-none relative" style={{ textAlign: "center" }}>
           <TextSelectionPopover containerRef={contentRef} />
           {loading ? (
             <div className="space-y-4">
@@ -250,7 +250,7 @@ function ArticleContent() {
             </div>
           ) : (
             paragraphs.map((p, i) => (
-              <p key={i} className="text-[16px] text-[#d4d4d8] leading-[1.85] mb-[21px]">
+              <p key={i} className="text-[16px] text-[#d4d4d8] leading-[1.85] mb-[21px] text-center">
                 {p}
               </p>
             ))
@@ -264,7 +264,7 @@ function ArticleContent() {
 
         {/* Share & Favorite Buttons */}
         <div className="mt-[21px] pt-[21px] border-t border-white/10">
-          <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center justify-center flex-wrap gap-4">
             <ShareButtons
               url={typeof window !== 'undefined' ? window.location.href : `https://fusionfinance.pl/artykul`}
               title={title}
@@ -315,18 +315,26 @@ export default function ArticlePage() {
     <div className="min-h-screen bg-[#08090c] text-[#f4f4f5]">
       <ReadingProgressBar showPercentage />
       <Navbar />
-      <main className="max-w-[1400px] mx-auto px-5 lg:px-8 py-[55px]">
+      <main className="max-w-[1400px] mx-auto px-5 lg:px-8 py-[55px] text-center">
         <Suspense fallback={<div className="text-center py-20">Ładowanie artykułu...</div>}>
           <ArticleContent />
         </Suspense>
 
         {/* Related articles */}
         <section className="mt-[89px] pt-[55px] border-t border-white/5">
-          <div className="flex items-center gap-3 mb-[34px]">
+          <div className="flex items-center justify-center gap-3 mb-[34px]">
             <div className="w-[4px] h-[28px] bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
             <h2 className="text-[20px] font-serif font-medium text-[#f4f4f5]">Powiązane artykuły</h2>
           </div>
           <RSSArticles feedType="all" limit={6} showImage={true} />
+        </section>
+
+        <section className="mt-[55px] pt-[34px] border-t border-white/5">
+          <div className="flex items-center justify-center gap-3 mb-[34px]">
+            <div className="w-[4px] h-[28px] bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
+            <h2 className="text-[20px] font-serif font-medium text-[#f4f4f5]">Polecane artykuły</h2>
+          </div>
+          <RSSArticles feedType="analizy" limit={6} showImage={true} />
         </section>
       </main>
       <Footer />

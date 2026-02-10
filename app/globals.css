@@ -181,6 +181,46 @@ button:focus-visible {
   padding-right: var(--space-21);
 }
 
+/* Golden Ratio utility shells */
+@layer components {
+  .phi-shell {
+    width: min(94vw, 1600px);
+    max-width: 1618px; /* ~1000px * phi */
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--space-34) var(--space-21);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-21);
+  }
+
+  .phi-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--space-21);
+    padding: var(--space-34) var(--space-21);
+    box-shadow: 0 21px 55px rgba(0, 0, 0, 0.35);
+  }
+
+  .phi-grid {
+    display: grid;
+    gap: var(--space-21);
+  }
+
+  .phi-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-13);
+  }
+
+  .phi-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    opacity: 0.35;
+  }
+}
+
 /* ============================================
    LUXURY CARD STYLES
    ============================================ */

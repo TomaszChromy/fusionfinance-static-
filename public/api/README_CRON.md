@@ -30,8 +30,8 @@ Polecenie: /usr/bin/php /home/TWOJ_USER/domains/fusionfinance.pl/public_html/api
 
 ### Alternatywa - wywołanie przez wget:
 ```
-*/15 * * * * wget -q -O /dev/null "https://fusionfinance.pl/api/cron.php?key=ff_cron_2024_secret"
-*/15 * * * * wget -q -O /dev/null "https://fusionfinance.pl/api/cron_rates.php?key=ff_cron_rates_2024"
+*/15 * * * * wget -q -O /dev/null "https://fusionfinance.pl/api/cron.php?key=ff_cron_2025_T8s9h4Kz"
+*/15 * * * * wget -q -O /dev/null "https://fusionfinance.pl/api/cron_rates.php?key=ff_cron_rates_2025_Gy7qQvM1"
 ```
 
 ## Pliki cache (tworzone automatycznie):
@@ -52,12 +52,11 @@ Otwórz w przeglądarce:
 ## Bezpieczeństwo:
 
 **WAŻNE:** Zmień klucze bezpieczeństwa w plikach:
-- `cron.php` - zmienna `$CRON_SECRET_KEY`
-- `cron_rates.php` - zmienna `$CRON_SECRET_KEY`
+- `cron.php` - zmienna `$CRON_SECRET_KEY` (ustaw unikalny sekret)
+- `cron_rates.php` - zmienna `$CRON_SECRET_KEY` (ustaw unikalny sekret)
 
 ## Weryfikacja działania:
 
 1. Sprawdź pliki `cron_log.txt` i `cron_rates_log.txt`
 2. Sprawdź datę modyfikacji plików cache
 3. Wywołaj API i sprawdź pole `lastUpdate`
-

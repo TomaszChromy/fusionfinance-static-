@@ -8,7 +8,7 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-$CRON_SECRET_KEY = 'ff_cron_rates_2024';
+$CRON_SECRET_KEY = 'ff_cron_rates_2025_Gy7qQvM1';
 
 if (isset($_GET['key']) && $_GET['key'] !== $CRON_SECRET_KEY) {
     http_response_code(403);
@@ -102,4 +102,3 @@ echo json_encode([
     'crypto' => count($data['crypto']),
     'duration' => $duration . 'ms',
 ]);
-
