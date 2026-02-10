@@ -228,15 +228,14 @@ const RSS_FEEDS: Record<string, string[]> = {
   ],
   // Świat - rynki globalne, makro, geopolityka
   swiat: [
-    "https://feeds.bbci.co.uk/news/world/rss.xml",
-    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
-    "https://www.ft.com/world?format=rss",
-    "https://www.cnbc.com/id/100727362/device/rss/rss.html",
-    "https://www.aljazeera.com/xml/rss/all.xml",
-    "https://www.theguardian.com/world/rss",
-    "https://www.economist.com/the-world-this-week/rss.xml",
-    "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
-    "https://feeds.skynews.com/feeds/rss/world.xml",
+    // Polskie serwisy z sekcjami światowymi
+    "https://wiadomosci.onet.pl/swiat/rss",
+    "https://wydarzenia.interia.pl/swiat/feed",
+    "https://www.rp.pl/rss_swiat",
+    "https://www.bankier.pl/rss/wiadomosci.xml",
+    "https://www.money.pl/rss/rss.xml",
+    "https://forsal.pl/.feed",
+    "https://tvn24.pl/najnowsze.xml",
   ],
 };
 
