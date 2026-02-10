@@ -233,6 +233,10 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://wiadomosci.onet.pl/swiat/rss",
     "https://wydarzenia.interia.pl/swiat/feed",
     "https://www.rp.pl/rss_swiat",
+    // Polsat News – kanał świat
+    "https://www.polsatnews.pl/rss/swiat.xml",
+    // CIRE.pl – wiadomości ze świata (PL)
+    "https://www.cire.pl/rss/swiat.xml",
     "https://www.bankier.pl/rss/wiadomosci.xml",
     "https://www.money.pl/rss/rss.xml",
     "https://forsal.pl/.feed",
