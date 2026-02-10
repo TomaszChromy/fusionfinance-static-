@@ -125,7 +125,7 @@ export default function ArticlesPaginated({
 
   return (
     <div ref={containerRef}>
-      <div className="phi-grid grid-cols-1 lg:grid-cols-2">
+      <div className="phi-grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-8">
         <AnimatePresence>
           {items.map((article, index) => (
             <motion.article

@@ -34,7 +34,7 @@ export default function PolskaPage() {
           />
 
           <div className="phi-section shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
-            <div className="flex items-center justify-between mb-5 pb-4 border-b border-[#c9a962]/20" style={{ marginBottom: "var(--space-13)", paddingBottom: "var(--space-8)" }}>
+            <div className="flex items-center justify-between mb-[26px] pb-[16px] border-b border-[#c9a962]/20" style={{ marginBottom: "var(--space-21)", paddingBottom: "var(--space-13)" }}>
               <div className="flex items-center gap-3" style={{ gap: "var(--space-8)" }}>
                 <div className="w-1 h-7 bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
                 <div>
