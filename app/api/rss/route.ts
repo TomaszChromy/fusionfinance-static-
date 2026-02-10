@@ -80,10 +80,11 @@ function getFallbackItems(limit: number): RSSItem[] {
 }
 
 const rssCache = new Map<string, { timestamp: number; items: RSSItem[] }>();
-const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes
 const FETCH_TIMEOUT_MS = 8_000;
 const MAX_RETRIES = 2;
 const TRANSLATE_ENDPOINT = "https://translate.googleapis.com/translate_a/single";
+const DEFAULT_LIMIT = 64;
 
 // Źródła RSS - tylko polskie portale
 const RSS_FEEDS: Record<string, string[]> = {
@@ -720,11 +721,12 @@ function removeDuplicates(items: RSSItem[]): RSSItem[] {
 }
 
 export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const feedType = searchParams.get("feed") || "bankier";
-    const limit = parseInt(searchParams.get("limit") || "10", 10);
+  const { searchParams } = new URL(request.url);
+  const feedType = searchParams.get("feed") || "bankier";
+  const requestedLimit = parseInt(searchParams.get("limit") || `${DEFAULT_LIMIT}`, 10);
+  const limit = Number.isFinite(requestedLimit) ? requestedLimit : DEFAULT_LIMIT;
 
+  try {
     const feedUrls = RSS_FEEDS[feedType] || RSS_FEEDS.bankier;
 
     const cacheKey = `${feedType}`;
@@ -779,7 +781,7 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("[rss] fatal error, returning fallback:", error);
-    const fallback = getFallbackItems(10);
+    const fallback = getFallbackItems(limit || DEFAULT_LIMIT);
     return NextResponse.json({
       items: fallback,
       source: "fallback",
