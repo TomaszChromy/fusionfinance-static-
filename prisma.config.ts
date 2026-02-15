@@ -10,7 +10,5 @@ export default defineConfig({
   datasource: {
     // Pooled connection for Prisma Client queries
     url: env("POSTGRES_PRISMA_URL"),
-    // Direct connection for migrations and schema operations
-    directUrl: env("POSTGRES_URL_NON_POOLING"),
   },
 });
