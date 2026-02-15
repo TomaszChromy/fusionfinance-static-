@@ -29,8 +29,8 @@ function decodeHtmlEntities(text: string): string {
     '&raquo;': '»',
     '&bull;': '•',
     '&middot;': '·',
-    '&rsquo;': ''',
-    '&lsquo;': ''',
+    '&rsquo;': "'",
+    '&lsquo;': "'",
     '&rdquo;': '"',
     '&ldquo;': '"',
   };
