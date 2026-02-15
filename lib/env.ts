@@ -43,6 +43,30 @@ const getDatabaseUrl = (): string | undefined => {
   return undefined;
 };
 
+const getPostgresPrismaUrl = (): string | undefined => {
+  const value = process.env.POSTGRES_PRISMA_URL;
+  if (value) return value;
+
+  // Fallback to DATABASE_URL if POSTGRES_PRISMA_URL is not set
+  return getDatabaseUrl();
+};
+
+const getPostgresUrlNonPooling = (): string | undefined => {
+  const value = process.env.POSTGRES_URL_NON_POOLING;
+  if (value) return value;
+
+  // Allow missing during static export or build
+  if (isStaticExport || isBuildPhase) {
+    return undefined;
+  }
+
+  // In production, this is required for migrations
+  if (isProd) {
+    console.warn("[env] POSTGRES_URL_NON_POOLING not set. Migrations may fail.");
+  }
+  return undefined;
+};
+
 const optional = (key: string): string | undefined => {
   const value = process.env[key];
   if (!value && process.env.NODE_ENV !== "production") {
@@ -56,6 +80,8 @@ export const env = {
   authSecret: getAuthSecret(),
   nextauthUrl: process.env.NEXTAUTH_URL ?? "http://localhost:3000",
   databaseUrl: getDatabaseUrl(),
+  postgresPrismaUrl: getPostgresPrismaUrl(),
+  postgresUrlNonPooling: getPostgresUrlNonPooling(),
   googleClientId: optional("GOOGLE_CLIENT_ID"),
   googleClientSecret: optional("GOOGLE_CLIENT_SECRET"),
   stripeSecretKey: optional("STRIPE_SECRET_KEY"),

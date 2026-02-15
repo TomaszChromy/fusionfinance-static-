@@ -1,12 +1,7 @@
 import type { NextConfig } from "next";
 
-const isStaticExport = process.env.STATIC_EXPORT === "true";
-
 const nextConfig: NextConfig = {
-  // Static export dla hostingu nazwa.pl
-  ...(isStaticExport && { output: "export" }),
   experimental: {
-    // Wyłącz PPR (eliminacja odwołań do __next._tree.txt na statycznym hostingu)
     ppr: false,
   },
 

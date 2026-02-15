@@ -1,7 +1,6 @@
 // FusionFinance.pl - Prisma Config
 import "dotenv/config";
-import { defineConfig } from "prisma/config";
-import { env } from "./lib/env";
+import { defineConfig, env } from "prisma/config";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
@@ -9,6 +8,9 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: env.databaseUrl || "postgresql://localhost:5432/fusionfinance",
+    // Pooled connection for Prisma Client queries
+    url: env("POSTGRES_PRISMA_URL"),
+    // Direct connection for migrations and schema operations
+    directUrl: env("POSTGRES_URL_NON_POOLING"),
   },
 });

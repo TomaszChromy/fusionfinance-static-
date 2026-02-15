@@ -20,30 +20,6 @@ export function isLocalhost(): boolean {
  * Returns false for: static hosting with PHP backend
  */
 export function shouldUseNextApi(): boolean {
-  // Static export / PHP backend explicitly requested via env
-  const envForcesPhpApi =
-    typeof process !== "undefined" &&
-    (process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" ||
-      process.env.STATIC_EXPORT === "true" ||
-      process.env.NEXT_PUBLIC_USE_PHP_API === "true");
-
-  if (envForcesPhpApi) return false;
-
-  if (typeof window === "undefined") return true; // SSR - always use Next.js API
-
-  const { hostname, port } = window.location;
-
-  // Localhost with Next.js dev server
-  if ((hostname === "localhost" || hostname === "127.0.0.1") && (port === "3000" || port === "3001")) {
-    return true;
-  }
-
-  // Vercel deployment (*.vercel.app or custom domain on Vercel)
-  if (hostname.endsWith(".vercel.app") || hostname.includes("vercel")) {
-    return true;
-  }
-
-  // Custom domains on Vercel: default to Next API; static hosts must opt-in via env flag
   return true;
 }
 
