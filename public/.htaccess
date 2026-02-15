@@ -85,16 +85,17 @@ RewriteRule ^([^/]+)/?$ /$1/index.html [L]
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# Blokuj dostęp do wrażliwych plików
-<FilesMatch "\.(env|log|md|yml|yaml|json|lock)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-
-# Zezwól na manifest i robots
+# Zezwól na manifest i robots NAJPIERW (przed blokowaniem)
 <FilesMatch "(robots\.txt|sitemap\.xml|site\.webmanifest|manifest\.json)$">
     Order allow,deny
     Allow from all
+    Satisfy Any
+</FilesMatch>
+
+# Blokuj dostęp do wrażliwych plików (ale nie manifest.json)
+<FilesMatch "\.(env|log|md|yml|yaml|lock)$">
+    Order allow,deny
+    Deny from all
 </FilesMatch>
 
 # Niestandardowe strony błędów

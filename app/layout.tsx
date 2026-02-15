@@ -276,7 +276,7 @@ export default function RootLayout({
       >
         <Providers>
           <ToastProvider>
-            {process.env.NODE_ENV === "production" ? <ServiceWorkerRegistration /> : <DevCacheReset />}
+            <ServiceWorkerRegistration />
             <OfflineIndicator />
             <KeyboardShortcuts />
             <TopBanner />

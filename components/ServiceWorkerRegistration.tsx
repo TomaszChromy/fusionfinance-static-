@@ -7,8 +7,11 @@ export default function ServiceWorkerRegistration() {
     if (typeof window === "undefined") return;
     if (!("serviceWorker" in navigator)) return;
 
-    // In dev disable SW and unregister old ones to avoid stale bundles
-    if (process.env.NODE_ENV !== "production") {
+    // Check if we're on localhost (dev mode)
+    const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+    if (isDev) {
+      // In dev disable SW and unregister old ones to avoid stale bundles
       navigator.serviceWorker.getRegistrations().then((regs) => regs.forEach((r) => r.unregister()));
       return;
     }
