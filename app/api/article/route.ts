@@ -80,9 +80,8 @@ const siteSelectors: Record<string, RegExp[]> = {
   "gpw.pl": [
     /<div[^>]*class="[^"]*content[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
   ],
-  "businessinsider.com.pl": [
-    /<div[^>]*class="[^"]*article-body[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
-  ],
+  // Business Insider - skip scraping, use RSS description only
+  // (complex structure with "Najpopularniejsze" section mixed in)
 };
 
 // Function to fetch and parse article content from source URL
