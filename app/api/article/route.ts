@@ -55,11 +55,12 @@ function decodeHtmlEntities(text: string): string {
 // Site-specific selectors for Polish news sites
 const siteSelectors: Record<string, RegExp[]> = {
   "bankier.pl": [
+    /<div[^>]*class="[^"]*o-article-content[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<div[^>]*class="[^"]*article-body[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<div[^>]*class="[^"]*(?:tags|related|share)/i,
-    /<div[^>]*class="[^"]*lead[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<div[^>]*id="articleContent"[^>]*>([\s\S]*?)<\/div>/i,
   ],
   "money.pl": [
+    /<div[^>]*class="[^"]*wp-main-article[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<div[^>]*class="[^"]*article-body[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<div[^>]*class="[^"]*sc-[^"]*"[^>]*data-st-area="content"[^>]*>([\s\S]*?)<\/div>/i,
   ],
