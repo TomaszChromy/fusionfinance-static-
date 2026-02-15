@@ -12,6 +12,46 @@ interface ArticleData {
   image?: string;
 }
 
+// Function to decode HTML entities (including Polish characters)
+function decodeHtmlEntities(text: string): string {
+  const entities: Record<string, string> = {
+    '&nbsp;': ' ',
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'",
+    '&apos;': "'",
+    '&ndash;': '–',
+    '&mdash;': '—',
+    '&hellip;': '…',
+    '&laquo;': '«',
+    '&raquo;': '»',
+    '&bull;': '•',
+    '&middot;': '·',
+    '&rsquo;': ''',
+    '&lsquo;': ''',
+    '&rdquo;': '"',
+    '&ldquo;': '"',
+  };
+
+  // Replace named entities
+  let decoded = text;
+  for (const [entity, char] of Object.entries(entities)) {
+    decoded = decoded.replace(new RegExp(entity, 'g'), char);
+  }
+
+  // Decode numeric entities (&#123; and &#xAB;)
+  decoded = decoded.replace(/&#(\d+);/g, (match, dec) => {
+    return String.fromCharCode(parseInt(dec, 10));
+  });
+  decoded = decoded.replace(/&#x([0-9a-f]+);/gi, (match, hex) => {
+    return String.fromCharCode(parseInt(hex, 16));
+  });
+
+  return decoded;
+}
+
 // Site-specific selectors for Polish news sites
 const siteSelectors: Record<string, RegExp[]> = {
   "bankier.pl": [
@@ -157,6 +197,15 @@ async function fetchArticleContent(url: string): Promise<string> {
       .replace(/<button[^>]*>[\s\S]*?<\/button>/gi, "")
       .replace(/<form[^>]*>[\s\S]*?<\/form>/gi, "")
       .replace(/<svg[^>]*>[\s\S]*?<\/svg>/gi, "")
+      // Remove image captions and descriptions
+      .replace(/Kliknij aby powiększyć[^.]*\./gi, "")
+      .replace(/Zdjęcie ilustracyjne[^.]*\./gi, "")
+      .replace(/img src=['"'][^'"']*['"'][^>]*>/gi, "")
+      .replace(/align=['"][^'"']*['"']/gi, "")
+      .replace(/hspace=['"][^'"']*['"']/gi, "")
+      .replace(/vspace=['"][^'"']*['"']/gi, "")
+      // Remove navigation breadcrumbs
+      .replace(/Strona główna[›>][^.]*\./gi, "")
       // Convert block elements to newlines
       .replace(/<br\s*\/?>/gi, "\n")
       .replace(/<\/p>/gi, "\n\n")
@@ -166,20 +215,13 @@ async function fetchArticleContent(url: string): Promise<string> {
       .replace(/<li[^>]*>/gi, "• ")
       .replace(/<\/blockquote>/gi, "\n\n")
       // Remove remaining tags
-      .replace(/<[^>]*>/g, "")
-      // Decode HTML entities
-      .replace(/&nbsp;/g, " ")
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/&ndash;/g, "–")
-      .replace(/&mdash;/g, "—")
-      .replace(/&hellip;/g, "…")
-      .replace(/&[a-z]+;/gi, " ")
-      .replace(/&#\d+;/g, " ")
-      // Clean up whitespace
+      .replace(/<[^>]*>/g, "");
+
+    // Decode HTML entities (including Polish characters)
+    content = decodeHtmlEntities(content);
+
+    // Clean up whitespace
+    content = content
       .replace(/\t+/g, " ")
       .replace(/ +/g, " ")
       .replace(/\n +/g, "\n")
