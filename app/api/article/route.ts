@@ -197,14 +197,30 @@ async function fetchArticleContent(url: string): Promise<string> {
       .replace(/<form[^>]*>[\s\S]*?<\/form>/gi, "")
       .replace(/<svg[^>]*>[\s\S]*?<\/svg>/gi, "")
       // Remove image captions and descriptions
-      .replace(/Kliknij aby powiększyć[^.]*\./gi, "")
-      .replace(/Zdjęcie ilustracyjne[^.]*\./gi, "")
+      .replace(/Kliknij aby powiększyć[^•\n]*/gi, "")
+      .replace(/Zdjęcie ilustracyjne[^•\n]*/gi, "")
       .replace(/img src=['"'][^'"']*['"'][^>]*>/gi, "")
       .replace(/align=['"][^'"']*['"']/gi, "")
       .replace(/hspace=['"][^'"']*['"']/gi, "")
       .replace(/vspace=['"][^'"']*['"']/gi, "")
       // Remove navigation breadcrumbs
-      .replace(/Strona główna[›>][^.]*\./gi, "")
+      .replace(/Strona główna[›>][^\n]*/gi, "")
+      // Remove author info
+      .replace(/Opracowanie:[^\n]*/gi, "")
+      .replace(/Autor:[^\n]*/gi, "")
+      .replace(/Redakcja:[^\n]*/gi, "")
+      // Remove "Najpopularniejsze" section and everything after
+      .replace(/Najpopularniejsze w BUSINESS INSIDER[\s\S]*/gi, "")
+      .replace(/Newsletter[\s\S]*ze świata biznesu i finansów[\s\S]*/gi, "")
+      // Remove "Dziękujemy" footer
+      .replace(/Dziękujemy, że przeczytałaś\/eś nasz artykuł do końca\.[\s\S]*/gi, "")
+      // Remove "Czy ten artykuł był pomocny"
+      .replace(/Czy ten artykuł był pomocny\?[\s\S]*/gi, "")
+      // Remove "Dalsza część artykułu"
+      .replace(/Dalsza część artykułu znajduje się poniżej materiału wideo[\s\S]*?\n\n/gi, "")
+      // Remove "Zobacz także" / "Czytaj także"
+      .replace(/Zobacz także:[^\n]*\n/gi, "")
+      .replace(/Czytaj także w [A-Z\s]+\n/gi, "")
       // Convert block elements to newlines
       .replace(/<br\s*\/?>/gi, "\n")
       .replace(/<\/p>/gi, "\n\n")
