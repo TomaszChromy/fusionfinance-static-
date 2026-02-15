@@ -75,7 +75,7 @@ $feeds = [
         'https://independenttrader.pl/feed',
         'https://www.fxmag.pl/rss',
     ],
-    // Kryptowaluty
+    // Kryptowaluty - tylko polskie źródła
     'crypto' => [
         'https://mybank.pl/news/wiadomosci-kryptowaluty-rss.xml',
         'https://www.bankier.pl/rss/wiadomosci.xml',
@@ -85,8 +85,6 @@ $feeds = [
         'https://pl.beincrypto.com/feed/',
         'https://bitcoin.pl/feed/',
         'https://bithub.pl/feed/',
-        'https://cointelegraph.com/rss',
-        'https://decrypt.co/feed',
     ],
     // Waluty / Forex
     'waluty' => [
@@ -104,6 +102,15 @@ $feeds = [
         'https://independenttrader.pl/feed',
         'https://www.obserwatorfinansowy.pl/feed/',
         'https://www.sii.org.pl/rss.xml',
+    ],
+    // Fintech
+    'fintech' => [
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://businessinsider.com.pl/.feed',
+        'https://www.money.pl/rss/rss.xml',
+        'https://forsal.pl/.feed',
+        'https://mybank.pl/news/wiadomosci-rss.xml',
+        'https://www.obserwatorfinansowy.pl/feed/',
     ],
     // Miks do strony głównej
     'all' => [
@@ -163,17 +170,17 @@ $feeds = [
         'https://biznes.wprost.pl/rss',
         'https://tvn24.pl/najnowsze.xml',
     ],
-    // Świat (globalne serwisy – tłumaczenie realizuje front)
+    // Świat (polskie źródła o świecie)
     'swiat' => [
-        'https://feeds.bbci.co.uk/news/world/rss.xml',
-        'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
-        'https://www.ft.com/world?format=rss',
-        'https://www.cnbc.com/id/100727362/device/rss/rss.html',
-        'https://www.aljazeera.com/xml/rss/all.xml',
-        'https://www.theguardian.com/world/rss',
-        'https://www.economist.com/the-world-this-week/rss.xml',
-        'https://feeds.a.dj.com/rss/RSSWorldNews.xml',
-        'https://feeds.skynews.com/feeds/rss/world.xml',
+        'https://www.rp.pl/rss/swiat',
+        'https://wiadomosci.gazeta.pl/pub/rss/wiadomosci_swiat.xml',
+        'https://www.money.pl/rss/rss.xml',
+        'https://forsal.pl/.feed',
+        'https://businessinsider.com.pl/.feed',
+        'https://www.bankier.pl/rss/wiadomosci.xml',
+        'https://pap-mediaroom.pl/kategoria/swiat/rss.xml',
+        'https://www.obserwatorfinansowy.pl/feed/',
+        'https://www.fxmag.pl/rss',
     ],
 ];
 

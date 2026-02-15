@@ -132,7 +132,7 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://independenttrader.pl/feed",
     "https://www.fxmag.pl/rss",
   ],
-  // Kryptowaluty - polskie źródła
+  // Kryptowaluty - tylko polskie źródła
   crypto: [
     "https://mybank.pl/news/wiadomosci-kryptowaluty-rss.xml",
     "https://www.bankier.pl/rss/wiadomosci.xml",
@@ -142,8 +142,6 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://pl.beincrypto.com/feed/",
     "https://bitcoin.pl/feed/",
     "https://bithub.pl/feed/",
-    "https://cointelegraph.com/rss",
-    "https://decrypt.co/feed",
   ],
   // Waluty i Forex
   waluty: [
@@ -162,6 +160,15 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://www.obserwatorfinansowy.pl/feed/",
     // SII - analizy inwestycyjne
     "https://www.sii.org.pl/rss.xml",
+  ],
+  // Fintech
+  fintech: [
+    "https://www.bankier.pl/rss/wiadomosci.xml",
+    "https://businessinsider.com.pl/.feed",
+    "https://www.money.pl/rss/rss.xml",
+    "https://forsal.pl/.feed",
+    "https://mybank.pl/news/wiadomosci-rss.xml",
+    "https://www.obserwatorfinansowy.pl/feed/",
   ],
   // Dla strony głównej - mix wszystkich polskich źródeł
   all: [
@@ -227,20 +234,17 @@ const RSS_FEEDS: Record<string, string[]> = {
     "https://biznes.wprost.pl/rss",
     "https://tvn24.pl/najnowsze.xml",
   ],
-  // Świat - rynki globalne, makro, geopolityka
+  // Świat - rynki globalne, makro, geopolityka (tylko polskie źródła)
   swiat: [
-    // Polskie serwisy z sekcjami światowymi
-    "https://wiadomosci.onet.pl/swiat/rss",
-    "https://wydarzenia.interia.pl/swiat/feed",
-    "https://www.rp.pl/rss_swiat",
-    // Polsat News – kanał świat
-    "https://www.polsatnews.pl/rss/swiat.xml",
-    // CIRE.pl – wiadomości ze świata (PL)
-    "https://www.cire.pl/rss/swiat.xml",
-    "https://www.bankier.pl/rss/wiadomosci.xml",
+    "https://www.rp.pl/rss/swiat",
+    "https://wiadomosci.gazeta.pl/pub/rss/wiadomosci_swiat.xml",
     "https://www.money.pl/rss/rss.xml",
     "https://forsal.pl/.feed",
-    "https://tvn24.pl/najnowsze.xml",
+    "https://businessinsider.com.pl/.feed",
+    "https://www.bankier.pl/rss/wiadomosci.xml",
+    "https://pap-mediaroom.pl/kategoria/swiat/rss.xml",
+    "https://www.obserwatorfinansowy.pl/feed/",
+    "https://www.fxmag.pl/rss",
   ],
 };
 
