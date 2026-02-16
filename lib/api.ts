@@ -16,20 +16,27 @@ export function isLocalhost(): boolean {
 
 /**
  * Check if we should use Next.js API routes
- * Returns true for: localhost (dev server)
- * Returns false for: Vercel static export and static hosting with PHP backend
+ * Returns true for: localhost (dev server) and Vercel deployments
+ * Returns false for: static hosting with PHP backend (nazwa.pl)
  */
 export function shouldUseNextApi(): boolean {
   if (typeof window === "undefined") return false;
 
-  // Check if we're in static export mode (no API routes available)
-  const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" ||
-                         process.env.NEXT_PUBLIC_USE_PHP_API === "true";
+  // Explicitly use PHP API if configured
+  if (process.env.NEXT_PUBLIC_USE_PHP_API === "true") {
+    return false;
+  }
 
-  if (isStaticExport) return false;
+  // Explicitly use Next.js API if configured
+  if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "false") {
+    return true;
+  }
 
-  // Only use Next.js API on localhost dev server
-  return isLocalhost();
+  // Auto-detect: Use Next.js API on localhost OR Vercel
+  const hostname = window.location.hostname;
+  const isVercel = hostname.includes("vercel.app") || hostname === "fusionfinance.pl";
+
+  return isLocalhost() || isVercel;
 }
 
 /**
