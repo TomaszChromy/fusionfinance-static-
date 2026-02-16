@@ -16,11 +16,20 @@ export function isLocalhost(): boolean {
 
 /**
  * Check if we should use Next.js API routes
- * Returns true for: localhost, Vercel, or any Node.js hosting
- * Returns false for: static hosting with PHP backend
+ * Returns true for: localhost (dev server)
+ * Returns false for: Vercel static export and static hosting with PHP backend
  */
 export function shouldUseNextApi(): boolean {
-  return true;
+  if (typeof window === "undefined") return false;
+
+  // Check if we're in static export mode (no API routes available)
+  const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" ||
+                         process.env.NEXT_PUBLIC_USE_PHP_API === "true";
+
+  if (isStaticExport) return false;
+
+  // Only use Next.js API on localhost dev server
+  return isLocalhost();
 }
 
 /**
