@@ -24,17 +24,24 @@ export function shouldUseNextApi(): boolean {
 
   // Explicitly use PHP API if configured
   if (process.env.NEXT_PUBLIC_USE_PHP_API === "true") {
+    console.log("[api] NEXT_PUBLIC_USE_PHP_API=true → using PHP");
     return false;
   }
 
   // Explicitly use Next.js API if configured
   if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "false") {
+    console.log("[api] NEXT_PUBLIC_STATIC_EXPORT=false → using Next.js API");
     return true;
   }
 
   // Auto-detect: Use Next.js API on localhost OR Vercel
   const hostname = window.location.hostname;
   const isVercel = hostname.includes("vercel.app") || hostname === "fusionfinance.pl";
+
+  console.log("[api] hostname:", hostname, "isVercel:", isVercel, "isLocalhost:", isLocalhost());
+  console.log("[api] NEXT_PUBLIC_STATIC_EXPORT:", process.env.NEXT_PUBLIC_STATIC_EXPORT);
+  console.log("[api] NEXT_PUBLIC_USE_PHP_API:", process.env.NEXT_PUBLIC_USE_PHP_API);
+  console.log("[api] shouldUseNextApi:", isLocalhost() || isVercel);
 
   return isLocalhost() || isVercel;
 }
