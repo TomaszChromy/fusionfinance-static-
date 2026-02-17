@@ -20,8 +20,27 @@ export function isLocalhost(): boolean {
  * - when NEXT_PUBLIC_USE_PHP_API=true: prefer PHP endpoints (static hosting)
  */
 export function shouldUseNextApi(): boolean {
-  const usePhpApi = process.env.NEXT_PUBLIC_USE_PHP_API === "true";
-  return !usePhpApi;
+  // Env flags for static export / PHP backend
+  const isStaticExport =
+    typeof process !== "undefined" &&
+    (process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" || process.env.STATIC_EXPORT === "true");
+
+  const envForcesPhpApi =
+    typeof process !== "undefined" &&
+    (process.env.NEXT_PUBLIC_USE_PHP_API === "true" || isStaticExport);
+
+  if (envForcesPhpApi) return false;
+
+  // On the server (SSR on Vercel) always use Next.js API
+  if (typeof window === "undefined") return true;
+
+  const hostname = window.location.hostname;
+
+  // Static hosting on fusionfinance.pl (PHP backend) – use PHP API
+  if (hostname === "fusionfinance.pl" || hostname === "www.fusionfinance.pl") return false;
+
+  // Default: Next.js API
+  return true;
 }
 
 /**
