@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Ekstrakcja słów kluczowych z historii
-    const keywords = extractKeywords(userViews.map((v) => v.title));
+    const keywords = extractKeywords(userViews.map((v: { title: string }) => v.title));
 
     // Szukaj artykułów zawierających podobne słowa kluczowe
     const recommendedArticles = await prisma.articleView.findMany({
@@ -95,7 +95,7 @@ export async function GET(request: NextRequest) {
         })),
         NOT: {
           articleId: {
-            in: userViews.map((v) => v.articleId),
+            in: userViews.map((v: { articleId: string }) => v.articleId),
           },
         },
       },
