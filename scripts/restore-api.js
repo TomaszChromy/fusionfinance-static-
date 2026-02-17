@@ -14,6 +14,12 @@ const publicDir = path.join(__dirname, '..', 'public');
 
 console.log('🔄 Przywracam API routes...');
 
+// Na Vercel static-export jest pomijany, nie dotykamy out/
+if (process.env.VERCEL === '1') {
+  console.log('ℹ️ Vercel build – pomijam restore-api.');
+  process.exit(0);
+}
+
 // Przywróć folder api
 if (fs.existsSync(backupDir)) {
   // Usuń api jeśli istnieje (nie powinno)

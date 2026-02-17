@@ -12,6 +12,12 @@ const backupDir = path.join(__dirname, '..', '.api-backup');
 
 console.log('📦 Przygotowuję do eksportu statycznego...');
 
+// Na Vercel nie robimy static-export (SSR, API musi zostać).
+if (process.env.VERCEL === '1') {
+  console.log('ℹ️ Vercel build – pomijam prepare-static (zostawiam app/api).');
+  process.exit(0);
+}
+
 // Utwórz folder backup
 if (!fs.existsSync(backupDir)) {
   fs.mkdirSync(backupDir, { recursive: true });
