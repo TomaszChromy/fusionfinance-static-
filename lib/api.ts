@@ -15,14 +15,13 @@ export function isLocalhost(): boolean {
 }
 
 /**
- * Check if we should use Next.js API routes
- * Returns true for: localhost (dev server) and Vercel deployments
- * Returns false for: static hosting with PHP backend (nazwa.pl)
+ * Decides which API to call.
+ * - default: Next.js API (Vercel / localhost)
+ * - when NEXT_PUBLIC_USE_PHP_API=true: prefer PHP endpoints (static hosting)
  */
 export function shouldUseNextApi(): boolean {
-  // ALWAYS use Next.js API routes (Vercel deployment)
-  // PHP API is not used anymore
-  return true;
+  const usePhpApi = process.env.NEXT_PUBLIC_USE_PHP_API === "true";
+  return !usePhpApi;
 }
 
 /**
@@ -69,11 +68,17 @@ export async function fetchApi<T>(
 ): Promise<T> {
   const url = getApiUrl(endpoint, params);
   const response = await fetch(url, options);
-  
+
   if (!response.ok) {
     throw new Error(`API error: ${response.status} ${response.statusText}`);
   }
-  
+
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    const body = await response.text();
+    throw new Error(`API error: expected JSON, got ${contentType || "unknown"}. Preview: ${body.slice(0, 80)}`);
+  }
+
   return response.json();
 }
 
@@ -97,13 +102,24 @@ export function getArticleApiUrl(url: string): string {
 export async function fetchRss(feed: string, limit: number = 10) {
   const params = { feed, limit };
 
+  const useNextApi = shouldUseNextApi();
+
   // Build both URLs: prefer Next API, fallback to PHP (for static hosting)
   const search = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => search.set(key, String(value)));
 
   const primaryUrl = getApiUrl("rss", params);
-  const fallbackUrl = primaryUrl.endsWith(".php") ? `/api/rss?${search.toString()}` : `/api/rss.php?${search.toString()}`;
-  const urls = [primaryUrl, fallbackUrl];
+
+  // Determine fallback order based on deployment mode
+  const urls: string[] = [primaryUrl];
+
+  if (useNextApi) {
+    // Optional fallback to PHP only if ktoś ręcznie wrzucił php na statycznym hoście
+    urls.push(`/api/rss.php?${search.toString()}`);
+  } else {
+    // PHP primary, fallback to Next (dla dev/testów)
+    urls.push(`/api/rss?${search.toString()}`);
+  }
 
   let lastError: unknown;
 
@@ -112,6 +128,13 @@ export async function fetchRss(feed: string, limit: number = 10) {
       const response = await fetch(url, { cache: "no-store" });
       if (!response.ok) {
         lastError = new Error(`API error: ${response.status} ${response.statusText}`);
+        continue;
+      }
+
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        const body = await response.text();
+        lastError = new Error(`Invalid response (expected JSON, got ${contentType || "unknown"}) from ${url}. Preview: ${body.slice(0, 80)}`);
         continue;
       }
 
