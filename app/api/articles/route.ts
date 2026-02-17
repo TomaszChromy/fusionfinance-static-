@@ -1,9 +1,20 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import type { Article } from "@prisma/client";
 import { FALLBACK_ARTICLES } from "./fallback";
 
-type ListItem = Omit<Article, "content"> & { content?: never };
+type ListItem = {
+  id: string | number;
+  slug: string | null;
+  title: string;
+  summary: string;
+  coverImage: string | null;
+  category: string | null;
+  tags: string[];
+  source: string | null;
+  publishedAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
+};
 type FallbackArticle = typeof FALLBACK_ARTICLES[number];
 
 async function getPrismaSafe() {
