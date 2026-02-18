@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ShareButtons from "@/components/ShareButtons";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { FALLBACK_ARTICLES } from "@/data/articles-fallback";
+import { decode } from "he";
 
 export const dynamicParams = false;
 
@@ -38,6 +39,34 @@ function getFallbackArticle(slug: string): ArticlePayload | null {
     item: { id: fallback.slug, ...fallback },
     source: "fallback",
   };
+}
+
+function stripHtml(html: string): string {
+  // Remove <script> and <style> blocks entirely
+  const withoutScripts = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "").replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
+  // Remove all tags, collapse whitespace
+  const textOnly = withoutScripts.replace(/<[^>]+>/g, " ");
+  return decode(textOnly).replace(/\s+/g, " ").trim();
+}
+
+function cleanContent(content: string): string[] {
+  if (!content) return [];
+  // If HTML present, strip tags; otherwise split by paragraphs
+  const hasTags = /<[^>]+>/.test(content);
+  const plain = hasTags ? stripHtml(content) : content;
+  const blacklist = [
+    /^źródło[:\s]/i,
+    /^link\b/i,
+    /kliknij aby powiększyć/i,
+    /zdjęcie ilustracyjne/i,
+    /^czytaj r+ównież/i,
+  ];
+
+  return plain
+    .split(/\n\n+/)
+    .map(p => p.trim())
+    .filter(Boolean)
+    .filter(p => !blacklist.some(rx => rx.test(p)));
 }
 
 async function fetchArticle(slug: string, baseUrl: string): Promise<ArticlePayload> {
@@ -120,7 +149,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     year: "numeric",
   });
 
-  const paragraphs = article.content.split(/\n\n+/).map(p => p.trim()).filter(Boolean);
+  const paragraphs = cleanContent(article.content);
 
   return (
     <main className="min-h-screen bg-[#08090c]">
