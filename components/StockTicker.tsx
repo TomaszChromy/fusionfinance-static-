@@ -25,7 +25,16 @@ export default function StockTicker({
   variant = "default",
   className = "",
 }: StockTickerProps) {
-  const duplicatedItems = [...items, ...items];
+  const uniqueItems = Array.from(new Map(items.map(i => [i.symbol, i])).values());
+  const duplicatedItems = uniqueItems.length ? [...uniqueItems, ...uniqueItems] : [];
+
+  if (duplicatedItems.length === 0) {
+    return (
+      <div className={`overflow-hidden bg-[#0c0d10] border-y border-white/5 ${className}`}>
+        <div className="px-4 py-2 text-xs text-[#71717a]">Dane niedostępne</div>
+      </div>
+    );
+  }
 
   const TickerItem = ({ item }: { item: StockItem }) => {
     const isPositive = item.change >= 0;
@@ -176,4 +185,3 @@ export function StockDisplay({
     </div>
   );
 }
-

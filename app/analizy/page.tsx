@@ -98,7 +98,7 @@ export default function AnalizyPage() {
             <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-medium text-[#f4f4f5]">Szybki pulpit</h3>
-                <span className="text-[10px] text-[#c9a962] uppercase tracking-wide">φ layout</span>
+                <span className="text-[10px] text-[#c9a962] uppercase tracking-wide">Analizy premium</span>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/5 rounded-lg p-3 border border-white/5">

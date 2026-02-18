@@ -63,25 +63,12 @@ export default function Footer() {
         </div>
         {/* Social */}
         <div>
-          <h4 className="text-xs uppercase tracking-[0.15em] text-[#c9a962] font-medium mb-3">Obserwuj nas</h4>
-          <div className="flex gap-3">
-            {[
-              { label: "X", title: "Twitter / X", href: "#" },
-              { label: "in", title: "LinkedIn", href: "#" },
-              { label: "f", title: "Facebook", href: "#" },
-            ].map((item) => (
-              <a
-                key={item.title}
-                href={item.href}
-                title={item.title}
-                className={socialCircleClass}
-              >
-                <span className={socialLabelClass}>{item.label}</span>
-                <span className={socialGlowClass} />
-              </a>
-            ))}
+          <h4 className="text-xs uppercase tracking-[0.15em] text-[#c9a962] font-medium mb-3">Kontakt</h4>
+          <div className="space-y-2 text-xs text-[#71717a]">
+            <a className="block hover:text-[#f4f4f5] transition-colors" href="mailto:kontakt@fusionfinance.pl">kontakt@fusionfinance.pl</a>
+            <a className="block hover:text-[#f4f4f5] transition-colors" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a className="block hover:text-[#f4f4f5] transition-colors" href="https://twitter.com" target="_blank" rel="noreferrer">X (Twitter)</a>
           </div>
-          <p className="mt-3 text-[10px] text-[#52525b]">Bądź na bieżąco</p>
         </div>
       </div>
 
@@ -138,34 +125,7 @@ export default function Footer() {
       </div>
 
       {/* Partners Section */}
-      <div className="py-6 border-t border-white/5">
-        <p className="text-center text-[10px] uppercase tracking-[0.15em] text-[#71717a] mb-4">Partnerzy</p>
-        <div className="flex items-center justify-center gap-6">
-          {/* Tomasz Chromy */}
-          <a
-            href="https://tomaszchromy.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group px-4 py-2 rounded-lg bg-[#0c0d10] hover:bg-[#0f1014] border border-[#c9a962]/10 hover:border-[#c9a962]/40 transition-all duration-300"
-          >
-            <span className="text-xs text-[#71717a] group-hover:text-[#c9a962] transition-colors font-medium tracking-wide">tomaszchromy.com</span>
-          </a>
-          {/* TomSoft Website */}
-          <a
-            href="https://tomsoft-website.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group px-4 py-2 rounded-lg bg-[#0c0d10] hover:bg-[#0f1014] border border-[#c9a962]/10 hover:border-[#c9a962]/40 transition-all duration-300"
-          >
-            <span className="text-xs text-[#71717a] group-hover:text-[#c9a962] transition-colors font-medium tracking-wide">tomsoft-website.com</span>
-          </a>
-        </div>
-      </div>
-
-      {/* Visit Counter */}
-      <div className="pb-4">
-        <VisitCounter />
-      </div>
+      <div className="pb-4" />
 
       {/* Bottom gold line */}
       <div className="h-0.5 bg-gradient-to-r from-transparent via-[#c9a962]/60 to-transparent" />

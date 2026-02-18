@@ -56,12 +56,11 @@ export default function BreakingNews() {
 
   // Nie renderuj na serwerze żeby uniknąć hydration mismatch
   if (!mounted) {
-    return (
-      <div className="bg-gradient-to-r from-[#0f1115] via-[#1a1d24] to-[#0f1115] border-b border-[#c9a962]/30 h-[42px]" />
-    );
+    return null;
   }
 
-  const displayNews = [...news, ...news, ...news];
+  const uniqueNews = Array.from(new Map(news.map(item => [item.title, item])).values());
+  const displayNews = uniqueNews.length ? uniqueNews : fallbackNews;
 
   return (
     <div
@@ -83,12 +82,12 @@ export default function BreakingNews() {
           <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0f1115] to-transparent z-10 pointer-events-none" />
 
           <motion.div
-            animate={{ x: isPaused ? undefined : [0, -4500] }}
+            animate={{ x: isPaused ? 0 : [0, -2200] }}
             transition={{
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 60,
+                duration: 40,
                 ease: "linear",
               },
             }}
