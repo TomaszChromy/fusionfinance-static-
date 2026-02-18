@@ -6,8 +6,27 @@ import PageHero from "@/components/PageHero";
 import MarketNews from "@/components/MarketNews";
 import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
 import MarketBar from "@/components/MarketBar";
+import RSSArticles from "@/components/RSSArticles";
+import RSSFeatured from "@/components/RSSFeatured";
+import TopList from "@/components/TopList";
 
 export default function SwiatPage() {
+  const topWorld = [
+    { label: "S&P 500", value: "+0.31%", direction: "up" },
+    { label: "Nasdaq", value: "+0.44%", direction: "up" },
+    { label: "DAX", value: "-0.17%", direction: "down" },
+  ];
+  const topCommod = [
+    { label: "Złoto", value: "-0.12%", direction: "down" },
+    { label: "Ropa Brent", value: "+0.25%", direction: "up" },
+    { label: "Miedź", value: "+0.18%", direction: "up" },
+  ];
+  const topFx = [
+    { label: "EUR/USD", value: "+0.08%", direction: "up" },
+    { label: "USD/JPY", value: "-0.12%", direction: "down" },
+    { label: "GBP/USD", value: "+0.05%", direction: "up" },
+  ];
+
   return (
     <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <MarketBar />
@@ -21,7 +40,60 @@ export default function SwiatPage() {
           eyebrow="Rynki globalne"
           badge="Live"
         />
+        {/* Hero: main story + snapshot rynków globalnych */}
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
+            <RSSFeatured
+              feedType="swiat"
+              limit={5}
+              title="Analiza dnia (Świat)"
+              description="Najważniejszy materiał globalny"
+              eyebrow="Pilne"
+            />
+          </div>
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 space-y-4">
+            <h3 className="text-sm font-semibold text-[var(--text)]">Snapshot globalny</h3>
+            <TopList title="Indeksy" items={topWorld} />
+            <TopList title="Surowce" items={topCommod} />
+            <TopList title="Waluty" items={topFx} />
+          </div>
+        </div>
+
+        {/* Kolumny newsów */}
+        <div className="grid gap-6 lg:grid-cols-3 mt-10">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 space-y-4">
+            <h2 className="text-lg font-semibold text-[var(--text)]">Makro & Geopolityka</h2>
+            <RSSArticles feedType="swiat" limit={5} showImage />
+            <ArticleFeedLoadMore feedType="swiat" initialCount={6} step={3} />
+          </div>
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 space-y-4">
+            <h2 className="text-lg font-semibold text-[var(--text)]">Rynki & Spółki</h2>
+            <RSSArticles feedType="gielda" limit={5} showImage />
+            <ArticleFeedLoadMore feedType="gielda" initialCount={6} step={3} />
+          </div>
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 space-y-4">
+            <h2 className="text-lg font-semibold text-[var(--text)]">Surowce & Energia</h2>
+            <RSSArticles feedType="biznes" limit={5} showImage />
+            <ArticleFeedLoadMore feedType="biznes" initialCount={6} step={3} />
+          </div>
+        </div>
+
+        {/* Dane rynkowe + reklama */}
+        <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-10">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
+            <h2 className="text-lg font-semibold text-[var(--text)] mb-3">Dane rynkowe (Global)</h2>
+            <TopList title="Indeksy" items={topWorld} />
+            <div className="h-4" />
+            <TopList title="FX Majors" items={topFx} />
+          </div>
+          <div className="rounded-2xl border border-dashed border-[var(--border)] bg-[#0c0d10] p-6 text-center text-sm text-[var(--muted)]">
+            <p className="text-[var(--text)] font-semibold mb-2">Miejsce na Twoją reklamę</p>
+            <p>Kontakt: tomasz.chromy@outlook.com</p>
+          </div>
+        </div>
+
+        {/* Dłuższe listy + market news */}
+        <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-10">
           <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
             <ArticleFeedLoadMore
               feedType="swiat"
