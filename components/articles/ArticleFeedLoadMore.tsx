@@ -73,7 +73,7 @@ export default function ArticleFeedLoadMore({
       {visible < items.length && (
         <button
           type="button"
-          className="w-full rounded-xl border border-[#e6e8ee] bg-white py-3 text-sm font-medium text-[#2563eb] hover:bg-[#f0f4ff] transition-colors"
+          className="w-full rounded-xl border border-[var(--border)] bg-[var(--surface)] py-3 text-sm font-medium text-[var(--accent)] hover:bg-white/5 transition-colors"
           onClick={() => setVisible(Math.min(items.length, visible + step))}
         >
           Załaduj więcej

@@ -20,7 +20,7 @@ export default function SwiatPage() {
           badge="Live"
         />
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
-          <div className="bg-white rounded-2xl shadow-sm border border-[#e6e8ee] p-4 md:p-6">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
             <ArticleFeedLoadMore
               feedType="swiat"
               initialCount={12}

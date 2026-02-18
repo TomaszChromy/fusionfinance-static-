@@ -17,41 +17,9 @@
    ============================================ */
 
 :root {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --surface-2: #f6f7f9;
-  --border: #e6e8ee;
-
-  --text: #111827;
-  --text-2: #374151;
-  --muted: #6b7280;
-
-  --accent: #2563eb;
-  --accent-2: #1d4ed8;
-  --link: #2563eb;
-
-  --success: #16a34a;
-  --danger: #dc2626;
-  --warning: #d97706;
-
-  --shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
-
-  /* spacing & radius */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --radius-sm: 10px;
-  --radius-lg: 16px;
-}
-
-[data-theme="dark"] {
-  --bg: #0b0f14;
-  --surface: #111827;
-  --surface-2: #0f172a;
+  --bg: #08090c;
+  --surface: #0c0d10;
+  --surface-2: #111827;
   --border: #1f2937;
 
   --text: #f8fafc;
@@ -66,7 +34,18 @@
   --danger: #f87171;
   --warning: #fbbf24;
 
-  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow: 0 12px 32px rgba(0,0,0,0.35);
+
+  /* spacing & radius */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-sm: 10px;
+  --radius-lg: 16px;
 }
 
 /* ============================================

@@ -14,7 +14,7 @@ import MarketNews from "@/components/MarketNews";
 
 export default function AnalizyPage() {
   return (
-    <main className="min-h-screen bg-[#f6f7f9] text-[#111827]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
@@ -29,7 +29,7 @@ export default function AnalizyPage() {
 
         <div className="space-y-8 mt-6">
           {/* Premium Analyses Section */}
-          <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4 md:p-6">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4 md:p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1 h-7 bg-gradient-to-b from-[#2563eb] to-[#1d4ed8] rounded-full" />
               <div>
@@ -41,7 +41,7 @@ export default function AnalizyPage() {
           </div>
 
           {/* Editorial articles */}
-          <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4 md:p-6">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4 md:p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1 h-7 bg-gradient-to-b from-[#a855f7] to-[#7c3aed] rounded-full" />
               <div>
@@ -55,7 +55,7 @@ export default function AnalizyPage() {
           {/* Two-column layout */}
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
             {/* Left column - Articles */}
-            <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4 md:p-6">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4 md:p-6">
               <ArticleFeedLoadMore
                 feedType="analizy"
                 initialCount={12}
@@ -67,7 +67,7 @@ export default function AnalizyPage() {
 
             {/* Right column - Sidebar */}
             <aside className="space-y-4 lg:sticky lg:top-20 lg:self-start">
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-sm font-semibold text-[#111827]">Szybki pulpit</h3>
                   <span className="text-[10px] text-[#2563eb] uppercase tracking-wide">Analizy</span>
@@ -92,15 +92,15 @@ export default function AnalizyPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <Calculator />
               </div>
 
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <Glossary variant="compact" />
               </div>
 
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <RiskMeter value={45} variant="gauge" />
               </div>
 

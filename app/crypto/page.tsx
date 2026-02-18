@@ -13,7 +13,7 @@ import MarketNews from "@/components/MarketNews";
 
 export default function CryptoPage() {
   return (
-    <main className="min-h-screen bg-[#f6f7f9] text-[#111827]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
@@ -29,19 +29,19 @@ export default function CryptoPage() {
         />
 
         <div className="space-y-8 mt-6">
-          <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4 md:p-6">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4 md:p-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1 h-7 bg-gradient-to-b from-[#f7931a] to-[#f59e0b] rounded-full" />
               <div>
-                <h2 className="text-lg font-semibold text-[#111827]">Kursy kryptowalut</h2>
-                <p className="text-sm text-[#6b7280]">BTC, ETH, SOL, ADA, BNB, XRP</p>
+                <h2 className="text-lg font-semibold text-[var(--text)]">Kursy kryptowalut</h2>
+                <p className="text-sm text-[var(--muted)]">BTC, ETH, SOL, ADA, BNB, XRP</p>
               </div>
             </div>
             <CryptoGrid limit={30} variant="grid" />
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
-            <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4 md:p-6">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4 md:p-6">
               <ArticleFeedLoadMore
                 feedType="crypto"
                 initialCount={12}
@@ -51,13 +51,13 @@ export default function CryptoPage() {
               />
             </div>
             <div className="space-y-4">
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <MarketMoodIndicator value={72} />
               </div>
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <Glossary variant="compact" />
               </div>
-              <div className="bg-white rounded-2xl border border-[#e6e8ee] shadow-sm p-4">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm p-4">
                 <PriceComparison />
               </div>
               <MarketNews maxItems={4} />

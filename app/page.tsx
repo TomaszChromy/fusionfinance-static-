@@ -11,7 +11,7 @@ import { DailyQuote, SocialProof, QuickActions } from "@/components/sidebar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f6f7f9] text-[#111827]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
       <BreakingNews />
 
@@ -25,7 +25,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8"
         >
-          <div className="bg-white rounded-2xl shadow-sm border border-[#e6e8ee] p-4 md:p-6">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm">
             <RSSFeatured
               feedType="all"
               limit={6}
@@ -47,7 +47,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="bg-white rounded-2xl shadow-sm border border-[#e6e8ee] p-4 md:p-6 mt-10"
+          className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 mt-10"
         >
           <ArticleList
             feedType="all"
@@ -65,10 +65,10 @@ export default function Home() {
           transition={{ duration: 0.4 }}
           className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-10"
         >
-          <div className="bg-white rounded-2xl shadow-sm border border-[#e6e8ee] p-4 md:p-6">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
             <RSSArticles feedType="polska" limit={8} showImage />
           </div>
-          <div className="bg-white rounded-2xl shadow-sm border border-[#e6e8ee] p-4 md:p-6">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
             <RSSArticles feedType="gielda" limit={6} showImage={false} />
           </div>
         </motion.section>
