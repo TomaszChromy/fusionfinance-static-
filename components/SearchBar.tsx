@@ -131,7 +131,8 @@ export default function SearchBar({ onClose, isOpen = true }: SearchBarProps) {
         {/* Input */}
         <input
           ref={inputRef}
-          type="text"
+          type="search"
+          aria-label="Szukaj artykułów, tematów, słów kluczowych"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Szukaj artykułów, tematów, słów kluczowych..."

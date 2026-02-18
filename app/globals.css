@@ -128,8 +128,11 @@ a:hover {
 
 /* Focus state dla accessibility */
 a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--gold-primary);
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
