@@ -9,6 +9,7 @@ import HeatMap from "@/components/HeatMap";
 import TrendIndicator from "@/components/TrendIndicator";
 import StockTicker from "@/components/StockTicker";
 import TradingViewChart from "@/components/TradingViewChart";
+import TopList from "@/components/TopList";
 
 export default function GieldaPage() {
   const headlineTickers = [
@@ -67,6 +68,54 @@ export default function GieldaPage() {
     { id: "asz", symbol: "ASZ", name: "Asseco", change: 1.1, value: 88.5, size: 38 },
   ];
 
+  const topMoversData = {
+    gainers: [
+      { symbol: "CDR", name: "CD Projekt", change: "+4.4%" },
+      { symbol: "JSW", name: "JSW", change: "+3.1%" },
+      { symbol: "LPP", name: "LPP", change: "+2.5%" },
+    ],
+    losers: [
+      { symbol: "KGH", name: "KGHM", change: "-2.7%" },
+      { symbol: "PZU", name: "PZU", change: "-1.1%" },
+      { symbol: "CPS", name: "Cyfrowy Polsat", change: "-0.9%" },
+    ],
+    volume: [
+      { symbol: "PKO", name: "PKO BP", volume: "82 mln" },
+      { symbol: "PEO", name: "Pekao", volume: "66 mln" },
+      { symbol: "ALE", name: "Allegro", volume: "54 mln" },
+    ],
+  };
+
+  const calendarItems = [
+    { date: "18 lut", time: "14:00", title: "Fed minutes", tag: "USA" },
+    { date: "20 lut", time: "10:00", title: "RPP: komunikat", tag: "PL" },
+    { date: "22 lut", time: "14:30", title: "CPI USA (m/m)", tag: "Makro" },
+  ];
+
+  const topMovers = {
+    gainers: [
+      { symbol: "CDR", name: "CD Projekt", change: "+4.4%" },
+      { symbol: "JSW", name: "JSW", change: "+3.1%" },
+      { symbol: "LPP", name: "LPP", change: "+2.5%" },
+    ],
+    losers: [
+      { symbol: "KGH", name: "KGHM", change: "-2.7%" },
+      { symbol: "PZU", name: "PZU", change: "-1.1%" },
+      { symbol: "CPS", name: "Cyfrowy Polsat", change: "-0.9%" },
+    ],
+    volume: [
+      { symbol: "PKO", name: "PKO BP", volume: "82 mln" },
+      { symbol: "PEO", name: "Pekao", volume: "66 mln" },
+      { symbol: "ALE", name: "Allegro", volume: "54 mln" },
+    ],
+  };
+
+  const calendar = [
+    { date: "18 lut", time: "14:00", title: "Fed minutes", tag: "USA" },
+    { date: "20 lut", time: "10:00", title: "RPP: komunikat", tag: "PL" },
+    { date: "22 lut", time: "14:30", title: "CPI USA (m/m)", tag: "Makro" },
+  ];
+
   return (
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />
@@ -119,6 +168,44 @@ export default function GieldaPage() {
                 <TrendIndicator direction="up" strength="moderate" label="NIKKEI" value="+0.66%" />
                 <TrendIndicator direction="up" strength="strong" label="HSI" value="+1.08%" />
               </div>
+            </div>
+          </div>
+
+          <div className="phi-grid lg:grid-cols-[2fr_1.2fr]" style={{ gap: "var(--space-21)" }}>
+            <div className="phi-section">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
+                <h3 className="text-xs font-semibold text-[#f4f4f5] uppercase tracking-[0.1em]">Top listy dnia</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <TopList title="Wzrosty" items={topMoversData.gainers.map(i => ({ label: i.symbol, value: i.change, hint: i.name, direction: "up" }))} />
+                <TopList title="Spadki" items={topMoversData.losers.map(i => ({ label: i.symbol, value: i.change, hint: i.name, direction: "down" }))} />
+                <TopList title="Wolumen" items={topMoversData.volume.map(i => ({ label: i.symbol, value: i.volume, hint: i.name }))} />
+              </div>
+            </div>
+
+            <div className="phi-section">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
+                <h3 className="text-xs font-semibold text-[#f4f4f5] uppercase tracking-[0.1em]">Kalendarz rynkowy</h3>
+              </div>
+              <ul className="space-y-3">
+                {calendarItems.map((item) => (
+                  <li key={item.title} className="flex items-center justify-between bg-white/5 rounded-xl px-3 py-3 text-sm text-[#e4e4e7]">
+                    <div className="flex items-center gap-3">
+                      <div className="text-xs text-[#c9a962] font-semibold w-16 flex flex-col leading-tight">
+                        <span>{item.date}</span>
+                        <span className="text-[11px] text-[#9ca3af]">{item.time}</span>
+                      </div>
+                      <div>
+                        <p className="font-medium leading-snug">{item.title}</p>
+                        <p className="text-[12px] text-[#9ca3af]">{item.tag}</p>
+                      </div>
+                    </div>
+                    <span className="text-[11px] text-[#c9a962] font-semibold">Nadchodzi</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
