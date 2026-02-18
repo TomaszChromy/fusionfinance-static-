@@ -120,7 +120,7 @@ export async function GET(request: NextRequest) {
     );
 
     const sorted: SortedArticle[] = grouped
-      .sort((a, b) => b.views - a.views)
+      .sort((a: SortedArticle, b: SortedArticle) => b.views - a.views)
       .slice(0, limit);
 
     return NextResponse.json({
