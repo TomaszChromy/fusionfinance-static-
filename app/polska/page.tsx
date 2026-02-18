@@ -13,14 +13,14 @@ import RSSArticles from "@/components/RSSArticles";
 
 export default function PolskaPage() {
   const topIndices = [
-    { label: "WIG20", value: "+0.48%", direction: "up" },
-    { label: "mWIG40", value: "-0.35%", direction: "down" },
-    { label: "sWIG80", value: "+0.24%", direction: "up" },
+    { label: "WIG20", value: "+0.48%" },
+    { label: "mWIG40", value: "-0.35%" },
+    { label: "sWIG80", value: "+0.24%" },
   ];
   const topFx = [
-    { label: "EUR/PLN", value: "+0.29%", direction: "up" },
-    { label: "USD/PLN", value: "-0.22%", direction: "down" },
-    { label: "CHF/PLN", value: "+0.10%", direction: "up" },
+    { label: "EUR/PLN", value: "+0.29%" },
+    { label: "USD/PLN", value: "-0.22%" },
+    { label: "CHF/PLN", value: "+0.10%" },
   ];
 
   return (

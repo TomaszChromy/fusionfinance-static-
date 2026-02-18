@@ -12,19 +12,19 @@ import TopList from "@/components/TopList";
 
 export default function SwiatPage() {
   const topWorld = [
-    { label: "S&P 500", value: "+0.31%", direction: "up" },
-    { label: "Nasdaq", value: "+0.44%", direction: "up" },
-    { label: "DAX", value: "-0.17%", direction: "down" },
+    { label: "S&P 500", value: "+0.31%" },
+    { label: "Nasdaq", value: "+0.44%" },
+    { label: "DAX", value: "-0.17%" },
   ];
   const topCommod = [
-    { label: "Złoto", value: "-0.12%", direction: "down" },
-    { label: "Ropa Brent", value: "+0.25%", direction: "up" },
-    { label: "Miedź", value: "+0.18%", direction: "up" },
+    { label: "Złoto", value: "-0.12%" },
+    { label: "Ropa Brent", value: "+0.25%" },
+    { label: "Miedź", value: "+0.18%" },
   ];
   const topFx = [
-    { label: "EUR/USD", value: "+0.08%", direction: "up" },
-    { label: "USD/JPY", value: "-0.12%", direction: "down" },
-    { label: "GBP/USD", value: "+0.05%", direction: "up" },
+    { label: "EUR/USD", value: "+0.08%" },
+    { label: "USD/JPY", value: "-0.12%" },
+    { label: "GBP/USD", value: "+0.05%" },
   ];
 
   return (
