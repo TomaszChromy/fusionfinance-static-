@@ -19,3 +19,11 @@
 - Smoke E2E: home, artykuł, logowanie (Playwright) — uruchamiane w CI przeciwko https://fusionfinance-static.vercel.app.
 - Patrz `docs/QA_CHECKLIST.md`.
 
+
+### Lighthouse (mobile, 1 run, https://fusionfinance-static.vercel.app)
+- Performance: 61
+- Accessibility: 90
+- Best Practices: 75
+- SEO: 100
+
+Raport HTML: `lhci-report/fusionfinance_static_vercel_app--2026_02_18_02_29_45.report.html`

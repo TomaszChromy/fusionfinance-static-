@@ -4,6 +4,8 @@ const paths = [
   '/',
   '/artykuly/strategia-dywidendowa-2025',
   '/logowanie',
+  '/szukaj?q=gpw',
+  '/ulubione',
 ];
 
 test.describe('Smoke', () => {
