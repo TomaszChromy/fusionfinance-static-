@@ -14,14 +14,14 @@ import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
 
 export default function NotowaniaPage() {
   const topIndices = [
-    { label: "WIG20", value: "+0.48%", direction: "up" },
-    { label: "S&P 500", value: "+0.31%", direction: "up" },
-    { label: "DAX", value: "-0.17%", direction: "down" },
+    { label: "WIG20", value: "+0.48%" },
+    { label: "S&P 500", value: "+0.31%" },
+    { label: "DAX", value: "-0.17%" },
   ];
   const topFx = [
-    { label: "EUR/PLN", value: "+0.29%", direction: "up" },
-    { label: "USD/PLN", value: "-0.22%", direction: "down" },
-    { label: "BTC/USD", value: "+1.59%", direction: "up" },
+    { label: "EUR/PLN", value: "+0.29%" },
+    { label: "USD/PLN", value: "-0.22%" },
+    { label: "BTC/USD", value: "+1.59%" },
   ];
 
   return (
