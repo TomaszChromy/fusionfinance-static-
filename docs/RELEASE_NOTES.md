@@ -1,7 +1,7 @@
 # Release Notes (draft)
 
 ## Wersja: RC snapshot
-- Build: https://fusionfinance-static-cqr4f1oq3-tomasz-s-projects-587fbd1b.vercel.app
+- Build: https://fusionfinance-static-mo5dr8z1h-tomasz-s-projects-587fbd1b.vercel.app
 - Alias: fusionfinance.pl / www.fusionfinance.pl
 
 ### Zmiany
@@ -16,7 +16,8 @@
 - Playwright browsers instalowane on-demand w CI; lokalnie można wykonać `npx playwright install chromium`.
 
 ### QA skrót
-- Smoke E2E: home, artykuł, logowanie (Playwright) — uruchamiane w CI przeciwko https://fusionfinance-static.vercel.app.
+- Smoke E2E (Playwright, BASE_URL=https://fusionfinance-static-mo5dr8z1h-tomasz-s-projects-587fbd1b.vercel.app) — ❌ wpadka: wszystkie ścieżki przekierowane na "Login – Vercel" (prawdopodobnie wymagana autoryzacja Vercel). Do sprawdzenia: wyłączenie password-protect/preview protection lub wymuszenie produkcyjnego hosta bez logowania.
+- CI nadal uruchamia smoke przeciwko https://fusionfinance-static.vercel.app.
 - Patrz `docs/QA_CHECKLIST.md`.
 
 

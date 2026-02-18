@@ -63,7 +63,7 @@ export default function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-[0.15em] text-[#c9a962] font-medium mb-3">Kontakt</h4>
           <div className="space-y-2 text-xs text-[#71717a]">
-            <a className="block hover:text-[#f4f4f5] transition-colors" href="mailto:kontakt@fusionfinance.pl">kontakt@fusionfinance.pl</a>
+            <a className="block hover:text-[#f4f4f5] transition-colors" href="https://www.tomaszchromy.com" target="_blank" rel="noreferrer">www.tomaszchromy.com</a>
             <a className="block hover:text-[#f4f4f5] transition-colors" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
             <a className="block hover:text-[#f4f4f5] transition-colors" href="https://twitter.com" target="_blank" rel="noreferrer">X (Twitter)</a>
           </div>
