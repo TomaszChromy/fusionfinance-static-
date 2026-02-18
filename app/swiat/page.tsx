@@ -8,7 +8,7 @@ import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
 
 export default function SwiatPage() {
   return (
-    <main className="min-h-screen bg-[#f6f7f9] text-[#111827]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">

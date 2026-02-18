@@ -12,7 +12,7 @@ export default function NotowaniaPage() {
   return (
     <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
-      <div className="phi-shell">
+      <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
         <Breadcrumbs />
         <PageHero
           title="Notowania"
@@ -20,8 +20,8 @@ export default function NotowaniaPage() {
           eyebrow="Rynki"
           badge="Agregator PL"
         />
-        <div className="phi-stack" style={{ marginTop: "var(--space-13)", gap: "var(--space-21)" }}>
-          <div className="phi-section">
+        <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
               <div className="flex items-center gap-3">
                 <div className="w-1 h-7 bg-gradient-to-b from-[#60a5fa] to-[#2563eb] rounded-full" />
@@ -36,6 +36,11 @@ export default function NotowaniaPage() {
               </div>
             </div>
             <UnifiedCategoryLayout feedType="gielda" totalArticles={80} articlesPerPage={12} />
+          </div>
+
+          <div className="space-y-4">
+            <LiveIndicator label="Rynek" />
+            <InfoTooltip content="Agregator notowań w przygotowaniu" />
           </div>
         </div>
       </div>
