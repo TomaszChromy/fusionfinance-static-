@@ -1,8 +1,7 @@
 # STATUS (P0/P1)
 
 ## Blokery (P0)
-- Brak CI: dodać lint/typecheck/build w GitHub Actions (w toku).
-- Reguła Vercel "git author must have access" – wymaga workaround (tymczasowe ukrycie `.git`) lub dodania autora do zespołu (zalecane).
+- Reguła Vercel "git author must have access" – na planie Hobby używamy dwóch ścieżek: (a) deploy tylko z konta właściciela przez push (Git-based), (b) ręczny deploy z CLI z workaroundem `mv .git .git_tmp`.
 
 ## Pilne (P1)
 - Zweryfikować komplet envów prod/preview (Google/Stripe/Resend/AI itp.) – pominięte na teraz zgodnie z decyzją.
