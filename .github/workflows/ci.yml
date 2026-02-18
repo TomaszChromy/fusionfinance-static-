@@ -31,3 +31,10 @@ jobs:
           NEXTAUTH_SECRET: dummy-auth
           NEXTAUTH_URL: http://localhost:3000
         run: npm run build
+
+      - name: E2E smoke (Playwright, chromium)
+        env:
+          BASE_URL: https://fusionfinance-static.vercel.app
+        run: |
+          npx playwright install chromium
+          npm run test:e2e -- --project=chromium
