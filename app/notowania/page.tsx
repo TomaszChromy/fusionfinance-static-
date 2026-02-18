@@ -7,10 +7,12 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import UnifiedCategoryLayout from "@/components/UnifiedCategoryLayout";
 import LiveIndicator from "@/components/LiveIndicator";
 import { InfoTooltip } from "@/components/Tooltip";
+import MarketBar from "@/components/MarketBar";
 
 export default function NotowaniaPage() {
   return (
     <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
+      <MarketBar />
       <Navbar />
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
         <Breadcrumbs />

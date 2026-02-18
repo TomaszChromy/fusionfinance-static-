@@ -6,10 +6,12 @@ import PageHero from "@/components/PageHero";
 import { CategoryBadge } from "@/components/Badge";
 import MarketNews from "@/components/MarketNews";
 import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
+import MarketBar from "@/components/MarketBar";
 
 export default function PolskaPage() {
   return (
     <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
+      <MarketBar />
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">

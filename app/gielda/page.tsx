@@ -10,6 +10,8 @@ import TrendIndicator from "@/components/TrendIndicator";
 import StockTicker from "@/components/StockTicker";
 import TradingViewChart from "@/components/TradingViewChart";
 import TopList from "@/components/TopList";
+import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
+import MarketBar from "@/components/MarketBar";
 
 export default function GieldaPage() {
   const headlineTickers = [
@@ -94,9 +96,10 @@ export default function GieldaPage() {
 
   return (
     <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
+      <MarketBar />
       <Navbar />
 
-      <div className="phi-shell">
+      <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
         <Breadcrumbs />
         <PageHero
           title="Giełda"
@@ -106,8 +109,8 @@ export default function GieldaPage() {
           rightSlot={<CategoryBadge category="gielda" />}
         />
 
-        <div className="space-y-8 lg:space-y-10">
-          <div className="phi-section overflow-hidden">
+        <div className="space-y-8 lg:space-y-10 mt-6">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden shadow-sm">
             <div className="flex items-center border-b border-[var(--border)] px-4 py-3 gap-3">
               <div className="w-1 h-7 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
               <div>
@@ -123,9 +126,9 @@ export default function GieldaPage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            <HeatMap title="Mapa ciepła WIG20" data={heatmapData} className="phi-section" />
+            <HeatMap title="Mapa ciepła WIG20" data={heatmapData} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm" />
 
-            <div className="phi-section">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
                 <h3 className="text-xs font-semibold text-[var(--text)] uppercase tracking-[0.1em] flex items-center gap-2">
@@ -146,7 +149,7 @@ export default function GieldaPage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[2fr_1.2fr]">
-            <div className="phi-section">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
                 <h3 className="text-xs font-semibold text-[var(--text)] uppercase tracking-[0.1em]">Top listy dnia</h3>
@@ -158,7 +161,7 @@ export default function GieldaPage() {
               </div>
             </div>
 
-            <div className="phi-section">
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
                 <h3 className="text-xs font-semibold text-[var(--text)] uppercase tracking-[0.1em]">Kalendarz rynkowy</h3>
@@ -181,6 +184,17 @@ export default function GieldaPage() {
                 ))}
               </ul>
             </div>
+          </div>
+
+          {/* Artykuły giełdowe */}
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm">
+            <ArticleFeedLoadMore
+              feedType="gielda"
+              initialCount={12}
+              step={6}
+              title="Artykuły giełdowe"
+              subtitle="Spółki, indeksy, IPO"
+            />
           </div>
         </div>
       </div>

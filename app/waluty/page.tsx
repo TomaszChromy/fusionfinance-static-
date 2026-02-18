@@ -9,10 +9,12 @@ import CurrencyStrength from "@/components/CurrencyStrength";
 import PriceComparison from "@/components/PriceComparison";
 import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
 import MarketNews from "@/components/MarketNews";
+import MarketBar from "@/components/MarketBar";
 
 export default function WalutyPage() {
   return (
     <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
+      <MarketBar />
       <Navbar />
 
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
