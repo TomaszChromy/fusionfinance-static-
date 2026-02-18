@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
 
   // Headers dla bezpieczeństwa (dla dev server)
   async headers() {
-    return [
+    const headers = [
       {
         source: "/(.*)",
         headers: [
@@ -58,6 +58,20 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+    const bypass =
+      process.env.VERCEL_BYPASS_TOKEN || process.env.NEXT_PUBLIC_VERCEL_BYPASS_TOKEN;
+    if (bypass) {
+      headers.push({
+        source: "/(.*)",
+        headers: [
+          {
+            key: "x-vercel-protection-bypass",
+            value: bypass,
+          },
+        ],
+      });
+    }
+    return headers;
   },
 };
 
