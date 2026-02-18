@@ -127,7 +127,8 @@ font-sans: Geist (treść)
 
 ## 📚 Dokumentacja
 
-- 📖 **[Roadmap](./ROADMAP.md)** - Plan rozwoju projektu
+- 📖 **[Roadmap](./docs/ROADMAP.md)** - Plan rozwoju projektu
+- 📊 **[Status](./docs/STATUS.md)** - Blokery i priorytety na RC
 - ⚖️ **[Licencja](./LICENSE)** - Prawa autorskie
 
 ## 📞 Kontakt i Wsparcie
