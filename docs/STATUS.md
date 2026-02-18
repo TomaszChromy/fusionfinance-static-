@@ -9,3 +9,4 @@
 
 ## W toku / obserwacja
 - Ostrzeżenia `DATABASE_URL not set (static export/build)` w lokalnym buildzie – informacyjne, oczekiwane gdy brak env w static-export; w prod mamy DB, więc ok.
+- Smoke E2E (Playwright) przechodzi na prod z nagłówkiem `x-vercel-protection-bypass` (token skonfigurowany).

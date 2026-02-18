@@ -9,6 +9,8 @@
 - Naprawy Prisma import / build (`prisma generate` w build).
 - Typowanie API recommendations.
 - Dok. STATUS/ROADMAP/QA checklist.
+- Nowe layouty (jasne) dla home/kategorii (Polska, Świat, Analizy, Crypto, Waluty) z listami „Załaduj więcej”; reading mode artykułu + powiązane.
+- A11y/perf: lazy images, focus-visible, aria-label search.
 
 ### Znane ograniczenia / TODO
 - Integracje (Google/Stripe/Resend/OpenAI) celowo pominięte — dodać sekrety przed użyciem funkcji.
@@ -16,8 +18,8 @@
 - Playwright browsers instalowane on-demand w CI; lokalnie można wykonać `npx playwright install chromium`.
 
 ### QA skrót
-- Smoke E2E (Playwright, BASE_URL=https://fusionfinance-static-mo5dr8z1h-tomasz-s-projects-587fbd1b.vercel.app) — ❌ wpadka: wszystkie ścieżki przekierowane na "Login – Vercel" (prawdopodobnie wymagana autoryzacja Vercel). Do sprawdzenia: wyłączenie password-protect/preview protection lub wymuszenie produkcyjnego hosta bez logowania.
-- CI nadal uruchamia smoke przeciwko https://fusionfinance-static.vercel.app.
+- Smoke E2E (Playwright, BASE_URL=https://www.fusionfinance.pl, VERCEL_BYPASS_TOKEN aktywny) — ✅ 5/5 ścieżek.
+- CI nadal uruchamia smoke przeciwko https://fusionfinance-static.vercel.app (bez ochrony).
 - Patrz `docs/QA_CHECKLIST.md`.
 
 
