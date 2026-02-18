@@ -165,6 +165,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 src={article.coverImage}
                 alt={article.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 900px"
                 className="object-cover"
                 priority
                 unoptimized

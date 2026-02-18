@@ -8,14 +8,12 @@ import NotificationCenter from "./NotificationCenter";
 import UserMenu from "./UserMenu";
 
 const navLinks = [
-  // Obecne zakładki
   { name: "Polska", href: "/polska/" },
   { name: "Świat", href: "/swiat/" },
-  { name: "Notowania giełdowe", href: "/notowania/" },
-  { name: "Kursy walut", href: "/kursy-walut/" },
-  { name: "Kursy krypto", href: "/krypto/" },
-  // Zakładki z upstream (bez Rynki/Crypto)
   { name: "Giełda", href: "/gielda/" },
+  { name: "Notowania", href: "/notowania/" },
+  { name: "Waluty", href: "/kursy-walut/" },
+  { name: "Krypto", href: "/krypto/" },
 ];
 
 export default function Navbar() {
@@ -44,7 +42,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-        className="mx-auto max-w-[1400px] px-4 lg:px-6"
+        className="mx-auto w-full max-w-[1200px] px-3 sm:px-4 lg:px-6"
       >
         {/* Compact top bar - hidden when scrolled */}
         <div className={`flex items-center justify-between transition-all duration-300 overflow-hidden ${
@@ -95,10 +93,10 @@ export default function Navbar() {
 
         {/* Main header row - Logo + Navigation */}
         <div className={`flex items-center justify-between transition-all duration-300 ${
-          scrolled ? "py-2" : "py-4"
+          scrolled ? "py-2" : "py-3"
         }`}>
           {/* Logo */}
-          <Link href="/" className="group flex-shrink-0">
+          <Link href="/" className="group flex-shrink-0" aria-label="FusionFinance strona główna">
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
@@ -185,7 +183,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-[13px] text-[#a1a1aa] hover:text-[#c9a962] hover:bg-white/[0.03] uppercase tracking-[0.1em] font-medium transition-all duration-200 rounded-lg"
+                className="block px-4 py-3 text-[13px] text-[#e4e4e7] hover:text-[#c9a962] hover:bg-white/[0.05] uppercase tracking-[0.08em] font-medium transition-all duration-200 rounded-lg"
               >
                 {item.name}
               </Link>
