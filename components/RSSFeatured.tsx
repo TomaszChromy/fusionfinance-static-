@@ -225,9 +225,10 @@ export default function RSSFeatured({
                   alt={articles[0].title}
                   fill
                   className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+                loading="eager"
+                decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
@@ -281,7 +282,8 @@ export default function RSSFeatured({
                     fill
                     className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105"
                     sizes="150px"
-                    unoptimized
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

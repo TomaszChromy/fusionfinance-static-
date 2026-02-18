@@ -151,7 +151,8 @@ export default function RelatedArticles({
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  unoptimized
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-transparent" />
                 <div className="absolute left-3 bottom-3 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] rounded-full bg-black/60 text-[#e4e4e7]">
