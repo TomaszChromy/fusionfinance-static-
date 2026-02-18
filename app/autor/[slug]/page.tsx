@@ -29,7 +29,7 @@ export default function AuthorPage() {
         <Navbar />
         <div className="mx-auto max-w-[900px] px-4 py-20 text-center">
           <h1 className="text-2xl text-[#f4f4f5] mb-4">Autor nie znaleziony</h1>
-          <Link href="/" className="text-[#c9a962] hover:underline">Wróć na stronę główną</Link>
+          <Link href="/" className="text-[var(--accent)] hover:underline">Wróć na stronę główną</Link>
         </div>
         <Footer />
       </main>
@@ -44,14 +44,14 @@ export default function AuthorPage() {
 
         {/* Author Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="bg-[#0c0d10] border border-[#c9a962]/20 rounded-2xl p-8 mt-4 mb-8">
+          className="bg-[#0c0d10] border border-[var(--border)] rounded-2xl p-8 mt-4 mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#c9a962] to-[#9a7b3c] flex items-center justify-center text-[#08090c] font-bold text-3xl flex-shrink-0">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--accent)] to-[#1d4ed8] flex items-center justify-center text-white font-bold text-3xl flex-shrink-0">
               {author.avatar}
             </div>
             <div className="text-center md:text-left flex-1">
               <h1 itemProp="name" className="text-2xl lg:text-3xl font-serif font-medium text-[#f4f4f5] mb-1">{author.name}</h1>
-              <p itemProp="jobTitle" className="text-[#c9a962] text-sm mb-4">{author.role}</p>
+              <p itemProp="jobTitle" className="text-[var(--accent)] text-sm mb-4">{author.role}</p>
               <p itemProp="description" className="text-[#a1a1aa] text-sm leading-relaxed mb-4">{author.bio}</p>
               <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                 {author.expertise.map((exp) => (
@@ -60,7 +60,7 @@ export default function AuthorPage() {
               </div>
               {author.website && (
                 <Link href={author.website} target="_blank" rel="noopener noreferrer" itemProp="url"
-                  className="inline-flex items-center gap-2 mt-4 text-sm text-[#c9a962] hover:text-[#e4d4a5] transition-colors">
+                  className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--accent)] hover:text-[#93c5fd] transition-colors">
                   🌐 {author.website.replace("https://", "")}
                 </Link>
               )}
@@ -85,7 +85,7 @@ export default function AuthorPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
           className="mt-8 text-center">
           <p className="text-[#71717a] text-sm mb-2">Kontakt z autorem:</p>
-          <Link href="mailto:tomasz.chromy@outlook.com" className="text-[#c9a962] hover:text-[#e4d4a5] transition-colors text-sm">
+          <Link href="mailto:tomasz.chromy@outlook.com" className="text-[var(--accent)] hover:text-[#93c5fd] transition-colors text-sm">
             tomasz.chromy@outlook.com
           </Link>
         </motion.div>
@@ -94,4 +94,3 @@ export default function AuthorPage() {
     </main>
   );
 }
-

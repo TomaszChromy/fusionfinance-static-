@@ -165,7 +165,7 @@ function SearchContent() {
               onClick={() => setSortBy("date")}
               className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                 sortBy === "date"
-                  ? "bg-[#c9a962]/20 text-[#c9a962] border border-[#c9a962]/30"
+                  ? "bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]/30"
                   : "text-[#71717a] hover:text-[#f4f4f5] border border-transparent"
               }`}
             >
@@ -176,7 +176,7 @@ function SearchContent() {
               onClick={() => setSortBy("relevance")}
               className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                 sortBy === "relevance"
-                  ? "bg-[#c9a962]/20 text-[#c9a962] border border-[#c9a962]/30"
+                  ? "bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]/30"
                   : "text-[#71717a] hover:text-[#f4f4f5] border border-transparent"
               }`}
             >
@@ -201,9 +201,9 @@ function SearchContent() {
       ) : (
         <div className="space-y-4">
           <p className="text-sm text-[#71717a] mb-6">
-            Znaleziono <span className="text-[#c9a962] font-medium">{filteredResults.length}</span> wyników
+            Znaleziono <span className="text-[var(--accent)] font-medium">{filteredResults.length}</span> wyników
             {query && <> dla &ldquo;{query}&rdquo;</>}
-            {category !== "all" && <> w kategorii <span className="text-[#c9a962]">{category}</span></>}
+            {category !== "all" && <> w kategorii <span className="text-[var(--accent)]">{category}</span></>}
           </p>
           {filteredResults.map((result, index) => {
             const imageUrl = result.image || getImageForArticle(result.title);
@@ -228,7 +228,7 @@ function SearchContent() {
               >
                 <Link
                   href={`/artykul/?${params.toString()}`}
-                  className="flex gap-5 p-4 bg-[#0c0d10] border border-white/5 rounded-xl hover:border-[#c9a962]/30 transition-all group"
+                  className="flex gap-5 p-4 bg-[#0c0d10] border border-white/5 rounded-xl hover:border-[var(--accent)]/30 transition-all group"
                 >
                   <div className="relative w-[180px] h-[120px] flex-shrink-0 overflow-hidden rounded-lg">
                     <Image src={imageUrl} alt={result.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="180px" unoptimized />
@@ -239,7 +239,7 @@ function SearchContent() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0 py-1">
-                    <h3 className="font-serif text-lg font-medium text-[#f4f4f5] group-hover:text-[#c9a962] transition-colors line-clamp-2 mb-2">
+                    <h3 className="font-serif text-lg font-medium text-[#f4f4f5] group-hover:text-[var(--accent)] transition-colors line-clamp-2 mb-2">
                       {result.title}
                     </h3>
                     <p className="text-sm text-[#a1a1aa] line-clamp-2 mb-3">{result.description}</p>

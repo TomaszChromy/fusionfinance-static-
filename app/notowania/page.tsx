@@ -10,7 +10,7 @@ import { InfoTooltip } from "@/components/Tooltip";
 
 export default function NotowaniaPage() {
   return (
-    <main className="min-h-screen bg-[#08090c]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
       <div className="phi-shell">
         <Breadcrumbs />
@@ -21,13 +21,13 @@ export default function NotowaniaPage() {
           badge="Agregator PL"
         />
         <div className="phi-stack" style={{ marginTop: "var(--space-13)", gap: "var(--space-21)" }}>
-          <div className="phi-section shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
-            <div className="flex items-center justify-between mb-[26px] pb-[16px] border-b border-[#c9a962]/20" style={{ marginBottom: "var(--space-21)", paddingBottom: "var(--space-13)" }}>
-              <div className="flex items-center gap-3" style={{ gap: "var(--space-8)" }}>
-                <div className="w-1 h-7 bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
+          <div className="phi-section">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
+              <div className="flex items-center gap-3">
+                <div className="w-1 h-7 bg-gradient-to-b from-[#60a5fa] to-[#2563eb] rounded-full" />
                 <div>
-                  <h2 className="text-lg font-serif font-medium text-[#f4f4f5]">Artykuły</h2>
-                  <p className="text-xs text-[#71717a] mt-0.5">Layout inspirowany Interia.pl, Bankier.pl i Washington Post</p>
+                  <h2 className="text-lg font-semibold text-[var(--text)]">Artykuły</h2>
+                  <p className="text-xs text-[var(--muted)] mt-0.5">Aktualne treści z kategorii giełda/notowania</p>
                 </div>
               </div>
               <div className="hidden md:flex items-center gap-2">

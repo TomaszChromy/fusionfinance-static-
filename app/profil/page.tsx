@@ -41,7 +41,7 @@ export default function ProfilePage() {
       <main className="min-h-screen bg-[#08090c]">
         <Navbar />
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="w-8 h-8 border-2 border-[#c9a962] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
         </div>
         <Footer />
       </main>
@@ -72,10 +72,10 @@ export default function ProfilePage() {
                 alt={session.user.name || "User"}
                 width={80}
                 height={80}
-                className="rounded-full object-cover border-2 border-[#c9a962]/30"
+                className="rounded-full object-cover border-2 border-[var(--accent)]/30"
               />
             ) : (
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#c9a962] to-[#8b6914] flex items-center justify-center text-2xl font-medium text-[#08090c]">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--accent)] to-[#1d4ed8] flex items-center justify-center text-2xl font-medium text-white">
                 {initials}
               </div>
             )}
@@ -97,7 +97,7 @@ export default function ProfilePage() {
               <a
                 key={stat.label}
                 href={stat.href}
-                className="bg-white/[0.03] border border-white/5 rounded-xl p-4 text-center hover:border-[#c9a962]/30 transition-colors"
+                className="bg-white/[0.03] border border-white/5 rounded-xl p-4 text-center hover:border-[var(--accent)]/30 transition-colors"
               >
                 <div className="text-2xl mb-1">{stat.icon}</div>
                 <div className="text-2xl font-medium text-[#f4f4f5]">{stat.value}</div>

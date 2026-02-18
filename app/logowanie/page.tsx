@@ -63,7 +63,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[#c9a962]/50 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[var(--accent)]/50 transition-colors"
                 placeholder="twoj@email.pl"
                 required
               />
@@ -75,7 +75,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[#c9a962]/50 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[var(--accent)]/50 transition-colors"
                 placeholder="••••••••"
                 required
               />
@@ -88,7 +88,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-gradient-to-r from-[#c9a962] to-[#b8943d] text-[#08090c] font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="w-full py-3 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               {loading ? "Logowanie..." : "Zaloguj się"}
             </button>
@@ -119,7 +119,7 @@ export default function LoginPage() {
 
           <p className="text-center text-sm text-[#71717a] mt-6">
             Nie masz konta?{" "}
-            <Link href="/rejestracja" className="text-[#c9a962] hover:underline">
+            <Link href="/rejestracja" className="text-[var(--accent)] hover:underline">
               Zarejestruj się
             </Link>
           </p>
@@ -130,4 +130,3 @@ export default function LoginPage() {
     </main>
   );
 }
-

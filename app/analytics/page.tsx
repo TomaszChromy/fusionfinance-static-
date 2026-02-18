@@ -63,7 +63,7 @@ export default function AnalyticsPage() {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-8 bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
+            <div className="w-1 h-8 bg-gradient-to-b from-[var(--accent)] to-[#1d4ed8] rounded-full" />
             <div>
               <h1 className="text-4xl lg:text-5xl font-serif font-medium text-[#f4f4f5]">
                 Analityka
@@ -88,7 +88,7 @@ export default function AnalyticsPage() {
               onClick={() => setRange(option.value)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 range === option.value
-                  ? "bg-[#c9a962] text-[#08090c]"
+                  ? "bg-[var(--accent)] text-white"
                   : "bg-white/5 text-[#a1a1aa] hover:bg-white/10 hover:text-[#f4f4f5]"
               }`}
             >
@@ -112,7 +112,7 @@ export default function AnalyticsPage() {
               style={{ gap: "var(--space-21)", marginBottom: "var(--space-34)" }}
             >
               {/* Total Views */}
-              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[#c9a962]/30 transition-colors">
+              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[var(--accent)]/30 transition-colors">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
                     Wyświetlenia
@@ -128,7 +128,7 @@ export default function AnalyticsPage() {
               </div>
 
               {/* Unique Users */}
-              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[#c9a962]/30 transition-colors">
+              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[var(--accent)]/30 transition-colors">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
                     Użytkownicy
@@ -144,7 +144,7 @@ export default function AnalyticsPage() {
               </div>
 
               {/* Article Views */}
-              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[#c9a962]/30 transition-colors">
+              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[var(--accent)]/30 transition-colors">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
                     Artykuły
@@ -160,7 +160,7 @@ export default function AnalyticsPage() {
               </div>
 
               {/* Bounce Rate */}
-              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[#c9a962]/30 transition-colors">
+              <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[var(--accent)]/30 transition-colors">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xs font-semibold text-[#71717a] uppercase tracking-wider">
                     Bounce Rate
@@ -187,7 +187,7 @@ export default function AnalyticsPage() {
               <h3 className="text-sm font-semibold text-[#f4f4f5] uppercase tracking-wider mb-4 flex items-center gap-2">
                 <span>⏱️</span> Średni czas spędzony
               </h3>
-              <div className="text-4xl font-serif font-medium text-[#c9a962]">
+              <div className="text-4xl font-serif font-medium text-[var(--accent)]">
                 {(stats.avgDuration / 60).toFixed(1)} min
               </div>
               <p className="text-xs text-[#71717a] mt-2">
@@ -200,7 +200,7 @@ export default function AnalyticsPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[#c9a962]/30 transition-colors"
+              className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 hover:border-[var(--accent)]/30 transition-colors"
             >
               <h3 className="text-sm font-semibold text-[#f4f4f5] uppercase tracking-wider mb-6 flex items-center gap-2">
                 <span>🔝</span> Top Artykuły
@@ -217,7 +217,7 @@ export default function AnalyticsPage() {
                       className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/5 rounded-lg hover:bg-white/[0.04] transition-colors"
                     >
                       <div className="flex items-center gap-4 flex-1 min-w-0">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-[#c9a962] to-[#9a7b3c] text-xs font-bold text-[#08090c]">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent)] to-[#1d4ed8] text-xs font-bold text-white">
                           {index + 1}
                         </div>
                         <div className="min-w-0 flex-1">
@@ -230,7 +230,7 @@ export default function AnalyticsPage() {
                         </div>
                       </div>
                       <div className="text-right ml-4">
-                        <p className="text-lg font-serif font-medium text-[#c9a962]">
+                        <p className="text-lg font-serif font-medium text-[var(--accent)]">
                           {article.views}
                         </p>
                         <p className="text-xs text-[#71717a]">wyświetleń</p>

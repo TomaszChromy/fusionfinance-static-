@@ -162,7 +162,7 @@ export default function AlertsPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xs text-[#a1a1aa] bg-white/5 px-3 py-1 rounded-full">Aktywne: {activeCount}</span>
-            <button onClick={() => setShowForm(!showForm)} className="px-4 py-2 bg-gradient-to-r from-[#c9a962] to-[#b8943d] text-[#08090c] font-medium rounded-lg text-sm">
+            <button onClick={() => setShowForm(!showForm)} className="px-4 py-2 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-lg text-sm">
               + Nowy alert
             </button>
           </div>
@@ -174,10 +174,10 @@ export default function AlertsPage() {
             <button
               key={tpl.label}
               onClick={() => addAlert({ ...tpl, threshold: tpl.threshold })}
-              className="group bg-[#0c0d10] border border-white/5 rounded-xl p-4 text-left hover:border-[#c9a962]/40 transition-colors"
+              className="group bg-[#0c0d10] border border-white/5 rounded-xl p-4 text-left hover:border-[var(--accent)]/40 transition-colors"
             >
-              <p className="text-[11px] uppercase tracking-[0.12em] text-[#c9a962] mb-1">{tpl.assetClass?.toUpperCase()}</p>
-              <p className="text-sm font-semibold text-[#f4f4f5] group-hover:text-[#c9a962]">{tpl.label}</p>
+              <p className="text-[11px] uppercase tracking-[0.12em] text-[var(--accent)] mb-1">{tpl.assetClass?.toUpperCase()}</p>
+              <p className="text-sm font-semibold text-[#f4f4f5] group-hover:text-[var(--accent)]">{tpl.label}</p>
               {tpl.threshold !== undefined && (
                 <p className="text-xs text-[#71717a] mt-1">Próg: {tpl.threshold}{tpl.condition === "percent" ? "%" : ""}</p>
               )}
@@ -213,7 +213,7 @@ export default function AlertsPage() {
                 onChange={e => setFormData({ ...formData, note: e.target.value })}
                 className="mt-3 w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-[#f4f4f5] placeholder-[#52525b]"
               />
-              <button type="submit" className="mt-4 px-6 py-2 bg-[#c9a962] text-[#08090c] font-medium rounded-lg">Dodaj alert</button>
+              <button type="submit" className="mt-4 px-6 py-2 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-lg">Dodaj alert</button>
             </motion.form>
           )}
         </AnimatePresence>
@@ -228,7 +228,7 @@ export default function AlertsPage() {
               <motion.div key={alert.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`bg-[#0c0d10] border rounded-xl p-4 flex items-center justify-between ${alert.isActive ? "border-white/5" : "border-white/5 opacity-60"}`}>
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-lg font-medium text-[#f4f4f5]">{alert.symbol}</span>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-[#c9a962] uppercase tracking-[0.08em]">
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-[var(--accent)] uppercase tracking-[0.08em]">
                     {alert.assetClass}
                   </span>
                   <span className={`text-sm px-2 py-0.5 rounded ${alert.condition === "above" ? "bg-[#22c55e]/10 text-[#22c55e]" : alert.condition === "below" ? "bg-[#ef4444]/10 text-[#ef4444]" : "bg-[#38bdf8]/10 text-[#38bdf8]"}`}>

@@ -125,7 +125,7 @@ export const metadata: Metadata = {
       { url: "/icons/icon-192x192.svg", sizes: "192x192", type: "image/svg+xml" },
     ],
     other: [
-      { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#c9a962" },
+      { rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#2563eb" },
     ],
   },
   manifest: "/manifest.json",

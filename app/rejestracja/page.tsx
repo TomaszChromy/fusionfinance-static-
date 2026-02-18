@@ -84,7 +84,7 @@ export default function RegisterPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[#c9a962]/50 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[var(--accent)]/50 transition-colors"
                 placeholder="Jan"
               />
             </div>
@@ -95,7 +95,7 @@ export default function RegisterPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[#c9a962]/50 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[var(--accent)]/50 transition-colors"
                 placeholder="twoj@email.pl"
                 required
               />
@@ -107,7 +107,7 @@ export default function RegisterPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[#c9a962]/50 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[var(--accent)]/50 transition-colors"
                 placeholder="Minimum 8 znaków"
                 required
               />
@@ -119,7 +119,7 @@ export default function RegisterPage() {
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[#c9a962]/50 transition-colors"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-[#f4f4f5] placeholder-[#52525b] focus:outline-none focus:border-[var(--accent)]/50 transition-colors"
                 placeholder="••••••••"
                 required
               />
@@ -132,7 +132,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-gradient-to-r from-[#c9a962] to-[#b8943d] text-[#08090c] font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="w-full py-3 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               {loading ? "Rejestracja..." : "Zarejestruj się"}
             </button>
@@ -140,7 +140,7 @@ export default function RegisterPage() {
 
           <p className="text-center text-sm text-[#71717a] mt-6">
             Masz już konto?{" "}
-            <Link href="/logowanie" className="text-[#c9a962] hover:underline">
+            <Link href="/logowanie" className="text-[var(--accent)] hover:underline">
               Zaloguj się
             </Link>
           </p>
@@ -151,4 +151,3 @@ export default function RegisterPage() {
     </main>
   );
 }
-

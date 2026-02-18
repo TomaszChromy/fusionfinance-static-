@@ -179,7 +179,7 @@ function ArticleContent() {
         <div className="flex items-center justify-center gap-4 mb-[21px]">
           <BackButton variant="minimal" showLabel={false} />
           <nav className="text-[11px] text-[#71717a] tracking-[0.1em] uppercase">
-            <Link href="/" className="hover:text-[#c9a962]">Strona główna</Link>
+            <Link href="/" className="hover:text-[var(--accent)]">Strona główna</Link>
             <span className="mx-2">›</span>
             <span className="text-[#a1a1aa]">Artykuł</span>
           </nav>
@@ -208,7 +208,7 @@ function ArticleContent() {
               variant="minimal"
               onCopy={() => showToast("Link skopiowany!", "success")}
             />
-            <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="text-[#c9a962] hover:underline flex items-center gap-1">
+            <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline flex items-center gap-1">
               Źródło <span>→</span>
             </a>
           </div>
@@ -290,7 +290,7 @@ function ArticleContent() {
             href={sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9a962] text-[#08090c] font-medium rounded-lg hover:bg-[#e4d4a5] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-lg hover:opacity-90 transition-colors"
           >
             Przejdź do pełnego artykułu w źródle
             <span>→</span>
@@ -323,7 +323,7 @@ export default function ArticlePage() {
         {/* Related articles */}
         <section className="mt-[89px] pt-[55px] border-t border-white/5">
           <div className="flex items-center justify-center gap-3 mb-[34px]">
-            <div className="w-[4px] h-[28px] bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
+            <div className="w-[4px] h-[28px] bg-gradient-to-b from-[var(--accent)] to-[#1d4ed8] rounded-full" />
             <h2 className="text-[20px] font-serif font-medium text-[#f4f4f5]">Powiązane artykuły</h2>
           </div>
           <RSSArticles feedType="all" limit={6} showImage={true} />

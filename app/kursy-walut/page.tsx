@@ -43,8 +43,8 @@ export default function KursyWalutPage() {
 
           {/* Info Section */}
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[#c9a962]/20 transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-[#c9a962]/10 flex items-center justify-center mb-3">
+            <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[var(--accent)]/25 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-3">
                 <span className="text-xl">📊</span>
               </div>
               <h3 className="text-sm font-semibold text-[#f4f4f5] mb-2">Tabela A</h3>
@@ -53,8 +53,8 @@ export default function KursyWalutPage() {
               </p>
             </div>
             
-            <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[#c9a962]/20 transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-[#c9a962]/10 flex items-center justify-center mb-3">
+            <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[var(--accent)]/25 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-3">
                 <span className="text-xl">🏦</span>
               </div>
               <h3 className="text-sm font-semibold text-[#f4f4f5] mb-2">NBP</h3>
@@ -63,8 +63,8 @@ export default function KursyWalutPage() {
               </p>
             </div>
             
-            <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[#c9a962]/20 transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-[#c9a962]/10 flex items-center justify-center mb-3">
+            <div className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[var(--accent)]/25 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center mb-3">
                 <span className="text-xl">⏰</span>
               </div>
               <h3 className="text-sm font-semibold text-[#f4f4f5] mb-2">Aktualizacja</h3>

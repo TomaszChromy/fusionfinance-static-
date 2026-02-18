@@ -6,7 +6,7 @@ export default function Loading() {
   return (
     <main className="min-h-screen bg-[#08090c] text-[#f4f4f5] flex flex-col">
       <header className="border-b border-white/5 px-6 py-4 flex items-center gap-3">
-        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#c9a962] to-[#9a7b3c] animate-pulse" />
+        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[var(--accent)] to-[#1d4ed8] animate-pulse" />
         <div>
           <div className="h-4 w-32 bg-white/10 rounded animate-pulse" />
           <div className="h-3 w-24 bg-white/5 rounded mt-2 animate-pulse" />

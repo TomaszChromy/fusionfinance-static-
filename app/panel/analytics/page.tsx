@@ -21,7 +21,7 @@ export default function AnalyticsPage() {
       <main className="min-h-screen bg-[#08090c]">
         <Navbar />
         <div className="phi-shell" style={{ paddingTop: "var(--space-55)", paddingBottom: "var(--space-55)" }}>
-          <div className="h-96 bg-gradient-to-r from-[#c9a962]/20 to-transparent rounded-xl animate-pulse" />
+          <div className="h-96 bg-gradient-to-r from-[var(--accent)]/20 to-transparent rounded-xl animate-pulse" />
         </div>
         <Footer />
       </main>
@@ -49,7 +49,7 @@ export default function AnalyticsPage() {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-8 bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
+            <div className="w-1 h-8 bg-gradient-to-b from-[var(--accent)] to-[#1d4ed8] rounded-full" />
             <div>
               <h1 className="text-3xl lg:text-4xl font-serif font-medium text-[#f4f4f5]">
                 Analytics Panel
@@ -70,7 +70,7 @@ export default function AnalyticsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
           className="phi-section"
-          style={{ marginTop: "var(--space-55)", background: "linear-gradient(90deg, rgba(201,169,98,0.1), transparent)" }}
+          style={{ marginTop: "var(--space-55)", background: "linear-gradient(90deg, rgba(96,165,250,0.12), transparent)" }}
         >
           <h3 className="text-lg font-serif font-medium text-[#f4f4f5] mb-3">
             💡 Co to jest Analytics?

@@ -30,19 +30,19 @@ export default function RegulaminPage() {
               <h2 className="text-[18px] font-medium text-[#f4f4f5] mb-[13px]">§2. Definicje</h2>
               <div className="space-y-[13px] text-[15px] text-[#a1a1aa] leading-relaxed">
                 <div className="flex items-start gap-[13px]">
-                  <span className="text-[#c9a962] font-medium min-w-[120px]">Serwis</span>
+                  <span className="text-[var(--accent)] font-medium min-w-[120px]">Serwis</span>
                   <span>strona internetowa FusionFinance.pl</span>
                 </div>
                 <div className="flex items-start gap-[13px]">
-                  <span className="text-[#c9a962] font-medium min-w-[120px]">Użytkownik</span>
+                  <span className="text-[var(--accent)] font-medium min-w-[120px]">Użytkownik</span>
                   <span>osoba fizyczna korzystająca z Serwisu</span>
                 </div>
                 <div className="flex items-start gap-[13px]">
-                  <span className="text-[#c9a962] font-medium min-w-[120px]">Administrator</span>
+                  <span className="text-[var(--accent)] font-medium min-w-[120px]">Administrator</span>
                   <span>Tomasz Chromy</span>
                 </div>
                 <div className="flex items-start gap-[13px]">
-                  <span className="text-[#c9a962] font-medium min-w-[120px]">Hosting</span>
+                  <span className="text-[var(--accent)] font-medium min-w-[120px]">Hosting</span>
                   <span>nazwa.pl sp. z o.o.</span>
                 </div>
               </div>
@@ -54,15 +54,15 @@ export default function RegulaminPage() {
                 <p>Użytkownik zobowiązuje się do:</p>
                 <ul className="space-y-[8px] ml-[21px]">
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Korzystania z Serwisu zgodnie z obowiązującym prawem
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Niepodejmowania działań mogących zakłócić działanie Serwisu
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Niekopiowania treści bez zgody Administratora
                   </li>
                 </ul>

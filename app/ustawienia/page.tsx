@@ -30,7 +30,7 @@ const SettingRow = ({ label, description, settingKey, value, onToggle }: Setting
     </div>
     <button
       onClick={() => onToggle(settingKey)}
-      className={`w-12 h-6 rounded-full transition-colors relative ${value ? "bg-[#c9a962]" : "bg-white/10"}`}
+      className={`w-12 h-6 rounded-full transition-colors relative ${value ? "bg-[var(--accent)]" : "bg-white/10"}`}
     >
       <motion.div
         animate={{ x: value ? 24 : 2 }}
@@ -72,7 +72,7 @@ export default function SettingsPage() {
       <main className="min-h-screen bg-[#08090c]">
         <Navbar />
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="w-8 h-8 border-2 border-[#c9a962] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
         </div>
         <Footer />
       </main>
@@ -107,13 +107,13 @@ export default function SettingsPage() {
                 <p className="text-[#f4f4f5]">Nazwa</p>
                 <p className="text-sm text-[#71717a]">{session?.user?.name || "Nie ustawiono"}</p>
               </div>
-              <button className="text-sm text-[#c9a962] hover:underline">Edytuj</button>
+              <button className="text-sm text-[var(--accent)] hover:underline">Edytuj</button>
             </div>
           </div>
         </motion.div>
 
         <div className="flex items-center gap-4">
-          <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-[#c9a962] to-[#b8943d] text-[#08090c] font-medium rounded-xl hover:opacity-90 transition-opacity">
+          <button onClick={handleSave} className="px-6 py-3 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-xl hover:opacity-90 transition-opacity">
             Zapisz zmiany
           </button>
           {saved && (

@@ -22,7 +22,7 @@ export default function ApiDocPage() {
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-2 text-sm text-[#71717a] mb-12"
         >
-          <Link href="/" className="hover:text-[#c9a962] transition-colors">
+          <Link href="/" className="hover:text-[var(--accent)] transition-colors">
             Strona główna
           </Link>
           <span>/</span>
@@ -37,7 +37,7 @@ export default function ApiDocPage() {
           className="mb-16"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-8 bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
+            <div className="w-1 h-8 bg-gradient-to-b from-[var(--accent)] to-[#1d4ed8] rounded-full" />
             <div>
               <h1 className="text-4xl lg:text-5xl font-serif font-medium text-[#f4f4f5]">
                 FusionFinance Developer API
@@ -66,19 +66,19 @@ export default function ApiDocPage() {
               </p>
               <ul className="space-y-3 text-sm text-[#a1a1aa]">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9a962]">✓</span>
+                  <span className="text-[var(--accent)]">✓</span>
                   <span>Aktualne kursy walut NBP</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9a962]">✓</span>
+                  <span className="text-[var(--accent)]">✓</span>
                   <span>Notowania giełdowe GPW</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9a962]">✓</span>
+                  <span className="text-[var(--accent)]">✓</span>
                   <span>Dane o kryptowalutach</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9a962]">✓</span>
+                  <span className="text-[var(--accent)]">✓</span>
                   <span>Rate limiting</span>
                 </li>
               </ul>
@@ -99,13 +99,13 @@ export default function ApiDocPage() {
                 Każdy request musi zawierać Twój API key jako query parameter.
               </p>
               <div className="bg-[#15181e] p-4 rounded-lg mb-4 border border-white/5 overflow-x-auto">
-                <code className="text-sm text-[#c9a962] whitespace-nowrap">
+                <code className="text-sm text-[var(--accent)] whitespace-nowrap">
                   GET /api/v1/quotes?apiKey=YOUR_KEY
                 </code>
               </div>
               <p className="text-xs text-[#71717a]">
                 Utwórz API key w{" "}
-                <Link href="/panel/developer" className="text-[#c9a962] hover:underline">
+                <Link href="/panel/developer" className="text-[var(--accent)] hover:underline">
                   panelu developerskim
                 </Link>
               </p>
@@ -158,13 +158,13 @@ export default function ApiDocPage() {
                   <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-semibold">
                     GET
                   </span>
-                  <span className="text-lg font-mono text-[#c9a962]">/api/v1/quotes</span>
+                  <span className="text-lg font-mono text-[var(--accent)]">/api/v1/quotes</span>
                 </div>
                 <p className="text-[#a1a1aa] mb-4">Pobierz aktualne kursy walut</p>
 
                 <div className="bg-[#15181e] p-4 rounded-lg mb-4 border border-white/5">
                   <p className="text-xs text-[#71717a] mb-2">Przykład:</p>
-                  <code className="text-xs text-[#c9a962] block overflow-x-auto whitespace-nowrap">
+                  <code className="text-xs text-[var(--accent)] block overflow-x-auto whitespace-nowrap">
                     GET /api/v1/quotes?apiKey=xxx&pairs=EUR/PLN,USD/PLN
                   </code>
                 </div>
@@ -180,13 +180,13 @@ export default function ApiDocPage() {
                   <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded text-xs font-semibold">
                     GET
                   </span>
-                  <span className="text-lg font-mono text-[#c9a962]">/api/v1/markets</span>
+                  <span className="text-lg font-mono text-[var(--accent)]">/api/v1/markets</span>
                 </div>
                 <p className="text-[#a1a1aa] mb-4">Informacje o rynkach finansowych</p>
 
                 <div className="bg-[#15181e] p-4 rounded-lg border border-white/5">
                   <p className="text-xs text-[#71717a] mb-2">Odpowiedź:</p>
-                  <code className="text-xs text-[#c9a962] block overflow-x-auto">
+                  <code className="text-xs text-[var(--accent)] block overflow-x-auto">
                     {JSON.stringify(
                       {
                         status: "success",
@@ -210,7 +210,7 @@ export default function ApiDocPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="mt-16 p-12 rounded-2xl border border-white/10 bg-gradient-to-r from-[#c9a962]/10 to-transparent text-center"
+          className="mt-16 p-12 rounded-2xl border border-white/10 bg-gradient-to-r from-[var(--accent)]/10 to-transparent text-center"
         >
           <h2 className="text-2xl lg:text-3xl font-serif font-medium text-[#f4f4f5] mb-4">
             Gotowy do begin?
@@ -220,7 +220,7 @@ export default function ApiDocPage() {
           </p>
           <Link
             href="/panel/developer"
-            className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-[#c9a962] to-[#e4d4a5] text-black font-medium hover:shadow-lg hover:shadow-[#c9a962]/30 transition-all"
+          className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium hover:shadow-lg hover:shadow-[var(--accent)]/30 transition-all"
           >
             Panel Developerski →
           </Link>

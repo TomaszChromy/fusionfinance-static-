@@ -31,7 +31,7 @@ export default function PolitykaPrywatnosciPage() {
               <p className="text-[15px] text-[#a1a1aa] leading-relaxed mb-[13px]">
                 Administratorem danych osobowych jest Tomasz Chromy.
               </p>
-              <div className="bg-[#08090c] border border-[#c9a962]/20 rounded-lg p-[21px]">
+              <div className="bg-[#08090c] border border-[var(--border)] rounded-lg p-[21px]">
                 <p className="text-[13px] text-[#71717a] uppercase tracking-[0.1em] mb-[8px]">Kontakt:</p>
                 <p className="text-[15px] text-[#f4f4f5]">tomasz.chromy@outlook.com</p>
                 <p className="text-[13px] text-[#a1a1aa] mt-[5px]">tomaszchromy.com</p>
@@ -41,7 +41,7 @@ export default function PolitykaPrywatnosciPage() {
             <section className="bg-[#0f1115] border border-white/5 rounded-lg p-[34px]">
               <h2 className="text-[18px] font-medium text-[#f4f4f5] mb-[13px]">3. Hosting</h2>
               <p className="text-[15px] text-[#a1a1aa] leading-relaxed mb-[13px]">
-                Serwis FusionFinance.pl jest hostowany na serwerach <span className="text-[#c9a962] font-medium">nazwa.pl</span>. Dane są przechowywane na serwerach zlokalizowanych w Polsce, zgodnie z wymogami RODO.
+                Serwis FusionFinance.pl jest hostowany na serwerach <span className="text-[var(--accent)] font-medium">nazwa.pl</span>. Dane są przechowywane na serwerach zlokalizowanych w Polsce, zgodnie z wymogami RODO.
               </p>
             </section>
 
@@ -51,15 +51,15 @@ export default function PolitykaPrywatnosciPage() {
                 <p>Dane osobowe przetwarzane są w następujących celach:</p>
                 <ul className="space-y-[8px] ml-[21px]">
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Świadczenie usług drogą elektroniczną
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Prowadzenie statystyk i analiz ruchu
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Cele marketingowe (za wyraźną zgodą użytkownika)
                   </li>
                 </ul>
@@ -72,23 +72,23 @@ export default function PolitykaPrywatnosciPage() {
                 <p>Zgodnie z RODO, przysługują Ci następujące prawa:</p>
                 <ul className="space-y-[8px] ml-[21px]">
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Prawo dostępu do swoich danych
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Prawo do sprostowania danych
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Prawo do usunięcia danych („prawo do bycia zapomnianym”)
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Prawo do ograniczenia przetwarzania
                   </li>
                   <li className="flex items-start gap-[8px]">
-                    <span className="text-[#c9a962]">•</span>
+                    <span className="text-[var(--accent)]">•</span>
                     Prawo do przenoszenia danych
                   </li>
                 </ul>

@@ -24,7 +24,7 @@ export default function OfflinePage() {
         <div className="space-y-3">
           <button
             onClick={() => window.location.reload()}
-            className="w-full px-6 py-3 bg-[#c9a962] text-[#08090c] font-medium rounded-xl hover:bg-[#e4d4a5] transition-colors"
+            className="w-full px-6 py-3 bg-gradient-to-r from-[var(--accent)] to-[#1d4ed8] text-white font-medium rounded-xl hover:opacity-90 transition-colors"
           >
             Odśwież stronę
           </button>
@@ -44,4 +44,3 @@ export default function OfflinePage() {
     </div>
   );
 }
-

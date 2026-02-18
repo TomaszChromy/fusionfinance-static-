@@ -47,17 +47,17 @@ export default function Wig20Page() {
   const [sparkline] = useState(() => generateMockData(30, "up"));
 
   return (
-    <main className="min-h-screen bg-[#08090c]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
       <div className="phi-shell">
         <Breadcrumbs />
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 mt-4">
-          <h1 className="text-3xl lg:text-4xl font-serif font-medium text-[#f4f4f5] mb-2">
-            <span className="bg-gradient-to-r from-[#e4d4a5] via-[#c9a962] to-[#9a7b3c] bg-clip-text text-transparent">WIG20</span> - Indeks GPW
+          <h1 className="text-3xl lg:text-4xl font-serif font-medium text-[var(--text)] mb-2">
+            <span className="bg-gradient-to-r from-[#60a5fa] via-[#2563eb] to-[#1d4ed8] bg-clip-text text-transparent">WIG20</span> - Indeks GPW
           </h1>
-          <p className="text-[#71717a] text-sm">Główny indeks Giełdy Papierów Wartościowych w Warszawie</p>
+          <p className="text-[var(--muted)] text-sm">Główny indeks Giełdy Papierów Wartościowych w Warszawie</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
@@ -66,29 +66,29 @@ export default function Wig20Page() {
             <div className="flex items-center gap-3">
               <span className="text-4xl">📈</span>
               <div>
-                <p className="text-sm text-[#71717a]">WIG20</p>
-                <p className="text-xs text-[#52525b]">Główny indeks GPW</p>
+                <p className="text-sm text-[var(--muted)]">WIG20</p>
+                <p className="text-xs text-[#9ca3af]">Główny indeks GPW</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-3xl font-bold text-[#f4f4f5]">2,456.78 <span className="text-lg text-[#71717a]">pkt</span></p>
+              <p className="text-3xl font-bold text-[var(--text)]">2,456.78 <span className="text-lg text-[var(--muted)]">pkt</span></p>
               <p className="text-sm text-[#4ade80]">+1.25% (+30.45 pkt)</p>
             </div>
           </div>
-          <div className="h-20"><SparklineChart data={sparkline} color="#c9a962" height={80} /></div>
-          <p className="text-[10px] text-[#52525b] mt-2 text-center">Dane demonstracyjne. Rzeczywiste notowania dostępne na GPW.</p>
+          <div className="h-20"><SparklineChart data={sparkline} color="#60a5fa" height={80} /></div>
+          <p className="text-[10px] text-[#9ca3af] mt-2 text-center">Dane demonstracyjne. Rzeczywiste notowania dostępne na GPW.</p>
         </motion.div>
 
         <div className="phi-stack" style={{ gap: "var(--space-21)" }}>
           <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             className="phi-section">
-            <h2 className="text-xl font-medium text-[#f4f4f5] mb-4">🏢 Największe spółki w WIG20</h2>
+            <h2 className="text-xl font-medium text-[var(--text)] mb-4">🏢 Największe spółki w WIG20</h2>
             <div className="phi-grid grid-cols-2 md:grid-cols-3" style={{ gap: "var(--space-8)" }}>
               {WIG20_COMPANIES.map((company) => (
-                <div key={company.name} className="bg-white/[0.02] rounded-lg p-3">
-                  <p className="text-sm font-medium text-[#f4f4f5]">{company.name}</p>
-                  <p className="text-xs text-[#71717a]">{company.sector}</p>
-                  <p className="text-xs text-[#c9a962]">{company.weight}</p>
+                <div key={company.name} className="bg-white/[0.03] rounded-lg p-3 border border-[var(--border)]/60">
+                  <p className="text-sm font-medium text-[var(--text)]">{company.name}</p>
+                  <p className="text-xs text-[var(--muted)]">{company.sector}</p>
+                  <p className="text-xs text-[var(--accent)]">{company.weight}</p>
                 </div>
               ))}
             </div>
@@ -96,42 +96,42 @@ export default function Wig20Page() {
 
           <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
             className="phi-section">
-            <h2 className="text-xl font-medium text-[#f4f4f5] mb-4">📊 Charakterystyka WIG20</h2>
+            <h2 className="text-xl font-medium text-[var(--text)] mb-4">📊 Charakterystyka WIG20</h2>
             <div className="phi-grid grid-cols-2 md:grid-cols-4" style={{ gap: "var(--space-13)" }}>
-              <div className="bg-white/[0.02] rounded-lg p-3 text-center">
-                <p className="text-xs text-[#71717a]">Typ indeksu</p>
-                <p className="text-sm font-bold text-[#f4f4f5]">Cenowy</p>
+              <div className="bg-white/[0.03] rounded-lg p-3 text-center border border-[var(--border)]/60">
+                <p className="text-xs text-[var(--muted)]">Typ indeksu</p>
+                <p className="text-sm font-bold text-[var(--text)]">Cenowy</p>
               </div>
-              <div className="bg-white/[0.02] rounded-lg p-3 text-center">
-                <p className="text-xs text-[#71717a]">Liczba spółek</p>
-                <p className="text-sm font-bold text-[#f4f4f5]">20</p>
+              <div className="bg-white/[0.03] rounded-lg p-3 text-center border border-[var(--border)]/60">
+                <p className="text-xs text-[var(--muted)]">Liczba spółek</p>
+                <p className="text-sm font-bold text-[var(--text)]">20</p>
               </div>
-              <div className="bg-white/[0.02] rounded-lg p-3 text-center">
-                <p className="text-xs text-[#71717a]">Bazowy</p>
-                <p className="text-sm font-bold text-[#f4f4f5]">1000 pkt</p>
+              <div className="bg-white/[0.03] rounded-lg p-3 text-center border border-[var(--border)]/60">
+                <p className="text-xs text-[var(--muted)]">Bazowy</p>
+                <p className="text-sm font-bold text-[var(--text)]">1000 pkt</p>
               </div>
-              <div className="bg-white/[0.02] rounded-lg p-3 text-center">
-                <p className="text-xs text-[#71717a]">Od roku</p>
-                <p className="text-sm font-bold text-[#f4f4f5]">1994</p>
+              <div className="bg-white/[0.03] rounded-lg p-3 text-center border border-[var(--border)]/60">
+                <p className="text-xs text-[var(--muted)]">Od roku</p>
+                <p className="text-sm font-bold text-[var(--text)]">1994</p>
               </div>
             </div>
           </motion.section>
 
           <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
             className="phi-section">
-            <h2 className="text-xl font-medium text-[#f4f4f5] mb-4">❓ Najczęściej zadawane pytania</h2>
+            <h2 className="text-xl font-medium text-[var(--text)] mb-4">❓ Najczęściej zadawane pytania</h2>
             <div className="space-y-3">
               {FAQ_ITEMS.map((item, i) => (
-                <div key={i} className="border border-white/5 rounded-lg overflow-hidden">
+                <div key={i} className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--surface)]">
                   <button type="button" onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between p-4 text-left hover:bg-white/[0.02] transition-colors">
-                    <span className="text-sm font-medium text-[#f4f4f5]">{item.q}</span>
-                    <motion.span animate={{ rotate: openFaq === i ? 180 : 0 }} className="text-[#c9a962]">▼</motion.span>
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-white/[0.03] transition-colors">
+                    <span className="text-sm font-medium text-[var(--text)]">{item.q}</span>
+                    <motion.span animate={{ rotate: openFaq === i ? 180 : 0 }} className="text-[var(--accent)]">▼</motion.span>
                   </button>
                   <AnimatePresence>
                     {openFaq === i && (
                       <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }}>
-                        <p className="px-4 pb-4 text-sm text-[#a1a1aa] leading-relaxed">{item.a}</p>
+                        <p className="px-4 pb-4 text-sm text-[var(--muted)] leading-relaxed">{item.a}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -141,8 +141,8 @@ export default function Wig20Page() {
           </motion.section>
         </div>
 
-        <div className="mt-8 text-center text-xs text-[#52525b]">
-          <p>Dane mają charakter informacyjny. <a href="/disclaimer" className="text-[#c9a962] hover:underline">Przeczytaj zastrzeżenie prawne</a>.</p>
+        <div className="mt-8 text-center text-xs text-[var(--muted)]">
+          <p>Dane mają charakter informacyjny. <a href="/disclaimer" className="text-[var(--accent)] hover:underline">Przeczytaj zastrzeżenie prawne</a>.</p>
         </div>
       </div>
       <Footer />

@@ -63,13 +63,13 @@ export default function UsdPlnPage() {
         <Breadcrumbs />
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 mt-4">
           <h1 className="text-3xl lg:text-4xl font-serif font-medium text-[#f4f4f5] mb-2">
-            Kurs <span className="bg-gradient-to-r from-[#e4d4a5] via-[#c9a962] to-[#9a7b3c] bg-clip-text text-transparent">dolara</span> (USD/PLN)
+            Kurs <span className="bg-gradient-to-r from-[var(--accent)] via-[#3b82f6] to-[#1d4ed8] bg-clip-text text-transparent">dolara</span> (USD/PLN)
           </h1>
           <p className="text-[#71717a] text-sm">Aktualny kurs dolara amerykańskiego do złotego, wykres i analiza rynku walutowego</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="bg-[#0c0d10] border border-[#c9a962]/20 rounded-2xl p-6 mb-8">
+          className="bg-[#0c0d10] border border-[var(--border)] rounded-2xl p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <span className="text-4xl">🇺🇸</span>
@@ -87,7 +87,7 @@ export default function UsdPlnPage() {
               )}
             </div>
           </div>
-          <div className="h-20"><SparklineChart data={sparkline} color="#c9a962" height={80} /></div>
+          <div className="h-20"><SparklineChart data={sparkline} color="#60a5fa" height={80} /></div>
           <p className="text-[10px] text-[#52525b] mt-2 text-center">Dane z Narodowego Banku Polskiego (NBP)</p>
         </motion.div>
 
@@ -98,10 +98,10 @@ export default function UsdPlnPage() {
             <div className="text-[#a1a1aa] leading-relaxed space-y-3 text-sm">
               <p>Dolar amerykański (USD) to najważniejsza waluta świata. Kurs USD/PLN ma kluczowe znaczenie dla polskiej gospodarki ze względu na handel międzynarodowy i ceny surowców.</p>
               <ul className="ml-4 space-y-1">
-                <li>• <strong className="text-[#c9a962]">Polityka FED</strong> – decyzje o stopach procentowych w USA</li>
-                <li>• <strong className="text-[#c9a962]">Dane makro</strong> – PKB, zatrudnienie, inflacja w USA</li>
-                <li>• <strong className="text-[#c9a962]">Geopolityka</strong> – dolar jako &ldquo;safe haven&rdquo; w kryzysach</li>
-                <li>• <strong className="text-[#c9a962]">Ceny surowców</strong> – ropa i gaz notowane w USD</li>
+                <li>• <strong className="text-[var(--accent)]">Polityka FED</strong> – decyzje o stopach procentowych w USA</li>
+                <li>• <strong className="text-[var(--accent)]">Dane makro</strong> – PKB, zatrudnienie, inflacja w USA</li>
+                <li>• <strong className="text-[var(--accent)]">Geopolityka</strong> – dolar jako &ldquo;safe haven&rdquo; w kryzysach</li>
+                <li>• <strong className="text-[var(--accent)]">Ceny surowców</strong> – ropa i gaz notowane w USD</li>
               </ul>
             </div>
           </motion.section>
@@ -131,7 +131,7 @@ export default function UsdPlnPage() {
                   <button type="button" onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     className="w-full flex items-center justify-between p-4 text-left hover:bg-white/[0.02] transition-colors">
                     <span className="text-sm font-medium text-[#f4f4f5]">{item.q}</span>
-                    <motion.span animate={{ rotate: openFaq === i ? 180 : 0 }} className="text-[#c9a962]">▼</motion.span>
+                    <motion.span animate={{ rotate: openFaq === i ? 180 : 0 }} className="text-[var(--accent)]">▼</motion.span>
                   </button>
                   <AnimatePresence>
                     {openFaq === i && (
@@ -147,7 +147,7 @@ export default function UsdPlnPage() {
         </div>
 
         <div className="mt-8 text-center text-xs text-[#52525b]">
-          <p>Dane mają charakter informacyjny. <a href="/disclaimer" className="text-[#c9a962] hover:underline">Przeczytaj pełne zastrzeżenie prawne</a>.</p>
+          <p>Dane mają charakter informacyjny. <a href="/disclaimer" className="text-[var(--accent)] hover:underline">Przeczytaj pełne zastrzeżenie prawne</a>.</p>
         </div>
       </div>
       <Footer />

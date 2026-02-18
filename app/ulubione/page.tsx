@@ -72,7 +72,7 @@ export default function UlubionePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="phi-section p-5 hover:border-[#c9a962]/20 transition-all group"
+                  className="phi-section p-5 hover:border-[var(--accent)]/25 transition-all group"
                 >
                   <div className="flex gap-4">
                     {article.image && (
@@ -85,7 +85,7 @@ export default function UlubionePage() {
                         href={`/artykul?title=${encodeURIComponent(article.title)}&desc=${encodeURIComponent(article.description || "")}&source=${encodeURIComponent(article.source || "")}&date=${encodeURIComponent(article.date || "")}&image=${encodeURIComponent(article.image || "")}`}
                         className="block"
                       >
-                        <h3 className="text-sm font-medium text-[#f4f4f5] group-hover:text-[#c9a962] transition-colors line-clamp-2 mb-1">
+                        <h3 className="text-sm font-medium text-[var(--text)] group-hover:text-[var(--accent)] transition-colors line-clamp-2 mb-1">
                           {article.title}
                         </h3>
                         {article.description && (

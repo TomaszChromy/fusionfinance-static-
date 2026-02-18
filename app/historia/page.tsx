@@ -88,7 +88,7 @@ export default function HistoriaPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.03 }}
-                        className="bg-[#0c0d10] border border-white/5 rounded-xl p-4 hover:border-[#c9a962]/20 transition-all group relative"
+                        className="bg-[#0c0d10] border border-white/5 rounded-xl p-4 hover:border-[var(--accent)]/25 transition-all group relative"
                       >
                         <button
                           type="button"
@@ -111,7 +111,7 @@ export default function HistoriaPage() {
                               href={`/artykul?title=${encodeURIComponent(item.title)}&desc=${encodeURIComponent(item.description || "")}&source=${encodeURIComponent(item.source || "")}&date=${encodeURIComponent(item.date || "")}&image=${encodeURIComponent(item.image || "")}`}
                               className="block"
                             >
-                              <h3 className="text-sm font-medium text-[#f4f4f5] group-hover:text-[#c9a962] transition-colors line-clamp-1 mb-1">
+                              <h3 className="text-sm font-medium text-[#f4f4f5] group-hover:text-[var(--accent)] transition-colors line-clamp-1 mb-1">
                                 {item.title}
                               </h3>
                               <div className="flex items-center gap-2 text-[10px] text-[#71717a]">

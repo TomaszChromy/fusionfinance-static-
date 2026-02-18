@@ -93,7 +93,7 @@ export default function GieldaPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#08090c]">
+    <main className="min-h-screen bg-[#08090c] text-[var(--text)]">
       <Navbar />
 
       <div className="phi-shell">
@@ -103,34 +103,32 @@ export default function GieldaPage() {
           subtitle="GPW i globalne parkiety: WIG20, mWIG40, sWIG80, dywidendy, IPO i debiuty."
           eyebrow="GPW & świat"
           badge="Live"
-          accentFrom="#4ade80"
-          accentTo="#22c55e"
           rightSlot={<CategoryBadge category="gielda" />}
         />
 
         <div className="space-y-8 lg:space-y-10">
           <div className="phi-section overflow-hidden">
-            <div className="flex items-center border-b border-white/5" style={{ gap: "var(--space-8)", padding: "var(--space-13) var(--space-8)" }}>
+            <div className="flex items-center border-b border-[var(--border)] px-4 py-3 gap-3">
               <div className="w-1 h-7 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
               <div>
-                <h2 className="text-lg font-serif font-medium text-[#f4f4f5]">Notowania giełdowe</h2>
-                <p className="text-xs text-[#71717a]">GPW + główne indeksy światowe</p>
+                <h2 className="text-lg font-semibold text-[var(--text)]">Notowania giełdowe</h2>
+                <p className="text-xs text-[var(--muted)]">GPW + główne indeksy światowe</p>
               </div>
             </div>
             <StockTicker items={headlineTickers} speed={65} variant="detailed" className="bg-[#0c0d10]" />
-            <div className="phi-grid grid-cols-1 lg:grid-cols-2" style={{ padding: "var(--space-13)" }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
               <TradingViewChart symbol="GPW:WIG20" height={320} />
               <TradingViewChart symbol="SP:SPX" height={320} />
             </div>
           </div>
 
-          <div className="phi-grid lg:grid-cols-2">
-            <HeatMap title="Mapa ciepła WIG20" data={heatmapData} className="shadow-[0_30px_80px_-50px_rgba(0,0,0,0.5)] phi-section" />
+          <div className="grid gap-6 lg:grid-cols-2">
+            <HeatMap title="Mapa ciepła WIG20" data={heatmapData} className="phi-section" />
 
-            <div className="phi-section hover:border-white/10 transition-colors">
+            <div className="phi-section">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
-                <h3 className="text-xs font-semibold text-[#f4f4f5] uppercase tracking-[0.1em] flex items-center gap-2">
+                <h3 className="text-xs font-semibold text-[var(--text)] uppercase tracking-[0.1em] flex items-center gap-2">
                   <span>📊</span> Trendy indeksów
                 </h3>
               </div>
@@ -147,11 +145,11 @@ export default function GieldaPage() {
             </div>
           </div>
 
-          <div className="phi-grid lg:grid-cols-[2fr_1.2fr]" style={{ gap: "var(--space-21)" }}>
+          <div className="grid gap-6 lg:grid-cols-[2fr_1.2fr]">
             <div className="phi-section">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
-                <h3 className="text-xs font-semibold text-[#f4f4f5] uppercase tracking-[0.1em]">Top listy dnia</h3>
+                <h3 className="text-xs font-semibold text-[var(--text)] uppercase tracking-[0.1em]">Top listy dnia</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <TopList title="Wzrosty" items={topMoversData.gainers.map(i => ({ label: i.symbol, value: i.change, hint: i.name, direction: "up" }))} />
@@ -163,22 +161,22 @@ export default function GieldaPage() {
             <div className="phi-section">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-6 bg-gradient-to-b from-[#4ade80] to-[#22c55e] rounded-full" />
-                <h3 className="text-xs font-semibold text-[#f4f4f5] uppercase tracking-[0.1em]">Kalendarz rynkowy</h3>
+                <h3 className="text-xs font-semibold text-[var(--text)] uppercase tracking-[0.1em]">Kalendarz rynkowy</h3>
               </div>
               <ul className="space-y-3">
                 {calendarItems.map((item) => (
-                  <li key={item.title} className="flex items-center justify-between bg-white/5 rounded-xl px-3 py-3 text-sm text-[#e4e4e7]">
+                  <li key={item.title} className="flex items-center justify-between bg-[var(--surface-2)]/60 rounded-xl px-3 py-3 text-sm text-[var(--text-2)] border border-[var(--border)]">
                     <div className="flex items-center gap-3">
-                      <div className="text-xs text-[#c9a962] font-semibold w-16 flex flex-col leading-tight">
+                      <div className="text-xs text-[var(--accent)] font-semibold w-16 flex flex-col leading-tight">
                         <span>{item.date}</span>
-                        <span className="text-[11px] text-[#9ca3af]">{item.time}</span>
+                        <span className="text-[11px] text-[var(--muted)]">{item.time}</span>
                       </div>
                       <div>
-                        <p className="font-medium leading-snug">{item.title}</p>
-                        <p className="text-[12px] text-[#9ca3af]">{item.tag}</p>
+                        <p className="font-medium leading-snug text-[var(--text)]">{item.title}</p>
+                        <p className="text-[12px] text-[var(--muted)]">{item.tag}</p>
                       </div>
                     </div>
-                    <span className="text-[11px] text-[#c9a962] font-semibold">Nadchodzi</span>
+                    <span className="text-[11px] text-[var(--accent)] font-semibold">Nadchodzi</span>
                   </li>
                 ))}
               </ul>

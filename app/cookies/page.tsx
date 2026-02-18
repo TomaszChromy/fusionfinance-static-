@@ -30,15 +30,15 @@ export default function CookiesPage() {
               <h2 className="text-[18px] font-medium text-[#f4f4f5] mb-[13px]">2. Jakie cookies wykorzystujemy?</h2>
               <div className="space-y-[21px] text-[15px] text-[#a1a1aa] leading-relaxed">
                 <div>
-                  <h3 className="text-[#c9a962] font-medium mb-[8px]">Cookies niezbędne</h3>
+                  <h3 className="text-[var(--accent)] font-medium mb-[8px]">Cookies niezbędne</h3>
                   <p>Konieczne do prawidłowego funkcjonowania strony. Bez nich serwis nie będzie działał poprawnie.</p>
                 </div>
                 <div>
-                  <h3 className="text-[#c9a962] font-medium mb-[8px]">Cookies analityczne</h3>
+                  <h3 className="text-[var(--accent)] font-medium mb-[8px]">Cookies analityczne</h3>
                   <p>Pomagają nam zrozumieć, jak użytkownicy korzystają z serwisu. Używamy Google Analytics do analizy ruchu.</p>
                 </div>
                 <div>
-                  <h3 className="text-[#c9a962] font-medium mb-[8px]">Cookies funkcjonalne</h3>
+                  <h3 className="text-[var(--accent)] font-medium mb-[8px]">Cookies funkcjonalne</h3>
                   <p>Zapamiętują Twoje preferencje, np. wybraną walutę w przeliczniku czy preferowany tryb wyświetlania.</p>
                 </div>
               </div>
@@ -47,9 +47,9 @@ export default function CookiesPage() {
             <section className="bg-[#0f1115] border border-white/5 rounded-lg p-[34px]">
               <h2 className="text-[18px] font-medium text-[#f4f4f5] mb-[13px]">3. Hosting i przetwarzanie danych</h2>
               <p className="text-[15px] text-[#a1a1aa] leading-relaxed mb-[13px]">
-                Strona FusionFinance.pl jest hostowana na serwerach <span className="text-[#c9a962] font-medium">nazwa.pl</span> - wiodącego polskiego dostawcy usług hostingowych. Dane są przetwarzane zgodnie z polskim prawem i regulacjami RODO.
+                Strona FusionFinance.pl jest hostowana na serwerach <span className="text-[var(--accent)] font-medium">nazwa.pl</span> - wiodącego polskiego dostawcy usług hostingowych. Dane są przetwarzane zgodnie z polskim prawem i regulacjami RODO.
               </p>
-              <div className="bg-[#08090c] border border-[#c9a962]/20 rounded-lg p-[21px] mt-[21px]">
+              <div className="bg-[#08090c] border border-[var(--border)] rounded-lg p-[21px] mt-[21px]">
                 <p className="text-[13px] text-[#71717a] uppercase tracking-[0.1em] mb-[8px]">Dostawca hostingu:</p>
                 <p className="text-[15px] text-[#f4f4f5] font-medium">nazwa.pl sp. z o.o.</p>
                 <p className="text-[13px] text-[#a1a1aa]">ul. Pana Tadeusza 2, 30-727 Kraków</p>
@@ -66,7 +66,7 @@ export default function CookiesPage() {
             <section className="bg-[#0f1115] border border-white/5 rounded-lg p-[34px]">
               <h2 className="text-[18px] font-medium text-[#f4f4f5] mb-[13px]">5. Kontakt</h2>
               <p className="text-[15px] text-[#a1a1aa] leading-relaxed">
-                W razie pytań dotyczących polityki cookies, prosimy o kontakt pod adresem: <a href="mailto:tomasz.chromy@outlook.com" className="text-[#c9a962] hover:text-[#e4d4a5] transition-colors">tomasz.chromy@outlook.com</a>
+                W razie pytań dotyczących polityki cookies, prosimy o kontakt pod adresem: <a href="mailto:tomasz.chromy@outlook.com" className="text-[var(--accent)] hover:text-[#93c5fd] transition-colors">tomasz.chromy@outlook.com</a>
               </p>
             </section>
           </div>

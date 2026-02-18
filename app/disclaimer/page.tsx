@@ -25,11 +25,11 @@ export default function DisclaimerPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-[#0c0d10] border border-[#c9a962]/20 rounded-2xl p-8"
+            className="bg-[#0c0d10] border border-[var(--border)] rounded-2xl p-8"
           >
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl">⚠️</span>
-              <h2 className="text-xl font-medium text-[#c9a962]">Brak rekomendacji inwestycyjnych</h2>
+              <h2 className="text-xl font-medium text-[var(--accent)]">Brak rekomendacji inwestycyjnych</h2>
             </div>
             <p className="text-[#a1a1aa] leading-relaxed mb-4">
               <strong className="text-[#f4f4f5]">Wszystkie treści publikowane na stronie FusionFinance.pl mają wyłącznie charakter informacyjny i edukacyjny.</strong> Nie stanowią one:
@@ -57,10 +57,10 @@ export default function DisclaimerPage() {
               Inwestowanie w instrumenty finansowe wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału. W szczególności:
             </p>
             <ul className="space-y-2 text-[#a1a1aa] ml-4">
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> <strong className="text-[#f4f4f5]">Kryptowaluty</strong> są wysoce zmienne i mogą stracić całą wartość</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> <strong className="text-[#f4f4f5]">Akcje i indeksy giełdowe</strong> mogą znacząco spadać w wartości</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> <strong className="text-[#f4f4f5]">Kursy walut</strong> podlegają wahaniom wpływającym na wartość inwestycji</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> <strong className="text-[#f4f4f5]">Wyniki historyczne</strong> nie gwarantują przyszłych zysków</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> <strong className="text-[#f4f4f5]">Kryptowaluty</strong> są wysoce zmienne i mogą stracić całą wartość</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> <strong className="text-[#f4f4f5]">Akcje i indeksy giełdowe</strong> mogą znacząco spadać w wartości</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> <strong className="text-[#f4f4f5]">Kursy walut</strong> podlegają wahaniom wpływającym na wartość inwestycji</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> <strong className="text-[#f4f4f5]">Wyniki historyczne</strong> nie gwarantują przyszłych zysków</li>
             </ul>
           </motion.section>
 
@@ -104,10 +104,10 @@ export default function DisclaimerPage() {
               Przed podjęciem jakichkolwiek decyzji inwestycyjnych zalecamy:
             </p>
             <ul className="space-y-2 text-[#a1a1aa] ml-4 mt-4">
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">1.</span> Skonsultowanie się z <strong className="text-[#f4f4f5]">licencjonowanym doradcą inwestycyjnym</strong></li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">2.</span> Zapoznanie się z <strong className="text-[#f4f4f5]">dokumentacją produktową</strong> (KID, prospekt)</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">3.</span> Ocenę własnej <strong className="text-[#f4f4f5]">tolerancji na ryzyko</strong></li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">4.</span> Inwestowanie tylko środków, na których utratę możesz sobie pozwolić</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">1.</span> Skonsultowanie się z <strong className="text-[#f4f4f5]">licencjonowanym doradcą inwestycyjnym</strong></li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">2.</span> Zapoznanie się z <strong className="text-[#f4f4f5]">dokumentacją produktową</strong> (KID, prospekt)</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">3.</span> Ocenę własnej <strong className="text-[#f4f4f5]">tolerancji na ryzyko</strong></li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">4.</span> Inwestowanie tylko środków, na których utratę możesz sobie pozwolić</li>
             </ul>
           </motion.section>
 
@@ -123,7 +123,7 @@ export default function DisclaimerPage() {
             </p>
             <Link
               href="mailto:tomasz.chromy@outlook.com"
-              className="text-[#c9a962] hover:text-[#e4d4a5] transition-colors"
+              className="text-[var(--accent)] hover:text-[#93c5fd] transition-colors"
             >
               tomasz.chromy@outlook.com
             </Link>

@@ -42,7 +42,7 @@ export default function ONasPage() {
             transition={{ delay: 0.1 }}
             className="bg-[#0c0d10] border border-white/5 rounded-2xl p-8 mb-12"
           >
-            <h2 className="text-lg font-medium text-[#c9a962] mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-medium text-[var(--accent)] mb-4 flex items-center gap-2">
               <span>🎯</span> Nasza misja
             </h2>
             <p className="text-[#a1a1aa] leading-relaxed">
@@ -52,15 +52,15 @@ export default function ONasPage() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 text-sm text-[#a1a1aa]">
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-[#c9a962] text-xs uppercase tracking-[0.1em] mb-1">Wiarygodność</p>
+                <p className="text-[var(--accent)] text-xs uppercase tracking-[0.1em] mb-1">Wiarygodność</p>
                 <p>Kuracja źródeł, jasne atrybucje, walidacja feedów i alarmy na wypadek błędów danych.</p>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-[#c9a962] text-xs uppercase tracking-[0.1em] mb-1">Dostępność</p>
+                <p className="text-[var(--accent)] text-xs uppercase tracking-[0.1em] mb-1">Dostępność</p>
                 <p>UX mobile-first, kontrasty AA, klawiatura i skróty, tryb oszczędzania danych.</p>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-[#c9a962] text-xs uppercase tracking-[0.1em] mb-1">Bezpieczeństwo</p>
+                <p className="text-[var(--accent)] text-xs uppercase tracking-[0.1em] mb-1">Bezpieczeństwo</p>
                 <p>Rate limiting, sanity checks dla API, monitorowanie uptime i logów anomalii.</p>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function ONasPage() {
               { icon: "🧮", title: "Kalkulatory", desc: "Kredyt, procent składany, ROI, hedging FX" },
               { icon: "📱", title: "PWA 2026", desc: "Pełny offline + push, produkcja do końca 2026" },
             ].map((feature, i) => (
-              <div key={i} className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[#c9a962]/20 transition-colors">
+              <div key={i} className="bg-[#0c0d10] border border-white/5 rounded-xl p-5 hover:border-[var(--accent)]/25 transition-colors">
                 <span className="text-2xl mb-2 block">{feature.icon}</span>
                 <h3 className="text-sm font-medium text-[#f4f4f5] mb-1">{feature.title}</h3>
                 <p className="text-xs text-[#71717a]">{feature.desc}</p>

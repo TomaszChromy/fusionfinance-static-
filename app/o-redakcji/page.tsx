@@ -62,7 +62,7 @@ export default function ORedakcjiPage() {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="text-2xl">📋</span>
-            <h2 className="text-xl font-medium text-[#c9a962]">Polityka redakcyjna</h2>
+            <h2 className="text-xl font-medium text-[var(--accent)]">Polityka redakcyjna</h2>
           </div>
           <div className="space-y-4 text-[#a1a1aa] leading-relaxed">
             <p>
@@ -72,12 +72,12 @@ export default function ORedakcjiPage() {
               <strong className="text-[#f4f4f5]">Zasady:</strong>
             </p>
             <ul className="space-y-2 ml-4">
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> Kurujemy wyłącznie wiarygodne źródła (Money.pl, Bankier.pl, ISBnews, PAP), każdemu feedowi przypisujemy etykietę źródła.</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> Dane rynkowe pobieramy z oficjalnych API (NBP, CoinGecko); błędy lub braki sygnalizujemy na widoku.</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> Nie publikujemy rekomendacji inwestycyjnych; agregacja ma charakter informacyjny.</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> Każdy materiał zawiera atrybucję do źródła i link do oryginału.</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> AI wspiera automatyzację (deduplikacja, streszczenia), ale decyzje redakcyjne są ludzkie.</li>
-              <li className="flex items-start gap-2"><span className="text-[#c9a962]">•</span> Roadmapa i kod są transparentne; cele PWA wyznaczone na koniec 2026.</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> Kurujemy wyłącznie wiarygodne źródła (Money.pl, Bankier.pl, ISBnews, PAP), każdemu feedowi przypisujemy etykietę źródła.</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> Dane rynkowe pobieramy z oficjalnych API (NBP, CoinGecko); błędy lub braki sygnalizujemy na widoku.</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> Nie publikujemy rekomendacji inwestycyjnych; agregacja ma charakter informacyjny.</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> Każdy materiał zawiera atrybucję do źródła i link do oryginału.</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> AI wspiera automatyzację (deduplikacja, streszczenia), ale decyzje redakcyjne są ludzkie.</li>
+              <li className="flex items-start gap-2"><span className="text-[var(--accent)]">•</span> Roadmapa i kod są transparentne; cele PWA wyznaczone na koniec 2026.</li>
             </ul>
           </div>
         </motion.section>
@@ -101,19 +101,19 @@ export default function ORedakcjiPage() {
                 transition={{ delay: 0.3 + i * 0.1 }}
                 className="bg-[#0c0d10] border border-white/5 rounded-xl p-6 flex items-start gap-4"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#c9a962] to-[#9a7b3c] flex items-center justify-center text-[#08090c] font-bold text-lg flex-shrink-0">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--accent)] to-[#1d4ed8] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                   {person.avatar}
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-medium text-[#f4f4f5]">{person.name}</h3>
-                  <p className="text-sm text-[#c9a962] mb-2">{person.role}</p>
+                  <p className="text-sm text-[var(--accent)] mb-2">{person.role}</p>
                   <p className="text-sm text-[#a1a1aa] leading-relaxed">{person.bio}</p>
                   {person.links.website && (
                     <Link
                       href={person.links.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-[#71717a] hover:text-[#c9a962] mt-2 transition-colors"
+                      className="inline-flex items-center gap-1 text-xs text-[#71717a] hover:text-[var(--accent)] mt-2 transition-colors"
                     >
                       🌐 {person.links.website.replace("https://", "")}
                     </Link>
@@ -166,7 +166,7 @@ export default function ORedakcjiPage() {
           <div className="flex flex-col items-center gap-2 text-sm">
             <Link
               href="mailto:tomasz.chromy@outlook.com"
-              className="text-[#c9a962] hover:text-[#e4d4a5] transition-colors"
+              className="text-[var(--accent)] hover:text-[#93c5fd] transition-colors"
             >
               tomasz.chromy@outlook.com
             </Link>
