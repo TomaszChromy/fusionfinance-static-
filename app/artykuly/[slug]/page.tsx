@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ShareButtons from "@/components/ShareButtons";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import RelatedArticles from "@/components/RelatedArticles";
 import { FALLBACK_ARTICLES } from "@/data/articles-fallback";
 import { decode } from "he";
 
@@ -152,13 +153,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const paragraphs = cleanContent(article.content);
 
   return (
-    <main className="min-h-screen bg-[#08090c]">
+    <main className="min-h-screen bg-[#f6f7f9] text-[#111827]">
       <Navbar />
 
       <div className="mx-auto max-w-5xl px-5 lg:px-8 py-10 lg:py-14">
         <Breadcrumbs />
 
-        <article className="bg-[#0c0d10] border border-white/5 rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
+        <article className="bg-white border border-[#e6e8ee] rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(17,24,39,0.08)]">
           {article.coverImage && (
             <div className="relative h-[260px] lg:h-[360px] overflow-hidden">
               <Image
@@ -170,7 +171,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 priority
                 unoptimized
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
               <div className="absolute bottom-5 left-5 text-white text-xs px-3 py-1.5 rounded-full bg-black/50 border border-white/10">
                 {article.category || "Analiza"}
               </div>
@@ -178,14 +179,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           )}
 
           <div className="p-6 lg:p-10">
-            <div className="flex flex-wrap items-center gap-3 text-xs text-[#71717a] mb-4">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-[#6b7280] mb-4">
               <span>{publishedDate}</span>
-              <span className="w-1 h-1 rounded-full bg-[#c9a962]/60" />
+              <span className="w-1 h-1 rounded-full bg-[#e5e7eb]" />
               <span>{article.source || "FusionFinance"}</span>
               {article.tags?.length ? (
                 <span className="flex flex-wrap gap-2">
                   {article.tags.map(tag => (
-                    <span key={tag} className="px-2 py-1 rounded-full bg-white/5 text-[11px] text-[#a1a1aa]">
+                    <span key={tag} className="px-2 py-1 rounded-full bg-[#eef2ff] text-[11px] text-[#4338ca]">
                       #{tag}
                     </span>
                   ))}
@@ -193,10 +194,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ) : null}
             </div>
 
-            <h1 className="font-serif text-3xl lg:text-4xl text-[#f4f4f5] font-medium leading-tight mb-4">
+            <h1 className="font-serif text-3xl lg:text-4xl text-[#111827] font-semibold leading-tight mb-4 max-w-3xl">
               {article.title}
             </h1>
-            <p className="text-lg text-[#a1a1aa] leading-relaxed mb-6">{article.summary}</p>
+            <p className="text-lg text-[#374151] leading-relaxed mb-6 max-w-3xl">{article.summary}</p>
 
             <div className="flex items-center gap-3 mb-8">
               <ShareButtons
@@ -207,13 +208,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               />
             </div>
 
-            <div className="prose prose-invert max-w-none prose-p:my-4 prose-li:my-2 prose-headings:text-[#f4f4f5] prose-strong:text-[#f4f4f5] prose-a:text-[#c9a962]">
+            <div className="prose max-w-none prose-p:my-4 prose-li:my-2 prose-headings:text-[#111827] prose-strong:text-[#111827] prose-a:text-[#2563eb] prose-a:underline prose-img:rounded-xl">
               {paragraphs.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
             </div>
           </div>
         </article>
+
+        <div className="mt-10 bg-white border border-[#e6e8ee] rounded-2xl p-6">
+          <RelatedArticles currentTitle={article.title} currentKeywords={article.tags ?? []} maxArticles={4} />
+        </div>
       </div>
 
       <Footer />
