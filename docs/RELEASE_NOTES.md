@@ -1,7 +1,7 @@
 # Release Notes (draft)
 
 ## Wersja: RC snapshot
-- Build: https://fusionfinance-static-mo5dr8z1h-tomasz-s-projects-587fbd1b.vercel.app
+- Build: https://fusionfinance-static-qmmkok2yl-tomasz-s-projects-587fbd1b.vercel.app
 - Alias: fusionfinance.pl / www.fusionfinance.pl
 
 ### Zmiany
@@ -11,6 +11,8 @@
 - Dok. STATUS/ROADMAP/QA checklist.
 - Nowe layouty (jasne) dla home/kategorii (Polska, Świat, Analizy, Crypto, Waluty) z listami „Załaduj więcej”; reading mode artykułu + powiązane.
 - A11y/perf: lazy images, focus-visible, aria-label search.
+- Ciemny motyw ujednolicony na wszystkich kluczowych podstronach, CTA/focus oparte na `--accent`, usunięte stare złote akcenty.
+- VERCEL_BYPASS_TOKEN ustawiony (preview + production) + nagłówek bypass w `next.config.ts`.
 
 ### Znane ograniczenia / TODO
 - Integracje (Google/Stripe/Resend/OpenAI) celowo pominięte — dodać sekrety przed użyciem funkcji.
@@ -20,6 +22,7 @@
 ### QA skrót
 - Smoke E2E (Playwright, BASE_URL=https://www.fusionfinance.pl, VERCEL_BYPASS_TOKEN aktywny) — ✅ 5/5 ścieżek.
 - CI nadal uruchamia smoke przeciwko https://fusionfinance-static.vercel.app (bez ochrony).
+- Manual smoke (desktop, prod build): header/nav + ticker OK; widoki /, /polska, /swiat, /gielda, /waluty/eur-pln, /artykul bez błędów konsoli; formularze logowanie/rejestracja/kontakt render OK (backend auth nieaktywny); CTA/hover/focus spójne z akcentem.
 - Patrz `docs/QA_CHECKLIST.md`.
 
 
