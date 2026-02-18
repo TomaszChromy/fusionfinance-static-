@@ -4,15 +4,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHero from "@/components/PageHero";
-import LiveIndicator from "@/components/LiveIndicator";
-import UnifiedCategoryLayout from "@/components/UnifiedCategoryLayout";
-import { InfoTooltip } from "@/components/Tooltip";
+import MarketNews from "@/components/MarketNews";
+import ArticleFeedLoadMore from "@/components/articles/ArticleFeedLoadMore";
 
 export default function SwiatPage() {
   return (
-    <main className="min-h-screen bg-[#08090c]">
+    <main className="min-h-screen bg-[#f6f7f9] text-[#111827]">
       <Navbar />
-      <div className="phi-shell">
+
+      <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
         <Breadcrumbs />
         <PageHero
           title="Świat"
@@ -20,22 +20,18 @@ export default function SwiatPage() {
           eyebrow="Rynki globalne"
           badge="Live"
         />
-        <div className="phi-stack" style={{ marginTop: "var(--space-13)", gap: "var(--space-21)" }}>
-          <div className="phi-section shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
-            <div className="flex items-center justify-between mb-[26px] pb-[16px] border-b border-[#c9a962]/20" style={{ marginBottom: "var(--space-21)", paddingBottom: "var(--space-13)" }}>
-              <div className="flex items-center gap-3" style={{ gap: "var(--space-8)" }}>
-                <div className="w-1 h-7 bg-gradient-to-b from-[#c9a962] to-[#9a7b3c] rounded-full" />
-                <div>
-                  <h2 className="text-lg font-serif font-medium text-[#f4f4f5]">Artykuły</h2>
-                  <p className="text-xs text-[#71717a] mt-0.5">Layout inspirowany Interia.pl, Bankier.pl i Washington Post</p>
-                </div>
-              </div>
-              <div className="hidden md:flex items-center gap-2">
-                <LiveIndicator label="Na żywo" />
-                <InfoTooltip content="80 artykułów, 12 na stronę" />
-              </div>
-            </div>
-            <UnifiedCategoryLayout feedType="swiat" totalArticles={80} articlesPerPage={12} />
+        <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#e6e8ee] p-4 md:p-6">
+            <ArticleFeedLoadMore
+              feedType="swiat"
+              initialCount={12}
+              step={6}
+              title="Artykuły ze świata"
+              subtitle="Makro, surowce, geopolityka"
+            />
+          </div>
+          <div className="space-y-4">
+            <MarketNews maxItems={6} />
           </div>
         </div>
       </div>
