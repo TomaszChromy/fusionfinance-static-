@@ -132,31 +132,54 @@ export default function RelatedArticles({
 
   return (
     <section className="mt-12 pt-8 border-t border-[#c9a962]/20">
-      <h3 className="font-serif text-xl text-[#f4f4f5] mb-6 flex items-center gap-3">
-        <span className="w-1 h-6 bg-[#c9a962]" />
-        Powiązane artykuły
-      </h3>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="font-serif text-xl text-[#f4f4f5] flex items-center gap-3">
+          <span className="w-1 h-6 bg-[#c9a962]" />
+          Powiązane artykuły
+        </h3>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
         {relatedArticles.map((article, index) => (
           <motion.article
             key={article.link}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="group"
+            transition={{ delay: index * 0.06, duration: 0.3 }}
+            className="group h-full"
           >
-            <Link href={createArticleUrl(article)} className="block">
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3 border border-white/10 group-hover:border-[#c9a962]/30 transition-colors">
-                <Image src={getImageUrl(article)} alt={article.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 1024px) 50vw, 25vw" unoptimized />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <Link
+              href={createArticleUrl(article)}
+              className="block h-full rounded-2xl border border-white/5 bg-[#0c0d10] hover:border-[#c9a962]/30 transition-colors overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+            >
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <Image
+                  src={getImageUrl(article)}
+                  alt={article.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-transparent" />
+                <div className="absolute left-3 bottom-3 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] rounded-full bg-black/60 text-[#e4e4e7]">
+                  {formatDate(article.date)}
+                </div>
               </div>
-              <h4 className="text-[13px] font-medium text-[#f4f4f5] leading-snug line-clamp-2 group-hover:text-[#c9a962] transition-colors">
-                {article.title}
-              </h4>
-              <span className="text-[10px] text-[#71717a] mt-1 block">
-                {formatDate(article.date)}
-              </span>
+
+              <div className="p-4 space-y-2">
+                <h4 className="text-[14px] font-semibold text-[#f4f4f5] leading-snug line-clamp-3 group-hover:text-[#c9a962] transition-colors">
+                  {article.title}
+                </h4>
+                <p className="text-[12px] text-[#9ca3af] line-clamp-2">
+                  {article.description || "Sprawdź więcej szczegółów w artykule."}
+                </p>
+                <div className="flex items-center justify-between text-[11px] text-[#71717a] pt-1">
+                  <span className="truncate">{article.source || "Źródło"}</span>
+                  <span className="text-[#c9a962] font-medium">Czytaj</span>
+                </div>
+              </div>
             </Link>
           </motion.article>
         ))}
