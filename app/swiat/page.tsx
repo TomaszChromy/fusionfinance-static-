@@ -42,14 +42,22 @@ export default function SwiatPage() {
         />
         {/* Hero: main story + snapshot rynków globalnych */}
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
-          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
-            <RSSFeatured
-              feedType="swiat"
-              limit={5}
-              title="Analiza dnia (Świat)"
-              description="Najważniejszy materiał globalny"
-              eyebrow="Pilne"
-            />
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-0 overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-white/5">
+              <span className="px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] bg-[var(--danger)] text-black rounded">
+                Pilne
+              </span>
+              <span className="text-[11px] text-[var(--muted)]">Global</span>
+            </div>
+            <div className="p-4 md:p-6">
+              <RSSFeatured
+                feedType="swiat"
+                limit={5}
+                title="Analiza dnia (Świat)"
+                description="Najważniejszy materiał globalny"
+                eyebrow=""
+              />
+            </div>
           </div>
           <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 space-y-4">
             <h3 className="text-sm font-semibold text-[var(--text)]">Snapshot globalny</h3>

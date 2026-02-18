@@ -38,9 +38,16 @@ export default function NotowaniaPage() {
         />
         {/* Hero + snapshot */}
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8">
-          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
-            <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
-              <div className="flex items-center gap-3">
+          <div className="rounded-2xl shadow-sm border border-[var(--border)] bg-[var(--surface)] p-0 overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-white/5">
+              <span className="px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] bg-[var(--danger)] text-black rounded">
+                Pilne
+              </span>
+              <span className="text-[11px] text-[var(--muted)]">Notowania</span>
+            </div>
+            <div className="p-4 md:p-6">
+              <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--border)]">
+                <div className="flex items-center gap-3">
                 <div className="w-1 h-7 bg-gradient-to-b from-[var(--accent)] to-[var(--gold-dark)] rounded-full" />
                 <div>
                   <h2 className="text-lg font-semibold text-[var(--text)]">Artykuły</h2>
@@ -53,6 +60,7 @@ export default function NotowaniaPage() {
               </div>
             </div>
             <ArticleFeedLoadMore feedType="gielda" initialCount={12} step={6} title="" subtitle="" />
+            </div>
           </div>
 
           <div className="space-y-4">

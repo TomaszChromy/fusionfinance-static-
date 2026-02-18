@@ -28,14 +28,22 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="grid gap-6 lg:grid-cols-[2fr_1fr] mt-8"
         >
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 shadow-sm">
-            <RSSFeatured
-              feedType="all"
-              limit={5}
-              title="Analiza dnia"
-              description="Najważniejszy materiał redakcyjny + kluczowe dane rynkowe"
-              eyebrow="Pilne"
-            />
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-0 shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-white/5">
+              <span className="px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] bg-[var(--danger)] text-black rounded">
+                Pilne
+              </span>
+              <span className="text-[11px] text-[var(--muted)]">Aktualizowane na bieżąco</span>
+            </div>
+            <div className="p-4 md:p-6">
+              <RSSFeatured
+                feedType="all"
+                limit={5}
+                title="Analiza dnia"
+                description="Najważniejszy materiał redakcyjny + kluczowe dane rynkowe"
+                eyebrow=""
+              />
+            </div>
           </div>
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
@@ -53,9 +61,19 @@ export default function Home() {
               items={[
                 { label: "S&P 500", value: "+0.31%", direction: "up" },
                 { label: "Nasdaq", value: "+0.44%", direction: "up" },
+                { label: "Dow Jones", value: "+0.18%", direction: "up" },
+                { label: "DAX", value: "-0.17%", direction: "down" },
+                { label: "Nikkei", value: "+0.66%", direction: "up" },
+              ]}
+            />
+            <TopList
+              title="Waluty / Surowce"
+              items={[
+                { label: "EUR/PLN", value: "+0.29%", direction: "up" },
+                { label: "USD/PLN", value: "-0.22%", direction: "down" },
                 { label: "Złoto", value: "-0.12%", direction: "down" },
                 { label: "Ropa Brent", value: "+0.25%", direction: "up" },
-                { label: "EUR/PLN", value: "+0.29%", direction: "up" },
+                { label: "BTC", value: "+1.59%", direction: "up" },
               ]}
             />
             <div className="grid grid-cols-2 gap-2 text-sm">
