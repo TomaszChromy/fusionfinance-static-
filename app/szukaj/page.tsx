@@ -15,6 +15,7 @@ import Badge from "@/components/Badge";
 import { SourceAvatar } from "@/components/Avatar";
 import SearchSuggestions from "@/components/SearchSuggestions";
 import PageHero from "@/components/PageHero";
+import type { RssItem } from "@/types/rss";
 
 interface SearchResult {
   title: string;
@@ -89,7 +90,15 @@ function SearchContent() {
         const feedParam = category === "all" ? "all" : category;
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss(feedParam, 100);
-        let items = (data as any).items || [];
+        let items: SearchResult[] = (data.items || []).map((item: RssItem) => ({
+          title: item.title,
+          link: item.link || "",
+          description: item.description || item.contentSnippet || "",
+          content: item.content || item.description || "",
+          date: item.isoDate || item.date || new Date().toISOString(),
+          source: item.source || item.link || "RSS",
+          image: item.image,
+        }));
 
         if (query) {
           items = items.filter((item: SearchResult) =>

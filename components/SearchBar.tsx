@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import type { RssItem } from "@/types/rss";
 
 interface SearchResult {
   title: string;
@@ -68,10 +69,21 @@ export default function SearchBar({ onClose, isOpen = true }: SearchBarProps) {
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss("all", 50);
-        const filtered = ((data as any).items || []).filter((item: SearchResult) =>
-          item.title.toLowerCase().includes(query.toLowerCase()) ||
-          item.description?.toLowerCase().includes(query.toLowerCase())
-        ).slice(0, 8);
+        const rawItems: RssItem[] = data.items || [];
+        const filtered = rawItems
+          .filter(item =>
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.description?.toLowerCase().includes(query.toLowerCase()) ||
+            item.contentSnippet?.toLowerCase().includes(query.toLowerCase())
+          )
+          .slice(0, 8)
+          .map(item => ({
+            title: item.title,
+            link: item.link || "",
+            description: item.description || item.contentSnippet || "",
+            date: item.isoDate || item.date || new Date().toISOString(),
+            source: item.source || item.link || "RSS",
+          }));
         setResults(filtered);
         setShowResults(true);
       } catch (error) {

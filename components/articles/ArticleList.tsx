@@ -5,16 +5,7 @@ import { ArticleCard } from "./ArticleCard";
 import { ListSkeleton } from "../Skeleton";
 import { ErrorState } from "../EmptyState";
 import { getRssArticleLink } from "@/lib/slug-utils";
-
-interface RSSItem {
-  title: string;
-  link: string;
-  description: string;
-  content: string;
-  date: string;
-  source: string;
-  image?: string;
-}
+import type { RssItem } from "@/types/rss";
 
 interface ArticleListProps {
   feedType: string;
@@ -24,7 +15,7 @@ interface ArticleListProps {
 }
 
 export default function ArticleList({ feedType, title, subtitle, limit = 12 }: ArticleListProps) {
-  const [items, setItems] = useState<RSSItem[]>([]);
+  const [items, setItems] = useState<RssItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,7 +25,7 @@ export default function ArticleList({ feedType, title, subtitle, limit = 12 }: A
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss(feedType, limit);
-        setItems((data as any).items || []);
+        setItems(data.items || []);
         setError(null);
       } catch {
         setError("Nie udało się załadować artykułów");
@@ -63,11 +54,11 @@ export default function ArticleList({ feedType, title, subtitle, limit = 12 }: A
         {list.map((item, idx) => (
           <ArticleCard
             key={item.title + idx}
-            href={getRssArticleLink(item.title, item.link)}
+            href={getRssArticleLink(item.title, item.link || "")}
             title={item.title}
-            description={item.description}
-            image={item.image}
-            meta={new Date(item.date).toLocaleDateString("pl-PL", { day: "numeric", month: "short" })}
+            description={item.description || item.contentSnippet || ""}
+            image={item.image || item.enclosure?.url}
+            meta={new Date(item.isoDate || item.date || Date.now()).toLocaleDateString("pl-PL", { day: "numeric", month: "short" })}
           />
         ))}
       </div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { fetchRss } from "@/lib/api";
+import type { RssItem } from "@/types/rss";
 
 interface NewsItem {
   title: string;
@@ -37,17 +38,19 @@ export default function NewsTicker({
 }: NewsTickerProps) {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [isPaused, setIsPaused] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isClient = typeof window !== "undefined";
 
   useEffect(() => {
     async function fetchNews() {
       try {
         const data = await fetchRss("all", maxItems);
-        setNews((data as any).items?.slice(0, maxItems) || []);
+        const parsed = (data.items || []).slice(0, maxItems).map((item: RssItem) => ({
+          title: item.title,
+          link: item.link || "#",
+          source: item.source || "RSS",
+          date: item.isoDate || item.date || new Date().toISOString(),
+        }));
+        setNews(parsed);
       } catch {
         setNews([]);
       }
@@ -57,7 +60,7 @@ export default function NewsTicker({
     return () => clearInterval(interval);
   }, [maxItems]);
 
-  if (!mounted) {
+  if (!isClient) {
     return <div className={`bg-[#0c0d10] border border-white/5 rounded-xl h-[80px] ${className}`} />;
   }
 

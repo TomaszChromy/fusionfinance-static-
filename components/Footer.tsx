@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import VisitCounter from "./VisitCounter";
-import { socialCircleClass, socialGlowClass, socialLabelClass } from "./socialStyles";
 
 export default function Footer() {
   return (

@@ -9,17 +9,7 @@ import FavoriteButton from "./FavoriteButton";
 import { ListSkeleton } from "./Skeleton";
 import { ErrorState } from "./EmptyState";
 import { SourceAvatar } from "./Avatar";
-
-interface RSSItem {
-  title: string;
-  link: string;
-  description: string;
-  content: string;
-  date: string;
-  source: string;
-  category?: string;
-  image?: string;
-}
+import type { RssItem } from "@/types/rss";
 
 interface UnifiedCategoryLayoutProps {
   feedType?: string;
@@ -69,14 +59,14 @@ function formatPolishDate(dateString: string): string {
   }
 }
 
-function createArticleUrl(article: RSSItem, index: number): string {
+function createArticleUrl(article: RssItem, index: number): string {
   const imageUrl = getImageForArticle(index, article.title, article.image);
   const params = new URLSearchParams({
     title: article.title,
-    desc: article.description,
-    content: article.content || article.description,
-    date: article.date,
-    source: article.link,
+    desc: article.description || "",
+    content: article.content || article.description || "",
+    date: article.isoDate || article.date || new Date().toISOString(),
+    source: article.link || "",
     image: imageUrl,
   });
   return `/artykul/?${params.toString()}`;
@@ -87,7 +77,7 @@ export default function UnifiedCategoryLayout({
   totalArticles = 80,
   articlesPerPage = 12,
 }: UnifiedCategoryLayoutProps) {
-  const [allArticles, setAllArticles] = useState<RSSItem[]>([]);
+  const [allArticles, setAllArticles] = useState<RssItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -99,7 +89,7 @@ export default function UnifiedCategoryLayout({
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss(feedType, totalArticles);
-        setAllArticles((data as any).items || []);
+        setAllArticles(data.items || []);
         setError(null);
       } catch {
         setError("Nie udało się załadować artykułów");
@@ -170,7 +160,7 @@ export default function UnifiedCategoryLayout({
                 <div className="flex items-center gap-3 mb-5">
                   <SourceAvatar source={heroArticle.source || "news"} size="sm" />
                   <span className="text-[12px] text-[#e4d4a5] uppercase tracking-[0.15em]">
-                    {formatPolishDate(heroArticle.date)}
+                    {formatPolishDate(heroArticle.isoDate || heroArticle.date || "")}
                   </span>
                 </div>
                 <h2 className="font-serif text-[28px] lg:text-[42px] font-bold text-white leading-tight mb-5 group-hover:text-[#e4d4a5] transition-colors duration-300">
@@ -192,7 +182,7 @@ export default function UnifiedCategoryLayout({
             const imageUrl = getImageForArticle(index + 1, article.title, article.image);
             return (
               <motion.article
-                key={article.link + index}
+                key={(article.link || article.title) + index}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -214,7 +204,7 @@ export default function UnifiedCategoryLayout({
                     <div className="flex items-center gap-2 mb-3">
                       <SourceAvatar source={article.source || "news"} size="xs" />
                       <span className="text-[11px] text-[#a1a1aa] uppercase tracking-[0.1em]">
-                        {formatPolishDate(article.date)}
+                        {formatPolishDate(article.isoDate || article.date || "")}
                       </span>
                     </div>
                     <h3 className="font-serif text-[20px] lg:text-[22px] font-semibold text-[#f4f4f5] leading-snug mb-3 group-hover:text-[#c9a962] transition-colors duration-200 line-clamp-2">
@@ -246,7 +236,7 @@ export default function UnifiedCategoryLayout({
               const imageUrl = getImageForArticle(index + 3, article.title, article.image);
               return (
                 <motion.article
-                  key={article.link + index}
+                  key={(article.link || article.title) + index}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: index * 0.04 }}
@@ -267,7 +257,7 @@ export default function UnifiedCategoryLayout({
                     <div className="flex-1 p-4 flex flex-col">
                       <div className="flex items-center gap-2 mb-2 text-[10px] text-[#a1a1aa] uppercase tracking-[0.1em]">
                         <SourceAvatar source={article.source || "news"} size="xs" />
-                        <span>{formatPolishDate(article.date)}</span>
+                        <span>{formatPolishDate(article.isoDate || article.date || "")}</span>
                       </div>
                       <h3 className="font-serif text-[16px] font-semibold text-[#f4f4f5] leading-snug mb-2 group-hover:text-[#c9a962] transition-colors duration-200 line-clamp-3">
                         {article.title}
@@ -288,7 +278,7 @@ export default function UnifiedCategoryLayout({
                             description: article.description,
                             image: imageUrl,
                             source: article.source,
-                            date: formatPolishDate(article.date),
+                            date: formatPolishDate(article.isoDate || article.date || ""),
                           }}
                           size="sm"
                         />
@@ -307,4 +297,3 @@ export default function UnifiedCategoryLayout({
     </div>
   );
 }
-

@@ -8,7 +8,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import OfflineIndicator from "@/components/OfflineIndicator";
 import KeyboardShortcuts from "@/components/KeyboardShortcuts";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
-import DevCacheReset from "@/components/DevCacheReset";
 import { ToastProvider } from "@/components/Toast";
 import Providers from "@/components/Providers";
 import { env } from "@/lib/env";

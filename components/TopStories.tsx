@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import TagList from "./TagList";
 import { getApiUrl } from "@/lib/api";
+import type { RssItem } from "@/types/rss";
 
 interface Story {
   id: string;
@@ -35,23 +36,23 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
         if (mounted && Array.isArray(data.items)) {
           setStories(data.items);
         }
-      } catch (error) {
+      } catch {
         // Fallback na RSS (all) gdy API articles nie działa na statycznym hostingu
         try {
           const { fetchRss } = await import("@/lib/api");
           const rss = await fetchRss("all", limit);
-          const items = (rss as any)?.items || [];
+          const items: RssItem[] = rss.items || [];
           if (mounted) {
             setStories(
-              items.map((item: any) => ({
+              items.map((item) => ({
                 id: item.link || item.title,
                 slug: "",
                 title: item.title,
-                summary: item.description,
-                coverImage: item.image,
+                summary: item.description || item.contentSnippet || "",
+                coverImage: item.image || item.enclosure?.url,
                 category: item.category || "RSS",
-                publishedAt: item.date || new Date().toISOString(),
-                source: item.source || "RSS",
+                publishedAt: item.isoDate || item.date || new Date().toISOString(),
+                source: item.source || item.link || "RSS",
               }))
             );
           }

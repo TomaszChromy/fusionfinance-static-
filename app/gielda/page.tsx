@@ -92,30 +92,6 @@ export default function GieldaPage() {
     { date: "22 lut", time: "14:30", title: "CPI USA (m/m)", tag: "Makro" },
   ];
 
-  const topMovers = {
-    gainers: [
-      { symbol: "CDR", name: "CD Projekt", change: "+4.4%" },
-      { symbol: "JSW", name: "JSW", change: "+3.1%" },
-      { symbol: "LPP", name: "LPP", change: "+2.5%" },
-    ],
-    losers: [
-      { symbol: "KGH", name: "KGHM", change: "-2.7%" },
-      { symbol: "PZU", name: "PZU", change: "-1.1%" },
-      { symbol: "CPS", name: "Cyfrowy Polsat", change: "-0.9%" },
-    ],
-    volume: [
-      { symbol: "PKO", name: "PKO BP", volume: "82 mln" },
-      { symbol: "PEO", name: "Pekao", volume: "66 mln" },
-      { symbol: "ALE", name: "Allegro", volume: "54 mln" },
-    ],
-  };
-
-  const calendar = [
-    { date: "18 lut", time: "14:00", title: "Fed minutes", tag: "USA" },
-    { date: "20 lut", time: "10:00", title: "RPP: komunikat", tag: "PL" },
-    { date: "22 lut", time: "14:30", title: "CPI USA (m/m)", tag: "Makro" },
-  ];
-
   return (
     <main className="min-h-screen bg-[#08090c]">
       <Navbar />

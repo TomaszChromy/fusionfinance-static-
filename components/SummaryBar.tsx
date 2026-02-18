@@ -40,7 +40,7 @@ export default function SummaryBar() {
         ]);
 
         setSummary({
-          articles: (rss as any).items?.length ?? 0,
+          articles: rss.items?.length ?? 0,
           stocks: stocks.items?.length ?? 0,
           forex: forex.items?.length ?? 0,
           crypto: crypto.items?.length ?? 0,

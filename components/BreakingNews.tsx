@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { getRssArticleLink } from "@/lib/slug-utils";
+import type { RssItem } from "@/types/rss";
 
 interface NewsItem {
   title: string;
@@ -19,20 +20,16 @@ const fallbackNews: NewsItem[] = [
 export default function BreakingNews() {
   const [news, setNews] = useState<NewsItem[]>(fallbackNews);
   const [isPaused, setIsPaused] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isClient = typeof window !== "undefined";
 
   useEffect(() => {
     async function fetchBreakingNews() {
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss("polska", 18);
-        const items: NewsItem[] = (data as any).items?.map((item: { title: string; link: string; image?: string }) => ({
+        const items: NewsItem[] = (data.items || []).map((item: RssItem) => ({
           title: item.title,
-          link: getRssArticleLink(item.title, item.link),
+          link: getRssArticleLink(item.title, item.link || ""),
           originalUrl: item.link,
           image: item.image,
         })) || [];
@@ -55,7 +52,7 @@ export default function BreakingNews() {
   }, []);
 
   // Nie renderuj na serwerze żeby uniknąć hydration mismatch
-  if (!mounted) {
+  if (!isClient) {
     return null;
   }
 

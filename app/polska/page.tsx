@@ -5,9 +5,6 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PageHero from "@/components/PageHero";
 import { CategoryBadge } from "@/components/Badge";
-import { InfoTooltip } from "@/components/Tooltip";
-import LiveIndicator from "@/components/LiveIndicator";
-import UnifiedCategoryLayout from "@/components/UnifiedCategoryLayout";
 import ArticleList from "@/components/articles/ArticleList";
 
 export default function PolskaPage() {

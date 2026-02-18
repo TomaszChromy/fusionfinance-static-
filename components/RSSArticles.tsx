@@ -4,17 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-interface RSSItem {
-  title: string;
-  link: string;
-  description: string;
-  content: string;
-  date: string;
-  source: string;
-  category?: string;
-  image?: string;
-}
+import type { RssItem } from "@/types/rss";
 
 interface RSSArticlesProps {
   feedType?: string;
@@ -137,16 +127,16 @@ function formatPolishDate(dateString: string): string {
   }
 }
 
-function createArticleUrl(article: RSSItem, index: number): string {
+function createArticleUrl(article: RssItem, index: number): string {
   // Przekaż oryginalny obraz lub fallback tematyczny
   const imageUrl = getImageForArticle(index, article.title, article.image);
 
   const params = new URLSearchParams({
     title: article.title,
-    desc: article.description,
-    content: article.content || article.description,
-    date: article.date,
-    source: article.link,
+    desc: article.description || "",
+    content: article.content || article.description || "",
+    date: article.isoDate || article.date || new Date().toISOString(),
+    source: article.link || "",
     image: imageUrl,
   });
 
@@ -154,7 +144,7 @@ function createArticleUrl(article: RSSItem, index: number): string {
 }
 
 export default function RSSArticles({ feedType = "bankier", limit = 10, showImage = true }: RSSArticlesProps) {
-  const [articles, setArticles] = useState<RSSItem[]>([]);
+  const [articles, setArticles] = useState<RssItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -164,7 +154,7 @@ export default function RSSArticles({ feedType = "bankier", limit = 10, showImag
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss(feedType, limit);
-        setArticles((data as any).items || []);
+        setArticles(data.items || []);
         setError(null);
       } catch {
         setError("Nie udało się załadować artykułów");
@@ -208,7 +198,7 @@ export default function RSSArticles({ feedType = "bankier", limit = 10, showImag
 
         return (
           <motion.article
-            key={article.link + index}
+            key={(article.link || article.title) + index}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: index * 0.05, ease: [0.4, 0, 0.2, 1] }}
@@ -227,7 +217,7 @@ export default function RSSArticles({ feedType = "bankier", limit = 10, showImag
                   {article.description}
                 </p>
                 <span className="text-[11px] text-[#71717a] uppercase tracking-[0.1em]">
-                  {formatPolishDate(article.date)}
+                    {formatPolishDate(article.isoDate || article.date || "")}
                 </span>
               </div>
 

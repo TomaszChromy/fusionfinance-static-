@@ -4,16 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-interface RSSItem {
-  title: string;
-  link: string;
-  description: string;
-  content: string;
-  date: string;
-  source: string;
-  image?: string;
-}
+import type { RssItem } from "@/types/rss";
 
 interface RelatedArticlesProps {
   currentTitle: string;
@@ -38,7 +29,7 @@ function detectTheme(title: string): string {
   return "default";
 }
 
-function getImageUrl(article: RSSItem): string {
+function getImageUrl(article: RssItem): string {
   if (article.image && article.image.startsWith("http")) return article.image;
   return themeImages[detectTheme(article.title)];
 }
@@ -52,7 +43,7 @@ function extractKeywords(text: string): string[] {
     .slice(0, 10);
 }
 
-function calculateRelevance(article: RSSItem, currentKeywords: string[]): number {
+function calculateRelevance(article: RssItem, currentKeywords: string[]): number {
   const articleKeywords = extractKeywords(article.title + " " + article.description);
   const matches = articleKeywords.filter(kw => currentKeywords.includes(kw)).length;
   return matches;
@@ -67,13 +58,13 @@ function formatDate(dateString: string): string {
   }
 }
 
-function createArticleUrl(article: RSSItem): string {
+function createArticleUrl(article: RssItem): string {
   const params = new URLSearchParams({
     title: article.title,
-    desc: article.description,
-    content: article.content || article.description,
-    date: article.date,
-    source: article.link,
+    desc: article.description || "",
+    content: article.content || article.description || "",
+    date: article.isoDate || article.date || new Date().toISOString(),
+    source: article.link || "",
     image: getImageUrl(article),
   });
   return `/artykul/?${params.toString()}`;
@@ -85,7 +76,7 @@ export default function RelatedArticles({
   maxArticles = 4,
   feedType = "bankier"
 }: RelatedArticlesProps) {
-  const [articles, setArticles] = useState<RSSItem[]>([]);
+  const [articles, setArticles] = useState<RssItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   const keywords = useMemo(() => {
@@ -97,7 +88,7 @@ export default function RelatedArticles({
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss(feedType, 50);
-        setArticles((data as any).items || []);
+        setArticles(data.items || []);
       } catch {
         setArticles([]);
       }
@@ -164,7 +155,7 @@ export default function RelatedArticles({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-transparent" />
                 <div className="absolute left-3 bottom-3 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] rounded-full bg-black/60 text-[#e4e4e7]">
-                  {formatDate(article.date)}
+                  {formatDate(article.isoDate || article.date || "")}
                 </div>
               </div>
 

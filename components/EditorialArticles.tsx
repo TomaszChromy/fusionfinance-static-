@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { getApiUrl } from "@/lib/api";
+import type { RssItem } from "@/types/rss";
 
 interface ArticleCard {
   id: string;
@@ -39,22 +40,22 @@ export default function EditorialArticles({ limit = 6, className = "", category 
         if (isMounted && Array.isArray(data.items)) {
           setArticles(data.items);
         }
-      } catch (error) {
+      } catch {
         try {
           const { fetchRss } = await import("@/lib/api");
           const rss = await fetchRss(category || "all", limit);
-          const items = (rss as any)?.items || [];
+          const items: RssItem[] = rss.items || [];
           if (isMounted) {
             setArticles(
-              items.map((item: any, idx: number) => ({
+              items.map((item, idx: number) => ({
                 id: item.link || `${idx}`,
                 slug: "",
                 title: item.title,
-                summary: item.description,
-                coverImage: item.image,
+                summary: item.description || item.contentSnippet || "",
+                coverImage: item.image || item.enclosure?.url,
                 category: item.category || category || "RSS",
-                publishedAt: item.date || new Date().toISOString(),
-                source: item.source || "RSS",
+                publishedAt: item.isoDate || item.date || new Date().toISOString(),
+                source: item.source || item.link || "RSS",
               }))
             );
           }

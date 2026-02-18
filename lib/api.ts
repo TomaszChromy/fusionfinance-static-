@@ -118,7 +118,9 @@ export function getArticleApiUrl(url: string): string {
 /**
  * Fetch RSS (helper wrapping fetchApi)
  */
-export async function fetchRss(feed: string, limit: number = 10) {
+import type { RssResponse } from "@/types/rss";
+
+export async function fetchRss(feed: string, limit: number = 10): Promise<RssResponse> {
   const params = { feed, limit };
 
   const useNextApi = shouldUseNextApi();
@@ -158,7 +160,7 @@ export async function fetchRss(feed: string, limit: number = 10) {
       }
 
       const data = await response.json();
-      return data;
+      return data as RssResponse;
     } catch (error) {
       lastError = error;
     }

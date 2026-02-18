@@ -9,6 +9,7 @@ import { ListSkeleton } from "./Skeleton";
 import { ErrorState } from "./EmptyState";
 import TagList from "./TagList";
 import { getApiUrl } from "@/lib/api";
+import type { RssItem } from "@/types/rss";
 
 type ArticleItem = {
   id: string;
@@ -64,7 +65,7 @@ export default function ArticlesPaginated({
         setItems(Array.isArray(data.items) ? data.items : []);
         setTotal(typeof data.total === "number" ? data.total : 0);
         setError(null);
-      } catch (err) {
+      } catch {
         if (!mounted) return;
         try {
           // Fallback na RSS dla statycznego hostingu bez API articles
@@ -87,25 +88,25 @@ export default function ArticlesPaginated({
 
           const feedType = category ? (categoryToFeed[category] || 'all') : 'all';
           const rss = await fetchRss(feedType, articlesPerPage * 2);
-          const items = (rss as any)?.items || [];
+          const items: RssItem[] = rss.items || [];
           setItems(
-            items.map((item: any, idx: number) => ({
+            items.map((item, idx) => ({
               id: item.link || `${idx}`,
               slug: "",
               title: item.title,
-              summary: item.description,
-              coverImage: item.image,
+              summary: item.description || item.contentSnippet || "",
+              coverImage: item.image || item.enclosure?.url,
               category: item.category || "RSS",
               tags: [],
               source: item.source || "RSS",
-              publishedAt: item.date || new Date().toISOString(),
+              publishedAt: item.isoDate || item.date || new Date().toISOString(),
               author: "",
             }))
           );
           setTotal(items.length);
           setError(null);
         } catch (fallbackErr) {
-          setError(err instanceof Error ? err.message : "Nie udało się załadować artykułów");
+          setError((fallbackErr as Error)?.message || "Nie udało się załadować artykułów");
           setItems([]);
           setTotal(0);
         }

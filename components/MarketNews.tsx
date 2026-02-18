@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { fetchRss } from "@/lib/api";
 import { getRssArticleLink } from "@/lib/slug-utils";
+import type { RssItem } from "@/types/rss";
 
 interface NewsItem {
   title: string;
@@ -60,10 +61,11 @@ export default function MarketNews({
     async function fetchNews() {
       try {
         const data = await fetchRss("all", maxItems + 2);
-        const items = ((data as any).items?.slice(0, maxItems) || []).map((item: NewsItem) => ({
-          ...item,
+        const items = (data.items || []).slice(0, maxItems).map((item: RssItem) => ({
+          title: item.title,
+          link: getRssArticleLink(item.title, item.link || ""),
           source: item.source || "default",
-          link: getRssArticleLink(item.title, item.link),
+          date: item.isoDate || item.date || new Date().toISOString(),
           originalUrl: item.link,
         }));
         setNews(items);

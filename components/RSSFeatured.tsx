@@ -6,17 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CardSkeleton } from "./Skeleton";
 import { SourceAvatar } from "./Avatar";
-
-interface RSSItem {
-  title: string;
-  link: string;
-  description: string;
-  content: string;
-  date: string;
-  source: string;
-  category?: string;
-  image?: string;
-}
+import type { RssItem } from "@/types/rss";
 
 interface RSSFeaturedProps {
   feedType?: string;
@@ -133,17 +123,17 @@ function formatPolishDate(dateString: string): string {
   }
 }
 
-function createArticleUrl(article: RSSItem, index: number): string {
+function createArticleUrl(article: RssItem, index: number): string {
   // Przekaż oryginalny obraz lub fallback tematyczny
   const imageUrl = getImageForArticle(index, article.title, article.image);
 
   // Encode article data in URL params
   const params = new URLSearchParams({
     title: article.title,
-    desc: article.description,
-    content: article.content || article.description,
-    date: article.date,
-    source: article.link,
+    desc: article.description || "",
+    content: article.content || article.description || "",
+    date: article.isoDate || article.date || new Date().toISOString(),
+    source: article.link || "",
     image: imageUrl,
   });
 
@@ -157,7 +147,7 @@ export default function RSSFeatured({
   description = "Najważniejsze informacje ze świata finansów",
   eyebrow = "Top news",
 }: RSSFeaturedProps) {
-  const [articles, setArticles] = useState<RSSItem[]>([]);
+  const [articles, setArticles] = useState<RssItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -165,7 +155,7 @@ export default function RSSFeatured({
       try {
         const { fetchRss } = await import("@/lib/api");
         const data = await fetchRss(feedType, limit);
-        setArticles((data as any).items || []);
+        setArticles(data.items || []);
       } catch (e) {
         console.error("Failed to load articles", e);
       }
@@ -258,7 +248,7 @@ export default function RSSFeatured({
                   <div className="flex items-center gap-3">
                     <SourceAvatar source={articles[0].source || "news"} size="sm" />
                     <span className="text-[10px] text-[#71717a] uppercase tracking-[0.1em] font-medium">
-                      {formatPolishDate(articles[0].date)}
+                      {formatPolishDate(articles[0].isoDate || articles[0].date || "")}
                     </span>
                   </div>
                   <span className="text-[13px] text-[#c9a962] font-medium flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300">
@@ -277,7 +267,7 @@ export default function RSSFeatured({
         <div className="space-y-4">
           {articles.slice(1, 4).map((article, index) => (
             <motion.article
-              key={article.link + index}
+              key={(article.link || article.title) + index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: (index + 1) * 0.1 }}
@@ -307,7 +297,7 @@ export default function RSSFeatured({
                   <div className="flex items-center gap-2 mt-2">
                     <SourceAvatar source={article.source || "news"} size="xs" />
                     <span className="text-[10px] text-[#52525b] uppercase tracking-wide font-medium">
-                      {formatPolishDate(article.date)}
+                      {formatPolishDate(article.isoDate || article.date || "")}
                     </span>
                     <span className="text-[11px] text-[#c9a962] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1 ml-auto">
                       Czytaj
@@ -329,7 +319,7 @@ export default function RSSFeatured({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[21px]">
             {articles.slice(4, 7).map((article, index) => (
               <motion.div
-                key={article.link + index}
+                key={(article.link || article.title) + index}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -339,7 +329,7 @@ export default function RSSFeatured({
                     {article.title}
                   </h4>
                   <span className="text-[10px] text-[#52525b] mt-2 block">
-                    {formatPolishDate(article.date)}
+                    {formatPolishDate(article.isoDate || article.date || "")}
                   </span>
                 </Link>
               </motion.div>
