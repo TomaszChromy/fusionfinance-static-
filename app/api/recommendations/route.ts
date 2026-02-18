@@ -19,6 +19,11 @@ type SortedArticle = {
   views: number;
 };
 
+type RecommendedArticle = {
+  articleId: string;
+  title: string;
+};
+
 export async function GET(request: NextRequest) {
   try {
     const session = await auth();
@@ -106,7 +111,7 @@ export async function GET(request: NextRequest) {
 
     // Groupuj i sortuj po popularności
     const grouped = await Promise.all(
-      recommendedArticles.map(async (article) => {
+      recommendedArticles.map(async (article: RecommendedArticle) => {
         const viewCount = await prisma.articleView.count({
           where: { articleId: article.articleId },
         });
