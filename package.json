@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "prisma generate",
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "typecheck": "tsc --noEmit",
     "prebuild:static": "node scripts/prepare-static.js",
     "build:static": "cross-env STATIC_EXPORT=true NEXT_PUBLIC_STATIC_EXPORT=true NEXT_PUBLIC_USE_PHP_API=true next build",

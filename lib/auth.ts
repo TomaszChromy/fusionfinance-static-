@@ -6,9 +6,9 @@ import type { Provider } from "next-auth/providers";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { env } from "./env";
-import type { PrismaClient } from "@prisma/client";
-
-let prisma: PrismaClient | null = null;
+// Lazy import to avoid build-time issues on Vercel when Prisma types are tree-shaken
+type PrismaClient = typeof import("@prisma/client").PrismaClient;
+let prisma: InstanceType<PrismaClient> | null = null;
 
 const providers: Provider[] = [];
 
@@ -82,7 +82,8 @@ let exportedSignOut: NextAuthResult["signOut"] | null = disabledAuth.signOut;
 if (env.databaseUrl) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    prisma = require("./prisma").prisma as PrismaClient;
+    const { prisma: prismaClient } = require("./prisma");
+    prisma = prismaClient as InstanceType<PrismaClient>;
   } catch (error) {
     console.error("[auth] Failed to load Prisma client:", error);
   }
