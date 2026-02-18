@@ -89,7 +89,7 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
         <motion.article
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative h-56 lg:h-72 rounded-2xl overflow-hidden bg-[#0c0d10] border border-white/5"
+          className="relative h-56 lg:h-72 rounded-2xl overflow-hidden bg-white border border-[#e6e8ee] shadow-sm"
         >
           {main.coverImage && (
             <Image
@@ -98,12 +98,13 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-600"
               sizes="(max-width: 1024px) 100vw, 70vw"
-              unoptimized
+              loading="lazy"
+              decoding="async"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
           <div className="absolute bottom-4 left-4 right-4 space-y-2">
-            <div className="flex items-center gap-2 text-[11px] text-[#c9a962] uppercase tracking-wide">
+            <div className="flex items-center gap-2 text-[11px] text-white uppercase tracking-wide drop-shadow">
               <span>{main.category || "Analiza"}</span>
               <span className="w-1 h-1 rounded-full bg-[#c9a962]" />
               <span>{new Date(main.publishedAt).toLocaleDateString("pl-PL")}</span>
@@ -114,10 +115,10 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
                 </>
               )}
             </div>
-            <h3 className="text-xl lg:text-2xl font-serif text-white font-semibold leading-tight group-hover:text-[#c9a962] transition-colors">
+            <h3 className="text-xl lg:text-2xl font-serif text-white font-semibold leading-tight group-hover:text-[#c9a962] transition-colors drop-shadow">
               {main.title}
             </h3>
-            <p className="text-sm text-white/80 line-clamp-2 lg:line-clamp-3">{main.summary}</p>
+            <p className="text-sm text-white/85 line-clamp-2 lg:line-clamp-3 drop-shadow">{main.summary}</p>
             {main.author && (
               <p className="text-[11px] text-white/70">Autor: {main.author}</p>
             )}
@@ -134,7 +135,7 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * (idx + 1) }}
-              className="relative h-full rounded-2xl overflow-hidden bg-[#0c0d10] border border-white/5"
+              className="relative h-full rounded-2xl overflow-hidden bg-white border border-[#e6e8ee] shadow-sm"
             >
               {story.coverImage && (
                 <Image
@@ -143,7 +144,8 @@ export default function TopStories({ limit = 4, className = "" }: { limit?: numb
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-600"
                   sizes="(max-width: 1024px) 100vw, 30vw"
-                  unoptimized
+                  loading="lazy"
+                  decoding="async"
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-transparent" />
